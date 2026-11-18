@@ -1,0 +1,835 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Winning the Company—But Does the City Win?</title>
+    <style>
+        :root {
+            color-scheme: light;
+            font-family: system-ui, sans-serif;
+            color: #20252b;
+            background: #f5f6f7;
+            line-height: 1.6;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        [hidden] {
+            display: none !important;
+        }
+
+        body {
+            margin: 0;
+            overflow-wrap: anywhere;
+        }
+
+        header {
+            background: white;
+            border-bottom: 1px solid #d7dbe1;
+        }
+
+        nav {
+            max-width: 52rem;
+            margin: auto;
+            padding: .7rem 1.2rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: .35rem;
+        }
+
+        nav strong {
+            margin-right: auto;
+        }
+
+        nav button {
+            background: transparent;
+            border-color: transparent;
+        }
+
+        nav button[aria-current="page"] {
+            background: #e8edf3;
+        }
+
+        main {
+            width: min(52rem, calc(100% - 2rem));
+            margin: 1.5rem auto 3rem;
+            padding: clamp(1rem, 4vw, 2.5rem);
+            background: white;
+            border: 1px solid #d7dbe1;
+            border-radius: .6rem;
+        }
+
+        h1,
+        h2,
+        h3 {
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+        }
+
+        h2 {
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+        }
+
+        h1,
+        h2 {
+            margin: 0 0 1rem;
+        }
+
+        h3 {
+            margin-top: 1.7rem;
+        }
+
+        p {
+            margin: .75rem 0 1rem;
+        }
+
+        a {
+            color: #16487b;
+        }
+
+        button {
+            border: 1px solid #697687;
+            border-radius: .4rem;
+            padding: .6rem .85rem;
+            background: #fff;
+            color: #20252b;
+            cursor: pointer;
+            font: inherit;
+            text-align: left;
+        }
+
+        button:hover:not(:disabled) {
+            background: #edf1f5;
+        }
+
+        button.primary {
+            background: #243b55;
+            border-color: #243b55;
+            color: #fff;
+        }
+
+        button.primary:hover:not(:disabled) {
+            background: #365573;
+        }
+
+        button:disabled {
+            cursor: default;
+            opacity: .55;
+        }
+
+        :focus-visible {
+            outline: 3px solid #176fbb;
+            outline-offset: 3px;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .65rem;
+            margin-top: 1.4rem;
+        }
+
+        .choices {
+            display: grid;
+            gap: .65rem;
+            margin: 1.15rem 0;
+        }
+
+        .choices button {
+            padding: .85rem 1rem;
+        }
+
+        .choices button strong {
+            display: block;
+            margin-bottom: .2rem;
+        }
+
+        .scene-note {
+            color: #4b5866;
+        }
+
+        .panel {
+            margin: 1rem 0;
+            padding: .85rem 1rem;
+            background: #f0f3f6;
+            border-left: 3px solid #536c85;
+        }
+
+        .panel> :first-child {
+            margin-top: 0;
+        }
+
+        .panel> :last-child {
+            margin-bottom: 0;
+        }
+
+        .facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+            gap: .5rem;
+            margin-block: 1.1rem;
+        }
+
+        .facts div {
+            padding: .65rem .8rem;
+            background: #edf1f5;
+            border-radius: .3rem;
+        }
+
+        .facts dt {
+            color: #44566a;
+            font-size: .9rem;
+        }
+
+        .facts dd {
+            margin: .15rem 0 0;
+            font-weight: 650;
+        }
+
+        .result-label {
+            margin-top: 0;
+        }
+
+        .comparison {
+            overflow-x: auto;
+        }
+
+        table {
+            border-collapse: collapse;
+            min-width: 33rem;
+            width: 100%;
+        }
+
+        td,
+        th {
+            padding: .65rem;
+            border: 1px solid #d7dbe1;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        thead {
+            background: #edf1f5;
+        }
+
+        fieldset {
+            border: 1px solid #d7dbe1;
+            border-radius: .35rem;
+        }
+
+        fieldset label {
+            display: flex;
+            gap: .55rem;
+            align-items: baseline;
+            padding: .35rem 0;
+            cursor: pointer;
+        }
+
+        fieldset legend {
+            font-weight: 650;
+            padding-inline: .35rem;
+        }
+
+        .works-cited {
+            padding: 0;
+            list-style: none;
+        }
+
+        .works-cited li {
+            padding-left: 1.25rem;
+            text-indent: -1.25rem;
+            margin-bottom: .8rem;
+        }
+
+        @media (max-width: 34rem) {
+            nav strong {
+                flex-basis: 100%;
+            }
+
+            nav {
+                padding-inline: .65rem;
+            }
+
+            main {
+                margin-top: .8rem;
+            }
+
+            .actions button {
+                flex-grow: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav aria-label="Site navigation">
+            <strong>The HQ2 Bid</strong>
+            <button type="button" data-nav="game" aria-current="page">Game</button>
+            <button type="button" data-nav="case" data-go="case">Real Case</button>
+            <button type="button" data-nav="research" data-go="research">Research</button>
+            <button type="button" data-nav="sources" data-go="sources">Works Cited</button>
+        </nav>
+    </header>
+
+    <main>
+        <noscript>
+            <p>Enable JavaScript to play the bidding simulation.</p>
+        </noscript>
+
+        <section id="intro" data-scene aria-labelledby="intro-title">
+            <h1 id="intro-title" tabindex="-1">Winning the Company—But Does the City Win?</h1>
+            <p class="scene-note">An interactive case study inspired by Amazon’s search for a second headquarters.</p>
+            <p>A technology company is looking for a new headquarters. Its proposal projects <strong>2,000 jobs within
+                    five years</strong>. Local businesses are already imagining new customers. Residents want to know
+                who will get the jobs. Your finance director wants to know how much the city will have to give up to
+                bring the company here.</p>
+            <p>You lead the city’s bid. The company can choose among several places, and other cities are preparing
+                offers of their own. You can propose a subsidy, set conditions on payment, or walk away. The company
+                decides where to build. You decide what you are willing to offer on the public’s behalf.</p>
+            <p class="scene-note"><em>The city, offers, job targets, and outcomes in this simulation are fictional.</em>
+            </p>
+            <div class="actions">
+                <button class="primary" type="button" data-start>Start the Bid</button>
+            </div>
+        </section>
+
+        <section id="offer" data-scene aria-labelledby="offer-title" hidden>
+            <h2 id="offer-title" tabindex="-1">Round One · Make an Offer</h2>
+            <p>The company’s representatives ask what your city can offer. Your city has a possible site, a workforce,
+                and a transit network. These are reasons the company might choose your city even with a smaller subsidy.
+                You have no way of knowing how the company ranks them against what other places can offer.</p>
+            <p>A local restaurant owner hopes the headquarters will bring customers throughout the week. A resident at
+                the public meeting asks whether the advertised jobs will be open to people who already live here. Your
+                finance director asks which other projects might have to wait if the city commits to a larger package.
+            </p>
+            <p>You have to make an opening offer before you know what the other cities will bid.</p>
+            <div class="choices">
+                <button type="button" data-offer="100"><strong>Offer up to $100 million</strong>Start with a smaller
+                    package and leave more room in the public budget.</button>
+                <button type="button" data-offer="250"><strong>Offer up to $250 million</strong>Give the company a
+                    larger financial reason to keep your city on its shortlist.</button>
+            </div>
+        </section>
+
+        <section id="rival" data-scene aria-labelledby="rival-title" hidden>
+            <h2 id="rival-title" tabindex="-1">Round Two · A Rival Raises Its Bid</h2>
+            <dl class="facts">
+                <div>
+                    <dt>Your opening offer</dt>
+                    <dd data-amount="opening"></dd>
+                </div>
+                <div>
+                    <dt>The rival’s offer</dt>
+                    <dd>$300 million</dd>
+                </div>
+                <div>
+                    <dt>The company’s projection</dt>
+                    <dd>2,000 jobs in five years</dd>
+                </div>
+            </dl>
+            <blockquote class="panel">
+                <p><strong>From the Site Selection Team</strong></p>
+                <p>Thank you for your proposal. Another finalist has offered $300 million. We are still evaluating both
+                    locations. Would your city consider revising its offer?</p>
+            </blockquote>
+            <p>The company has shared the size of the rival’s offer. You still do not know which location the company
+                prefers or how much the subsidy matters to its decision.</p>
+            <p>At the next public meeting, one resident asks what you will do if the company chooses the rival. Another
+                asks what happens if you win and the company creates only half the jobs it projected. Your next decision
+                will affect both what the company can receive and what it has to deliver to receive it.</p>
+            <div class="choices">
+                <button type="button" data-decision="raise"><strong>Raise the offer to $350 million</strong>Exceed the
+                    rival’s offer without adding a hiring requirement.</button>
+                <button type="button" data-decision="conditional"><strong>Keep your offer and tie payments to
+                        hiring</strong>Keep your original cap. Pay in proportion to verified new jobs, up to the
+                    2,000-job target after five years.</button>
+                <button type="button" data-decision="withdraw"><strong>Withdraw your bid</strong>Make no subsidy
+                    commitment and keep the option to use those public resources elsewhere.</button>
+            </div>
+            <div class="actions"><button type="button" data-go="offer">Back to Your Opening Offer</button></div>
+        </section>
+
+        <section id="result" data-scene aria-labelledby="result-title" hidden>
+            <h2 id="result-title" tabindex="-1">Who Gained What?</h2>
+            <article data-outcome="raise" hidden>
+                <h3 class="result-label">Your City Was Selected</h3>
+                <p><strong>The company</strong> chose your city in this simulation. It secured an offer worth up to
+                    <strong>$350 million</strong>, an increase of <strong data-amount="increase"></strong> from your
+                    opening offer. The deal has no requirement tying payments to the 2,000-job projection.</p>
+                <p><strong>The local government</strong> can announce the investment and take credit for securing the
+                    headquarters. It has also taken on a larger potential fiscal commitment. If hiring falls behind, the
+                    government has no hiring clause in this deal that automatically reduces payments in proportion to
+                    the shortfall.</p>
+                <p><strong>Residents</strong> may benefit from new jobs or new customers for local businesses. To judge
+                    the deal, they would need to know how many jobs were actually added, what those jobs pay, how
+                    accessible they are to local workers, and how much public support the company ultimately receives.
+                    They would also need some basis for judging whether the company might have chosen the city with a
+                    smaller offer.</p>
+                <p class="panel">Five years later, the company has created 1,000 of the 2,000 jobs it projected. What
+                    evidence would you want before deciding whether the larger offer was worth it?</p>
+            </article>
+            <article data-outcome="conditional" hidden>
+                <h3 class="result-label">Your Offer Is Still on the Table</h3>
+                <p><strong>The company</strong> can accept a package worth up to <strong
+                        data-amount="opening"></strong>. To receive the full amount, it would have to create 2,000
+                    verified new jobs by the five-year mark. If it accepts and creates 1,000 qualifying jobs, it
+                    receives half the offer, or <strong data-amount="half"></strong>, under the simulation’s rules.</p>
+                <p><strong>The local government</strong> has made the potential payout depend on something it can
+                    measure. It still has to define what counts as a job, check the company’s reporting, and decide how
+                    to handle positions that disappear soon after the deadline. The company can reject the terms and
+                    choose another place.</p>
+                <p><strong>Residents</strong> can ask for a public record of the jobs that qualified and the amount
+                    paid. A job count answers one question. Pay, hours, job duration, and who actually gets hired answer
+                    others. Residents might also ask whether the payment rewards newly created jobs or positions the
+                    company moved from another office.</p>
+                <p class="panel">If a company meets its hiring target with mostly short-term positions, has it delivered
+                    what you wanted the subsidy to buy?</p>
+            </article>
+            <article data-outcome="withdraw" hidden>
+                <h3 class="result-label">Your City Walked Away</h3>
+                <p><strong>The company</strong> cannot collect a subsidy from your city through this bid. It can still
+                    negotiate with the rival, choose another site, or reconsider the project.</p>
+                <p><strong>The local government</strong> has preserved the resources it could have committed to the
+                    subsidy. It can now consider other uses, such as improving transport or supporting workforce
+                    training. It may also have to explain its decision to residents who wanted it to compete for the
+                    headquarters.</p>
+                <p><strong>Residents</strong> can compare what the government does with those resources against the
+                    benefits the headquarters was expected to bring. That comparison comes with uncertainty. The city
+                    may never know whether it could have secured the investment at a lower price, and the projected jobs
+                    cannot tell residents who would actually have been hired.</p>
+                <p class="panel">What would make you more comfortable walking away: a credible plan for the money,
+                    stronger evidence about the company’s likely hiring, or an agreement with neighboring cities about
+                    how they compete?</p>
+            </article>
+            <div class="actions">
+                <button class="primary" type="button" data-go="case">See the Real HQ2 Case</button>
+                <button type="button" data-go="bonus">Bonus: Open the Company’s File</button>
+                <button type="button" data-go="compare">Compare All Outcomes</button>
+            </div>
+        </section>
+
+        <section id="compare" data-scene aria-labelledby="compare-title" hidden>
+            <h2 id="compare-title" tabindex="-1">Compare All Outcomes</h2>
+            <div class="comparison" tabindex="0" aria-label="Outcome comparison table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Your Decision</th>
+                            <th scope="col">Company</th>
+                            <th scope="col">Local Government</th>
+                            <th scope="col">What Residents Can Check</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Raise the offer</th>
+                            <td>Secures a package of up to $350 million</td>
+                            <td>Commits to a larger package with no hiring requirement</td>
+                            <td>Actual jobs, job quality, and payments</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Tie payments to hiring</th>
+                            <td>Can accept an offer capped at <span data-amount="opening"></span></td>
+                            <td>Pays in proportion to verified hiring if the offer is accepted</td>
+                            <td>The definition of a qualifying job, the verified count, and the amount paid</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Withdraw</th>
+                            <td>Receives no subsidy from this bid</td>
+                            <td>Makes no subsidy commitment through this bid</td>
+                            <td>How the city uses the resources it retained</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="actions">
+                <button type="button" data-go="result">Back to Your Result</button>
+                <button type="button" data-go="bonus">Bonus: Open the Company’s File</button>
+                <button class="primary" type="button" data-go="case">See the Real HQ2 Case</button>
+            </div>
+        </section>
+
+        <section id="bonus" data-scene aria-labelledby="bonus-title" hidden>
+            <h2 id="bonus-title" tabindex="-1">Inside the Site Selection Team</h2>
+            <p class="scene-note">Replay the negotiation from the company’s side, just before it asked for a revised
+                offer.</p>
+            <p>Before the company sent its email, your team had already compared the finalists. You now have access to
+                the internal assessment.</p>
+            <div class="panel">
+                <p><strong>Your preferred city</strong> has better access to the workers you need and a shorter commute
+                    for employees. Its opening offer is <strong data-amount="opening"></strong>.</p>
+                <p><strong>The rival city</strong> offers <strong>$300 million</strong>. The site can work, but your
+                    team expects hiring to take longer there.</p>
+            </div>
+            <p>Both sites are viable. Your preferred city has not seen your assessment. What do you tell its officials?
+            </p>
+            <div class="choices">
+                <button type="button" data-company="disclose" aria-pressed="false"><strong>Tell the city it is your
+                        preferred site</strong>Move on to negotiating what the company will have to deliver before it
+                    receives the subsidy.</button>
+                <button type="button" data-company="negotiate" aria-pressed="false"><strong>Use the rival offer to ask
+                        for more</strong>Tell the city about the $300 million offer and ask it to improve its proposal.
+                    Keep your site ranking private.</button>
+            </div>
+            <article class="panel" data-company-result="disclose" tabindex="-1" hidden>
+                <h3>The City Knows What It Has to Offer</h3>
+                <p>The city now knows it has something the company values: a better location for its workforce. Its
+                    officials have more reason to hold their price and negotiate over hiring commitments. Your team can
+                    focus on getting the project underway.</p>
+            </article>
+            <article class="panel" data-company-result="negotiate" tabindex="-1" hidden>
+                <h3>The Rival Offer Gives You Room to Bargain</h3>
+                <p>The city knows what the rival offered, but it still cannot tell how likely you are to go there. That
+                    uncertainty gives you room to ask for more. The city can raise its offer, insist on conditions, or
+                    walk away.</p>
+            </article>
+            <div class="actions">
+                <button type="button" data-go="result">Back to Your Result</button>
+                <button class="primary" type="button" data-go="case">See the Real HQ2 Case</button>
+            </div>
+        </section>
+
+        <section id="case" data-scene aria-labelledby="case-title" hidden>
+            <h2 id="case-title" tabindex="-1">What Actually Happened?</h2>
+            <p>In January 2018, Amazon said it had reviewed <strong>238 proposals</strong> from across the United
+                States, Canada, and Mexico and invited 20 metropolitan areas to the next stage of its headquarters
+                search. In November, it announced two locations: <strong>Long Island City in Queens, New York, and
+                    Arlington, Virginia</strong>. Amazon projected more than 50,000 jobs across the two sites. At that
+                point, the announcement told the public where Amazon planned to build and what it expected the projects
+                to deliver. <a href="#cite-shortlist" data-citation>Amazon’s shortlist</a> · <a href="#cite-selection"
+                    data-citation>Location announcement</a></p>
+
+            <h3>Long Island City · Selected, Then Cancelled</h3>
+            <p>New York’s memorandum of understanding outlined a headquarters project with <strong>25,000 new jobs
+                    within ten years</strong>. Amazon’s announcement described a proposed package of up to <strong>$1.2
+                    billion in refundable state tax credits</strong> and a <strong>$325 million state grant</strong>
+                tied to building occupancy. The tax credits depended on payroll from qualifying new jobs. These figures
+                describe potential incentives under the announced plan. <a href="#cite-ny" data-citation>New York
+                    memorandum</a> · <a href="#cite-selection" data-citation>Location announcement</a></p>
+            <p>In February 2019, Amazon cancelled the planned Queens headquarters. The company cited opposition from
+                some state and local politicians and said it needed working relationships with officials who would
+                support the project over time. That statement gives Amazon’s account of the decision. The cancellation
+                shows that securing an announcement did not settle whether the project could go ahead. It also makes the
+                announced subsidy figures a poor measure of what the public actually paid for the planned headquarters.
+                <a href="#cite-withdrawal" data-citation>Amazon’s withdrawal statement</a></p>
+
+            <h3>Arlington · Selected, With Payments Tied to Conditions</h3>
+            <p>Arlington proceeded with HQ2. Its county grant tied payments to two conditions: Amazon had to meet office
+                occupancy targets, and the county’s <strong>transient occupancy tax</strong> revenue, largely associated
+                with hotel stays, had to exceed a specified baseline. Virginia’s state workforce grant was separate and
+                used job creation as a basis for payment. The two levels of government used different measures of what
+                the investment was expected to deliver. <a href="#cite-selection" data-citation>Location
+                    announcement</a> · <a href="#cite-arlington" data-citation>Arlington County statement</a></p>
+            <p>Arlington County reported that the first payment under its hotel tax grant came in fiscal year 2025. For
+                fiscal year 2026, Amazon met its occupancy target, but hotel tax revenue fell below the baseline, so
+                <strong>no payment was due under that grant for that period</strong>. A company can open its offices and
+                fulfill one condition while a separate condition still determines whether public money changes hands. <a
+                    href="#cite-arlington" data-citation>Arlington County statement</a></p>
+            <p class="panel">When you compare the locations, keep track of three events. <strong>Selection</strong> is
+                where the company plans to locate. <strong>Commitment</strong> is what the public parties agree to make
+                available under specified terms. <strong>Payment</strong> is what the company actually receives. A
+                headline about who won tells you about the first event. To understand the costs and benefits, you need
+                evidence about all three.</p>
+            <div class="actions">
+                <button type="button" data-return-result hidden>Back to Your Result</button>
+                <button class="primary" type="button" data-go="research">Explore the Research</button>
+            </div>
+        </section>
+
+        <section id="research" data-scene aria-labelledby="research-title" hidden>
+            <h2 id="research-title" tabindex="-1">Who Had the Power to Set the Terms?</h2>
+            <h3>The Company Had Other Places to Go</h3>
+            <p>The second round puts you in a position that Cailin Slattery studies in her model of subsidy competition.
+                Governments offer public money to attract an investment, and the company can choose among locations. If
+                several places are viable, the company can point to one offer while negotiating with another. Each
+                government has to decide how far it will go with incomplete information about what the company would
+                accept. In Slattery’s model, competition can shift the gains from the deal toward firms as governments
+                compete for the same investment. <a href="#cite-slattery" data-citation>Slattery</a></p>
+            <p>Think back to the $300 million rival offer. You saw a number before you knew how the company valued your
+                workforce, transit, or site. If the company already preferred your city, raising the offer might mostly
+                transfer more value to the company. If the rival was genuinely more attractive, raising it might change
+                the decision. That is the question of <strong>additionality</strong>. What did the subsidy cause that
+                would otherwise never have happened? The simulation gives you a way to face that uncertainty, while the
+                historical records show which terms were publicly announced.</p>
+
+            <h3>Officials Had Their Own Reasons to Bid</h3>
+            <p>Nathan Jensen and his coauthors use a survey experiment to study how voters assign <strong>credit and
+                    blame</strong> to governors in a competition for investment. Their findings suggest that offering
+                incentives can help an official take credit when an investment arrives and reduce the political fallout
+                when it goes elsewhere. That creates a reason to bid even when the fiscal merits of a deal are
+                uncertain. In the game, raising the offer gives the official a potential headline today. The residents
+                who want to evaluate it may have to wait years for hiring figures and payment records. <a
+                    href="#cite-jensen" data-citation>Jensen et al.</a></p>
+            <p>There are also economic reasons to compete. Michael Greenstone and his coauthors found that large
+                manufacturing plants could raise productivity at existing plants nearby, especially where firms shared
+                similar labor or technology. Their evidence concerns manufacturing, so an HQ2 analysis would have to
+                look separately for benefits to surrounding businesses. It does help explain why an official might think
+                about suppliers, workers, and other employers when deciding whether to bid. Slattery’s analysis then
+                asks how much of any expected gain local governments can retain when they compete for it. <a
+                    href="#cite-greenstone" data-citation>Greenstone et al.</a> · <a href="#cite-slattery"
+                    data-citation>Slattery</a></p>
+
+            <h3>Public Gains Have to Be Measured Over Time</h3>
+            <p>Patrick Kline and Enrico Moretti’s study of the <strong>Tennessee Valley Authority</strong> offers a
+                historical comparison. In that regional development program, manufacturing employment gains continued
+                after federal transfers ended, while the initial gains in agricultural employment eventually reversed. A
+                headquarters deal operates on a different scale, but the comparison gives us a way to evaluate its
+                promises. If a city expects a subsidy to create lasting gains, it should identify what could persist
+                when the payments end, such as stable employment or benefits to other local firms. <a href="#cite-kline"
+                    data-citation>Kline and Moretti</a></p>
+            <p>In 1943, Michał Kalecki argued that when employment depends heavily on private investment, business
+                decisions can indirectly influence public policy. HQ2 puts that idea at the scale of a place competing
+                for a headquarters. A firm controls where it invests. Public officials control what they offer and which
+                terms they attach. Residents can ask officials to defend those terms and show what the company
+                delivered. The agreement matters because it determines whose promises are measurable and who bears the
+                cost if expectations prove wrong. <a href="#cite-kalecki" data-citation>Kalecki</a></p>
+            <div class="actions">
+                <button type="button" data-go="case">Back to the Real Case</button>
+                <button class="primary" type="button" data-go="reflection">Make Your Final Decision</button>
+            </div>
+        </section>
+
+        <section id="reflection" data-scene aria-labelledby="reflection-title" hidden>
+            <h2 id="reflection-title" tabindex="-1">Your Final Decision</h2>
+            <p>Imagine you are at a public hearing five years after the bid. On the table are the company’s original
+                projection, the subsidy agreement, a record of public payments, and a report on the jobs actually
+                created.</p>
+            <form id="priorities">
+                <fieldset>
+                    <legend>Which two questions would you ask first?</legend>
+                    <label><input type="checkbox" name="priority" value="jobs"> <span>How many new jobs were created,
+                            and who got them?</span></label>
+                    <label><input type="checkbox" name="priority" value="payments"> <span>How much public support was
+                            actually paid?</span></label>
+                    <label><input type="checkbox" name="priority" value="additionality"> <span>What would the company
+                            likely have done without the offer?</span></label>
+                    <label><input type="checkbox" name="priority" value="durability"> <span>Which benefits are still
+                            visible after the payments end?</span></label>
+                </fieldset>
+                <p id="priority-count" role="status" class="scene-note">0 of 2 selected</p>
+                <button id="review-priorities" type="submit" disabled>Review Your Choices</button>
+            </form>
+            <div id="priority-feedback" class="panel" tabindex="-1" hidden>
+                <h3>What You Would Ask the City to Show</h3>
+                <ul id="priority-answers"></ul>
+                <p>Two people can agree that the headquarters opened and disagree about whether it was a good use of
+                    public resources. Before your city makes its next bid, what would you write into the agreement, and
+                    what evidence would you ask the city to make public?</p>
+            </div>
+            <div class="actions">
+                <button type="button" data-start>Play Again</button>
+                <button type="button" data-return-result hidden>Back to Your Result</button>
+                <button class="primary" type="button" data-go="sources">Works Cited</button>
+            </div>
+        </section>
+
+        <section id="sources" data-scene aria-labelledby="sources-title" hidden>
+            <h2 id="sources-title" tabindex="-1">Works Cited</h2>
+            <ul class="works-cited">
+                <li id="cite-shortlist" tabindex="-1">Amazon. “Amazon Announces Candidates for HQ2.” <em>Amazon Press
+                        Center</em>, 18 Jan. 2018. <a
+                        href="https://press.aboutamazon.com/news-releases/news-release-details/amazon-announces-candidates-hq2/">Announcement</a>.
+                </li>
+                <li id="cite-selection" tabindex="-1">Amazon. “Amazon Selects New York City and Northern Virginia for
+                    New Headquarters.” <em>About Amazon</em>, 13 Nov. 2018. <a
+                        href="https://www.aboutamazon.com/news/company-news/amazon-selects-new-york-city-and-northern-virginia-for-new-headquarters">Announcement</a>.
+                </li>
+                <li id="cite-withdrawal" tabindex="-1">Amazon. “Update on Plans for New York City Headquarters.”
+                    <em>About Amazon</em>, 14 Feb. 2019. <a
+                        href="https://www.aboutamazon.com/news/company-news/update-on-plans-for-new-york-city-headquarters">Statement</a>.
+                </li>
+                <li id="cite-arlington" tabindex="-1">Arlington County. “Arlington County Statement on Amazon Incentives
+                    for FY 2026.” 1 Sept. 2026. <a
+                        href="https://www.arlingtonva.us/About-Arlington/Newsroom/Media-Resources/Media-Response/Arlington-County-Statement-on-Amazon-Incentives-for-FY-2026">County
+                        statement</a>.</li>
+                <li id="cite-ny" tabindex="-1">Empire State Development, et al. <em>Long Island City Development
+                        Project</em>. 12 Nov. 2018. <a
+                        href="https://esd.ny.gov/sites/default/files/Final-Amazon-NYC-MOU.pdf">Memorandum of
+                        understanding</a>.</li>
+                <li id="cite-greenstone" tabindex="-1">Greenstone, Michael, et al. “Identifying Agglomeration
+                    Spillovers: Evidence from Winners and Losers of Large Plant Openings.” <em>Journal of Political
+                        Economy</em>, vol. 118, no. 3, 2010, pp. 536–98. <a
+                        href="https://doi.org/10.1086/653714">https://doi.org/10.1086/653714</a>.</li>
+                <li id="cite-jensen" tabindex="-1">Jensen, Nathan M., et al. “Pass the Bucks: Credit, Blame, and the
+                    Global Competition for Investment.” <em>International Studies Quarterly</em>, vol. 58, no. 3, 2014,
+                    pp. 433–47. <a href="https://doi.org/10.1111/isqu.12106">https://doi.org/10.1111/isqu.12106</a>.
+                </li>
+                <li id="cite-kalecki" tabindex="-1">Kalecki, Michał. “Political Aspects of Full Employment.” <em>The
+                        Political Quarterly</em>, vol. 14, no. 4, 1943, pp. 322–30. <a
+                        href="https://doi.org/10.1111/j.1467-923X.1943.tb01016.x">https://doi.org/10.1111/j.1467-923X.1943.tb01016.x</a>.
+                </li>
+                <li id="cite-kline" tabindex="-1">Kline, Patrick, and Enrico Moretti. “Local Economic Development,
+                    Agglomeration Economies, and the Big Push: 100 Years of Evidence from the Tennessee Valley
+                    Authority.” <em>The Quarterly Journal of Economics</em>, vol. 129, no. 1, 2014, pp. 275–331. <a
+                        href="https://doi.org/10.1093/qje/qjt034">https://doi.org/10.1093/qje/qjt034</a>.</li>
+                <li id="cite-slattery" tabindex="-1">Slattery, Cailin. “Bidding for Firms: Subsidy Competition in the
+                    United States.” <em>Journal of Political Economy</em>, vol. 133, no. 8, 2025, pp. 2563–614. <a
+                        href="https://doi.org/10.1086/735509">https://doi.org/10.1086/735509</a>.</li>
+            </ul>
+            <div class="actions">
+                <button type="button" id="back-from-sources">Back to the Research</button>
+                <button type="button" data-start>Play Again</button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // The story and text live in the HTML above. This script handles choices and navigation.
+        const scenes = document.querySelectorAll("[data-scene]");
+        const navButtons = document.querySelectorAll("[data-nav]");
+        const outcomePanels = document.querySelectorAll("[data-outcome]");
+        const companyButtons = document.querySelectorAll("[data-company]");
+        const companyPanels = document.querySelectorAll("[data-company-result]");
+        const returnButtons = document.querySelectorAll("[data-return-result]");
+        const priorityForm = document.querySelector("#priorities");
+        const priorityInputs = [...priorityForm.querySelectorAll("input")];
+        const priorityCount = document.querySelector("#priority-count");
+        const reviewButton = document.querySelector("#review-priorities");
+        const priorityFeedback = document.querySelector("#priority-feedback");
+        const priorityAnswers = document.querySelector("#priority-answers");
+        const sourceBack = document.querySelector("#back-from-sources");
+
+        const raisedOffer = 350;
+        let openingOffer = 0;
+        let currentScene = "intro";
+        let gameScene = "intro";
+        let citationOrigin = null;
+
+        const priorityNotes = {
+            jobs: "Compare verified new jobs with the projection, then ask who could access those jobs and whether they lasted.",
+            payments: "Compare actual disbursements with the announced cap and check which agreement conditions triggered payments.",
+            additionality: "Look for evidence about the company’s other viable sites and the benefits your location offered without a subsidy.",
+            durability: "Check whether jobs and benefits to other businesses persist after public payments end."
+        };
+
+        function showScene(id, focusHeading = true) {
+            const section = document.getElementById(id);
+            for (const scene of scenes) scene.hidden = scene !== section;
+            currentScene = id;
+
+            const readingSections = { case: "case", research: "research", reflection: "research", sources: "sources" };
+            const navItem = readingSections[id] || "game";
+            if (navItem === "game") gameScene = id;
+            for (const button of navButtons) {
+                if (button.dataset.nav === navItem) button.setAttribute("aria-current", "page");
+                else button.removeAttribute("aria-current");
+            }
+
+            window.scrollTo(0, 0);
+            if (focusHeading) section.querySelector("h1, h2").focus({ preventScroll: true });
+        }
+
+        function updateAmounts() {
+            const values = { opening: openingOffer, increase: raisedOffer - openingOffer, half: openingOffer / 2 };
+            for (const field of document.querySelectorAll("[data-amount]")) {
+                field.textContent = `$${values[field.dataset.amount]} million`;
+            }
+        }
+
+        function showCompanyResult(choice) {
+            for (const button of companyButtons) button.setAttribute("aria-pressed", String(button.dataset.company === choice));
+            for (const panel of companyPanels) {
+                panel.hidden = panel.dataset.companyResult !== choice;
+                if (!panel.hidden) panel.focus();
+            }
+        }
+
+        function updatePriorities() {
+            const selected = priorityInputs.filter(input => input.checked);
+            for (const input of priorityInputs) input.disabled = selected.length === 2 && !input.checked;
+            priorityCount.textContent = `${selected.length} of 2 selected`;
+            reviewButton.disabled = selected.length !== 2;
+            priorityFeedback.hidden = true;
+            return selected;
+        }
+
+        function startGame() {
+            openingOffer = 0;
+            citationOrigin = null;
+            for (const panel of outcomePanels) panel.hidden = true;
+            for (const button of returnButtons) button.hidden = true;
+            showCompanyResult(null);
+            priorityForm.reset();
+            updatePriorities();
+            showScene("offer");
+        }
+
+        for (const button of document.querySelectorAll("[data-go]")) {
+            button.addEventListener("click", () => {
+                if (button.dataset.go === "sources") {
+                    citationOrigin = { scene: currentScene, link: button };
+                    sourceBack.textContent = currentScene === "reflection" ? "Back to Your Final Decision" : "Back";
+                }
+                showScene(button.dataset.go);
+            });
+        }
+
+        document.querySelector('[data-nav="game"]').addEventListener("click", () => showScene(gameScene));
+        for (const button of document.querySelectorAll("[data-start]")) button.addEventListener("click", startGame);
+        for (const button of returnButtons) button.addEventListener("click", () => showScene("result"));
+
+        for (const button of document.querySelectorAll("[data-offer]")) {
+            button.addEventListener("click", () => {
+                openingOffer = Number(button.dataset.offer);
+                updateAmounts();
+                showScene("rival");
+            });
+        }
+
+        for (const button of document.querySelectorAll("[data-decision]")) {
+            button.addEventListener("click", () => {
+                for (const panel of outcomePanels) panel.hidden = panel.dataset.outcome !== button.dataset.decision;
+                for (const returnButton of returnButtons) returnButton.hidden = false;
+                showCompanyResult(null);
+                showScene("result");
+            });
+        }
+
+        for (const button of companyButtons) button.addEventListener("click", () => showCompanyResult(button.dataset.company));
+
+        priorityForm.addEventListener("change", updatePriorities);
+        priorityForm.addEventListener("submit", event => {
+            event.preventDefault();
+            const selected = updatePriorities();
+            if (selected.length !== 2) return;
+            priorityAnswers.replaceChildren();
+            for (const input of selected) {
+                const item = document.createElement("li");
+                item.textContent = priorityNotes[input.value];
+                priorityAnswers.append(item);
+            }
+            priorityFeedback.hidden = false;
+            priorityFeedback.focus();
+        });
+
+        for (const link of document.querySelectorAll("[data-citation]")) {
+            link.addEventListener("click", event => {
+                event.preventDefault();
+                citationOrigin = { scene: currentScene, link };
+                sourceBack.textContent = currentScene === "case" ? "Back to the Real Case" : "Back to the Research";
+                showScene("sources", false);
+                document.getElementById(link.hash.slice(1)).focus();
+            });
+        }
+
+        sourceBack.addEventListener("click", () => {
+            if (citationOrigin && citationOrigin.scene !== "sources") {
+                showScene(citationOrigin.scene);
+                citationOrigin.link.focus();
+            } else {
+                showScene("research");
+            }
+        });
+    </script>
+</body>
+
+</html>
