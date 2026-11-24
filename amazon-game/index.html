@@ -528,6 +528,33 @@
         font-size: 2.8rem
       }
     }
+
+    .chosen-row {
+      background: #fcf1c5;
+      font-weight: 600;
+    }
+
+    #result-summary {
+      font-size: 1.4rem;
+    }
+
+    #result .facts {
+      border-top: 3px solid var(--yellow);
+    }
+
+    #result .facts dd {
+      font-size: 1.5rem;
+    }
+
+    #rival .choices {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media(max-width:850px) {
+      #rival .choices {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
   <meta content="Siqi Tan (Sally)" name="author" />
 </head>
@@ -561,239 +588,182 @@
         <div class="actions">
           <button class="primary" data-start="" type="button">Start the Bid</button>
         </div>
-        <p>A company is choosing a city for its new headquarters. It expects to create <strong>2,000 jobs within five
-            years</strong>. Local businesses hope it will bring new customers. Residents want to know who will get the
-          jobs. Your finance director asks how much the city can afford to offer.</p>
-        <p>You are the official in charge of the bid. Other cities also want the headquarters. You can offer a subsidy,
-          require the company to meet conditions before it is paid, or withdraw. Your job is to decide what the city
-          should offer and what it should ask for in return.</p>
-        <p class="scene-note"><em>The city, offers, job targets, and outcomes in this simulation are fictional.</em></p>
+        <p>A company is choosing a city for its headquarters. It projects <strong>up to 2,000 jobs within five
+            years</strong>. Your city offers a strong workforce and good transport links. A rival has lower office and
+          land costs. Both locations can support the project.</p>
+        <p>You lead your city’s bid. Decide how much to offer, whether to require verified hiring before payment, or
+          whether to withdraw. The company has an internal assessment of both cities. You see the public information and
+          its replies, but you do not know how much it values your location.</p>
+        <p class="scene-note">This is a fictional simulation. Each new case draws one of two company assessments.
+          Preferences and hiring stay fixed when you replay the same case. The numerical rules are teaching assumptions.
+        </p>
       </div>
     </section>
     <section aria-labelledby="offer-title" data-scene="" hidden="" id="offer">
       <div class="scene-content">
-        <p class="eyebrow">YOUR ROLE · CITY OFFICIAL</p>
-        <dl class="game-ledger">
-          <div>
-            <dt>Your opening offer</dt>
-            <dd data-hud-offer="">Not yet set</dd>
-          </div>
-          <div>
-            <dt>Projected jobs</dt>
-            <dd>2,000 <small>/ 5 years</small></dd>
-          </div>
-        </dl>
-        <h2 id="offer-title" tabindex="-1">Round One · Make an Offer</h2>
-        <p>The company’s representatives ask what your city can offer. Your city has a possible site, a workforce, and a
-          transit network. These are reasons the company might choose your city even with a smaller subsidy. You have no
-          way of knowing how the company ranks them against what other places can offer.</p>
-        <p>A local restaurant owner hopes the headquarters will bring customers throughout the week. A resident at the
-          public meeting asks whether the advertised jobs will be open to people who already live here. Your finance
-          director asks which other projects might have to wait if the city commits to a larger package.</p>
-        <p>You have to make an opening offer before you know what the other cities will bid.</p>
-        <div class="choices">
-          <button data-offer="100" type="button"><strong>Offer up to $100 million</strong>Start with a smaller package
-            and leave more room in the public budget.</button>
-          <button data-offer="250" type="button"><strong>Offer up to $250 million</strong>Give the company a larger
-            financial reason to keep your city on its shortlist.</button>
+        <h2 id="offer-title" tabindex="-1">Round One · Your Opening Offer</h2>
+        <p>Your city has a larger pool of relevant workers and stronger transport links. The rival offers cheaper
+          premises. The company knows how much these differences matter for its business. You do not see its internal
+          calculations.</p>
+        <p>The company projects up to 2,000 jobs within five years. These jobs are a projection, not a hiring
+          requirement. Your finance director asks how much you can offer for a project whose final hiring is uncertain.
+        </p>
+        <p>Under the opening terms, the full grant is paid when the headquarters opens. There is no hiring-based refund.
+          You can revise these terms in the next round.</p>
+        <div class="choices"><button data-offer="100" type="button"><strong>Offer $100 million</strong>Make a smaller
+            public commitment. Your city’s advantages may be enough to keep the offer competitive.</button><button
+            data-offer="250" type="button"><strong>Offer $250 million</strong>Give the company a larger financial reason
+            to choose your city. The added money may change its decision, or pay more for the same project.</button>
         </div>
+        <p class="scene-note">The rival’s lower premises costs are public information. Its subsidy offer arrives in the
+          next round.</p>
       </div>
     </section>
     <section aria-labelledby="rival-title" data-scene="" hidden="" id="rival">
       <div class="scene-content">
-        <p class="eyebrow">YOUR ROLE · CITY OFFICIAL</p>
-        <h2 id="rival-title" tabindex="-1">Round Two · A Rival Raises Its Bid</h2>
+        <h2 id="rival-title" tabindex="-1">Round Two · The Rival Offers $300 Million</h2>
         <dl class="facts">
           <div>
             <dt>Your opening offer</dt>
             <dd data-amount="opening"></dd>
           </div>
           <div>
-            <dt>The rival’s offer</dt>
+            <dt>Rival grant</dt>
             <dd>$300 million</dd>
           </div>
           <div>
-            <dt>The company’s projection</dt>
-            <dd>2,000 jobs in five years</dd>
+            <dt>Public job projection</dt>
+            <dd>Up to 2,000</dd>
           </div>
         </dl>
         <blockquote class="panel">
-          <p><strong>From the Site Selection Team</strong></p>
-          <p>Thank you for your proposal. Another finalist has offered $300 million. We are still evaluating both
-            locations. Would your city consider revising its offer?</p>
+          <p><strong>From the company</strong></p>
+          <p>Another finalist has offered $300 million, payable when its headquarters opens. We are still evaluating
+            both locations. Would your city consider revising its offer?</p>
         </blockquote>
-        <p>The company has shared the size of the rival’s offer. You still do not know which location the company
-          prefers or how much the subsidy matters to its decision.</p>
-        <p>At the next public meeting, one resident asks what you will do if the company chooses the rival. Another asks
-          what happens if you win and the company creates only half the jobs it projected. Your next decision will
-          affect both what the company can receive and what it has to deliver to receive it.</p>
+        <p>The company sends this request in both cases, including when your opening offer is already competitive. Its
+          reply does not reveal its ranking. The rival’s grant is higher, but your workforce and transport links may
+          make your city more valuable to the company.</p>
+        <p>If you attach a hiring condition, the company will receive the full cap only after 2,000 verified new jobs.
+          At the five-year check, it receives a proportionate amount for fewer qualifying jobs. It may reject those
+          terms.</p>
+
         <div class="choices">
+          <button data-decision="keep" type="button"><strong>Keep your opening offer</strong>Retain the original amount
+            and payment on opening. Rely on your city’s other advantages.</button>
           <button data-decision="raise" type="button"><strong>Raise the offer to $350 million</strong>Exceed the rival’s
-            offer without adding a hiring requirement.</button>
-          <button data-decision="conditional" type="button"><strong>Keep your offer and tie payments to
-              hiring</strong>Keep your original cap. Pay in proportion to verified new jobs, up to the 2,000-job target
-            after five years.</button>
-          <button data-decision="withdraw" type="button"><strong>Withdraw your bid</strong>Make no subsidy commitment
-            and keep the option to use those public resources elsewhere.</button>
+            grant. Pay when the headquarters opens, with no hiring requirement.</button>
+          <button data-decision="conditional" type="button"><strong>Keep the cap and require verified
+              hiring</strong>Retain your opening cap. Pay in proportion to qualifying jobs at the five-year
+            check.</button>
+          <button data-decision="withdraw" type="button"><strong>Withdraw your bid</strong>End this subsidy negotiation
+            and make no grant commitment.</button>
         </div>
-        <div class="actions"><button data-go="offer" type="button">Back to Your Opening Offer</button></div>
+        <div class="actions"><button data-go="offer" type="button">Change Your Opening Offer</button></div>
       </div>
     </section>
     <section aria-labelledby="result-title" data-scene="" hidden="" id="result">
       <div class="scene-content">
-        <p class="eyebrow">Your result</p>
-        <h2 id="result-title" tabindex="-1">Who Gained What?</h2>
-        <article data-outcome="raise" hidden="">
-          <h3 class="result-label">Your City Was Selected</h3>
-          <p class="stakeholder" data-stakeholder="company"><strong>The company</strong> chose your city in this
-            simulation. It secured an offer worth up to <strong>$350 million</strong>, an increase of <strong
-              data-amount="increase"></strong> from your opening offer. The deal has no requirement tying payments to
-            the 2,000-job projection.</p>
-          <p class="stakeholder" data-stakeholder="government"><strong>The local government</strong> can announce the
-            investment and take credit for securing the headquarters. It has also taken on a larger potential fiscal
-            commitment. If hiring falls behind, the government has no hiring clause in this deal that automatically
-            reduces payments in proportion to the shortfall.</p>
-          <p class="stakeholder" data-stakeholder="residents"><strong>Residents</strong> may benefit from new jobs or
-            new customers for local businesses. To judge the deal, they would need to know how many jobs were actually
-            added, what those jobs pay, how accessible they are to local workers, and how much public support the
-            company ultimately receives. They would also need some basis for judging whether the company might have
-            chosen the city with a smaller offer.</p>
-          <p class="panel">Five years later, the company has created 1,000 of the 2,000 jobs it projected. What evidence
-            would you want before deciding whether the larger offer was worth it?</p>
-        </article>
-        <article data-outcome="conditional" hidden="">
-          <h3 class="result-label">Your Offer Is Still on the Table</h3>
-          <p class="stakeholder" data-stakeholder="company"><strong>The company</strong> can accept a package worth up
-            to <strong data-amount="opening"></strong>. To receive the full amount, it would have to create 2,000
-            verified new jobs by the five-year mark. If it accepts and creates 1,000 qualifying jobs, it receives half
-            the offer, or <strong data-amount="half"></strong>, under the simulation’s rules.</p>
-          <p class="stakeholder" data-stakeholder="government"><strong>The local government</strong> has made the
-            potential payout depend on something it can measure. It still has to define what counts as a job, check the
-            company’s reporting, and decide how to handle positions that disappear soon after the deadline. The company
-            can reject the terms and choose another place.</p>
-          <p class="stakeholder" data-stakeholder="residents"><strong>Residents</strong> can ask for a public record of
-            the jobs that qualified and the amount paid. A job count answers one question. Pay, hours, job duration, and
-            who actually gets hired answer others. Residents might also ask whether the payment rewards newly created
-            jobs or positions the company moved from another office.</p>
-          <p class="panel">If a company meets its hiring target with mostly short-term positions, has it delivered what
-            you wanted the subsidy to buy?</p>
-        </article>
-        <article data-outcome="withdraw" hidden="">
-          <h3 class="result-label">Your City Walked Away</h3>
-          <p class="stakeholder" data-stakeholder="company"><strong>The company</strong> cannot collect a subsidy from
-            your city through this bid. It can still negotiate with the rival, choose another site, or reconsider the
-            project.</p>
-          <p class="stakeholder" data-stakeholder="government"><strong>The local government</strong> has preserved the
-            resources it could have committed to the subsidy. It can now consider other uses, such as improving
-            transport or supporting workforce training. It may also have to explain its decision to residents who wanted
-            it to compete for the headquarters.</p>
-          <p class="stakeholder" data-stakeholder="residents"><strong>Residents</strong> can compare what the government
-            does with those resources against the benefits the headquarters was expected to bring. That comparison comes
-            with uncertainty. The city may never know whether it could have secured the investment at a lower price, and
-            the projected jobs cannot tell residents who would actually have been hired.</p>
-          <p class="panel">What would make you more comfortable walking away: a credible plan for the money, stronger
-            evidence about the company’s likely hiring, or an agreement with neighboring cities about how they compete?
-          </p>
-        </article>
-        <div class="actions">
-          <button class="primary" data-go="case" type="button">See the Real HQ2 Case</button>
-          <button data-go="bonus" type="button">Bonus: Open the Company’s File</button>
-          <button data-go="compare" type="button">Compare All Outcomes</button>
-        </div>
+        <h2 id="result-title" tabindex="-1">Five Years Later</h2>
+        <p id="result-summary" role="status"></p>
+        <p class="scene-note" id="result-offer"></p>
+        <dl class="facts">
+          <div>
+            <dt>Headquarters location</dt>
+            <dd id="result-location"></dd>
+          </div>
+          <div>
+            <dt>Project jobs in your city</dt>
+            <dd id="result-jobs"></dd>
+          </div>
+          <div>
+            <dt>Grant actually paid by your city</dt>
+            <dd id="result-payment"></dd>
+          </div>
+        </dl>
+        <p class="scene-note">The job figure concerns this headquarters only. Grant payments exclude other public costs
+          and tax revenue. The simulation does not calculate net public benefits.</p>
+        <h3>The company</h3>
+        <p id="result-company"></p>
+        <h3>The government</h3>
+        <p id="result-government"></p>
+        <h3>Residents</h3>
+        <p id="result-residents"></p>
+        <h3>Why this happened</h3>
+        <p id="result-reason"></p>
+        <p class="panel" id="result-question"></p>
+        <div class="actions"><button class="primary" data-go="compare" type="button">Compare Choices in This
+            Case</button><button data-go="bonus" type="button">Open the Company’s File</button><button data-go="case"
+            type="button">Read the Real HQ2 Case</button><button data-replay="" type="button">Replay This
+            Case</button><button data-start="" type="button">New Case</button></div>
       </div>
     </section>
     <section aria-labelledby="compare-title" data-scene="" hidden="" id="compare">
       <div class="scene-content">
-        <p class="eyebrow">Compare the decisions</p>
-        <h2 id="compare-title" tabindex="-1">Compare All Outcomes</h2>
-        <div aria-label="Outcome comparison table" class="comparison" tabindex="0">
+        <h2 id="compare-title" tabindex="-1">Compare Choices in the Same Case</h2>
+        <p id="comparison-case"></p>
+        <p>Only your opening amount and final decision change in this table. The company’s assessment and hiring plan
+          stay fixed. This comparison reveals the case, so replaying it is a chance to test what you have learned.</p>
+        <div aria-label="Comparison of opening offers and final choices" class="comparison" tabindex="0">
           <table>
             <thead>
               <tr>
-                <th scope="col">Your Decision</th>
-                <th scope="col">Company</th>
-                <th scope="col">Local Government</th>
-                <th scope="col">What Residents Can Check</th>
+                <th scope="col">Opening offer</th>
+                <th scope="col">Final decision</th>
+                <th scope="col">Chosen location</th>
+                <th scope="col">Project jobs in your city</th>
+                <th scope="col">Your city’s payment</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Raise the offer</th>
-                <td>Secures a package of up to $350 million</td>
-                <td>Commits to a larger package with no hiring requirement</td>
-                <td>Actual jobs, job quality, and payments</td>
-              </tr>
-              <tr>
-                <th scope="row">Tie payments to hiring</th>
-                <td>Can accept an offer capped at <span data-amount="opening"></span></td>
-                <td>Pays in proportion to verified hiring if the offer is accepted</td>
-                <td>The definition of a qualifying job, the verified count, and the amount paid</td>
-              </tr>
-              <tr>
-                <th scope="row">Withdraw</th>
-                <td>Receives no subsidy from this bid</td>
-                <td>Makes no subsidy commitment through this bid</td>
-                <td>How the city uses the resources it retained</td>
-              </tr>
-            </tbody>
+            <tbody id="comparison-rows"></tbody>
           </table>
         </div>
-        <div class="actions">
-          <button data-go="result" type="button">Back to Your Result</button>
-          <button data-go="bonus" type="button">Bonus: Open the Company’s File</button>
-          <button class="primary" data-go="case" type="button">See the Real HQ2 Case</button>
-        </div>
+        <p class="scene-note">The $350 million and withdrawal options produce the same final terms under either opening
+          offer. Keeping the offer or adding a hiring condition can produce different outcomes.</p>
+        <div class="actions"><button data-go="result" type="button">Back to Your Result</button><button data-go="bonus"
+            type="button">Open the Company’s File</button><button data-replay="" type="button">Replay This
+            Case</button><button data-start="" type="button">New Case</button></div>
       </div>
     </section>
     <section aria-labelledby="bonus-title" data-scene="" hidden="" id="bonus">
       <div class="scene-content">
-        <p class="eyebrow">BONUS · COMPANY PERSPECTIVE</p>
-        <dl class="game-ledger">
-          <div>
-            <dt>Your opening offer</dt>
-            <dd data-hud-offer="">Not yet set</dd>
+        <h2 id="bonus-title" tabindex="-1">Inside the Company</h2>
+        <p>Return to the moment before the company asked for a revised offer. You are now on its site selection team,
+          with access to the internal file.</p>
+        <p class="panel" id="company-assessment"></p>
+        <p>The rival offers $300 million with payment on opening. Your team compares that grant with the operating
+          advantage and expected grant in your city. If the totals are equal, it chooses your city. These are the game’s
+          decision rules.</p>
+        <p>What do you tell your city’s officials?</p>
+        <div class="choices"><button aria-pressed="false" data-company="disclose" type="button"><strong>Share the
+              internal assessment</strong>Disclose the operating advantage and the 1,000-job working plan, so officials
+            can judge what their offer buys.</button><button aria-pressed="false" data-company="pressure"
+            type="button"><strong>Ask for more using the rival’s offer</strong>Keep the internal figures private. Tell
+            officials about the $300 million grant and request an increase.</button></div>
+        <div class="panel" hidden="" id="company-feedback" tabindex="-1"></div>
+        <div hidden="" id="company-comparison">
+          <h3>Your team’s comparison</h3>
+          <p>The value column adds your city’s five-year operating advantage to its expected grant. It is an
+            illustrative company comparison, not a measure of public benefit.</p>
+          <div aria-label="Internal company comparison" class="comparison" tabindex="0">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">City’s response</th>
+                  <th scope="col">Expected local grant</th>
+                  <th scope="col">Local advantage + grant</th>
+                  <th scope="col">Company chooses</th>
+                </tr>
+              </thead>
+              <tbody id="company-value-rows"></tbody>
+            </table>
           </div>
-          <div>
-            <dt>Projected jobs</dt>
-            <dd>2,000 <small>/ 5 years</small></dd>
-          </div>
-        </dl>
-        <h2 id="bonus-title" tabindex="-1">Inside the Site Selection Team</h2>
-        <p class="scene-note">Replay the negotiation from the company’s side, just before it asked for a revised offer.
-        </p>
-        <p>Before the company sent its email, your team had already compared the finalists. You now have access to the
-          internal assessment.</p>
-        <div class="panel">
-          <p><strong>Your preferred city</strong> has better access to the workers you need and a shorter commute for
-            employees. Its opening offer is <strong data-amount="opening"></strong>.</p>
-          <p><strong>The rival city</strong> offers <strong>$300 million</strong>. The site can work, but your team
-            expects hiring to take longer there.</p>
+          <p>The government’s response remains its own decision. You can return to the result or replay this case to try
+            another offer.</p>
         </div>
-        <p>Both sites are viable. Your preferred city has not seen your assessment. What do you tell its officials?</p>
-        <div class="choices">
-          <button aria-pressed="false" data-company="disclose" type="button"><strong>Tell the city it is your preferred
-              site</strong>Move on to negotiating what the company will have to deliver before it receives the
-            subsidy.</button>
-          <button aria-pressed="false" data-company="negotiate" type="button"><strong>Use the rival offer to ask for
-              more</strong>Tell the city about the $300 million offer and ask it to improve its proposal. Keep your site
-            ranking private.</button>
-        </div>
-        <article class="panel" data-company-result="disclose" hidden="" tabindex="-1">
-          <h3>You share the site preference</h3>
-          <p>The city now knows it has something the company values: a better location for its workforce. Its officials
-            have more reason to hold their price and negotiate over hiring commitments. Your team can focus on getting
-            the project underway.</p>
-        </article>
-        <article class="panel" data-company-result="negotiate" hidden="" tabindex="-1">
-          <h3>You ask the city to raise its offer</h3>
-          <p>The city knows what the rival offered, but it still cannot tell how likely you are to go there. That
-            uncertainty gives you room to ask for more. The city can raise its offer, insist on conditions, or walk
-            away.</p>
-        </article>
-        <div class="actions">
-          <button data-go="result" type="button">Back to Your Result</button>
-          <button class="primary" data-go="case" type="button">See the Real HQ2 Case</button>
-        </div>
+        <div class="actions"><button data-go="result" type="button">Back to Your Result</button><button class="primary"
+            data-go="case" type="button">Read the Real HQ2 Case</button><button data-replay="" type="button">Replay This
+            Case</button><button data-start="" type="button">New Case</button></div>
       </div>
     </section>
     <section aria-labelledby="case-title" data-scene="" hidden="" id="case">
@@ -831,8 +801,7 @@
           fiscal year 2026, Amazon met its occupancy target, but hotel tax revenue fell below the baseline, so
           <strong>no payment was due under that grant for that period</strong>. A company can open its offices and
           fulfill one condition while a separate condition still determines whether public money changes hands. <a
-            data-citation="" href="#cite-arlington">Arlington County statement</a>
-        </p>
+            data-citation="" href="#cite-arlington">Arlington County statement</a></p>
         <p class="panel">When you compare the locations, keep track of three events. <strong>Selection</strong> is where
           the company plans to locate. <strong>Commitment</strong> is what the public parties agree to make available
           under specified terms. <strong>Payment</strong> is what the company actually receives. A headline about who
@@ -861,12 +830,11 @@
           has to decide how far it will go with incomplete information about what the company would accept. In
           Slattery’s model, competition can shift the gains from the deal toward firms as governments compete for the
           same investment. <a data-citation="" href="#cite-slattery">Slattery</a></p>
-        <p>Think back to the $300 million rival offer. You saw a number before you knew how the company valued your
-          workforce, transit, or site. If the company already preferred your city, raising the offer might mostly
-          transfer more value to the company. If the rival was genuinely more attractive, raising it might change the
-          decision. That is the question of <strong>additionality</strong>. What did the subsidy cause that would
-          otherwise never have happened? The simulation gives you a way to face that uncertainty, while the historical
-          records show which terms were publicly announced.</p>
+        <p>The rival’s $300 million offer tells you what the other city is willing to pay. It does not tell you whether
+          the company would choose your city for $100 million. In the strong-advantage case, that smaller unconditional
+          offer secures the headquarters. In the close-alternatives case, it loses. These invented cases illustrate
+          additionality. Did the extra public money change the investment decision? <a data-citation=""
+            href="#cite-slattery">Slattery</a></p>
         <h3>Officials Had Their Own Reasons to Bid</h3>
         <p>Nathan Jensen and his coauthors use a survey experiment to study how voters assign <strong>credit and
             blame</strong> to governors in a competition for investment. Their findings suggest that offering incentives
@@ -897,11 +865,14 @@
           matters because it determines whose promises are measurable and who bears the cost if expectations prove
           wrong. <a data-citation="" href="#cite-kalecki">Kalecki</a></p>
         <h3>About the simulation</h3>
-        <p>The bids, job numbers, company preferences, and outcomes in the game are invented. The options illustrate
-          competition between governments, political reasons to bid, and conditions on public payments. Slattery and
-          Jensen help explain the first two. Arlington’s agreement provides a real example of conditional payments. The
-          game’s hiring formula is a simplified rule made for this project. It does not predict the company’s response
-          or calculate whether a subsidy pays for itself. <a data-citation="" href="#cite-slattery">Slattery</a> · <a
+        <p>All game amounts, operating advantages, hiring plans, and outcomes are fictional. A new case randomly selects
+          an operating advantage of $200 million or $75 million over five years. The company expects 1,000 jobs against
+          a public projection of up to 2,000. It values a conditional grant at half its cap. It chooses the local site
+          when this expected payment plus its operating advantage reaches the rival’s $300 million grant, with ties
+          going to the local site. The advantage is net of the rival’s lower premises costs. Replay keeps the case
+          fixed. A new case draws again and may draw the same case. These numerical assumptions have not been estimated
+          from HQ2 evidence. Slattery and Jensen inform the bargaining and political questions, while Arlington supplies
+          a real example of conditional payment. <a data-citation="" href="#cite-slattery">Slattery</a> · <a
             data-citation="" href="#cite-jensen">Jensen et al.</a> · <a data-citation=""
             href="#cite-arlington">Arlington County</a></p>
         <div class="actions">
@@ -939,7 +910,7 @@
             would you ask the city to make public?</p>
         </div>
         <div class="actions">
-          <button data-start="" type="button">Play Again</button>
+          <button data-start="" type="button">New Case</button>
           <button data-return-result="" hidden="" type="button">Back to Your Result</button>
           <button class="primary" data-go="sources" type="button">Works Cited</button>
         </div>
@@ -982,196 +953,228 @@
           <li id="cite-kline" tabindex="-1">Kline, Patrick, and Enrico Moretti. “Local Economic Development,
             Agglomeration Economies, and the Big Push: 100 Years of Evidence from the Tennessee Valley Authority.”
             <em>The Quarterly Journal of Economics</em>, vol. 129, no. 1, 2014, pp. 275–331. <a
-              href="https://doi.org/10.1093/qje/qjt034">https://doi.org/10.1093/qje/qjt034</a>.
-          </li>
+              href="https://doi.org/10.1093/qje/qjt034">https://doi.org/10.1093/qje/qjt034</a>.</li>
           <li id="cite-slattery" tabindex="-1">Slattery, Cailin. “Bidding for Firms: Subsidy Competition in the United
             States.” <em>Journal of Political Economy</em>, vol. 133, no. 8, 2025, pp. 2563–614. <a
               href="https://doi.org/10.1086/735509">https://doi.org/10.1086/735509</a>.</li>
         </ul>
         <a class="download-transcript"
-          data-transcript="PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9ImVuIj48aGVhZD48bWV0YSBjaGFyc2V0PSJ1dGYtOCIvPjx0aXRsZT5UaGUgSFEyIEJpZCDigJQgV3JpdHRlbiBDb21wb25lbnQ8L3RpdGxlPjxzdHlsZT5ib2R5e2ZvbnQ6MTJwdCBBcmlhbCxzYW5zLXNlcmlmO2xpbmUtaGVpZ2h0OjI7bWF4LXdpZHRoOjQ4cmVtO21hcmdpbjozcmVtIGF1dG87cGFkZGluZzowIDEuNXJlbTtjb2xvcjojMTgyYjQzfWgxLGgyLGgze2xpbmUtaGVpZ2h0OjEuM31zZWN0aW9ue21hcmdpbjoycmVtIDB9bGl7bWFyZ2luOjFyZW0gMH1he292ZXJmbG93LXdyYXA6YW55d2hlcmV9QG1lZGlhIHByaW50e2JvZHl7bWFyZ2luOjA7bWF4LXdpZHRoOm5vbmV9aDIsaDN7YnJlYWstYWZ0ZXI6YXZvaWR9fTwvc3R5bGU+PC9oZWFkPjxib2R5PjxoMT5UaGUgSFEyIEJpZCDigJQgV3JpdHRlbiBDb21wb25lbnQ8L2gxPjxwPlNpcWkgVGFuIChTYWxseSkgwrcgUGVyc3BlY3RpdmVzIG9uIEh1bWFuaXR5PC9wPjxwPlRoaXMgdHJhbnNjcmlwdCByZWNvcmRzIGFsbCBjaG9pY2VzIGFuZCBhbHRlcm5hdGl2ZSBlbmRpbmdzLCBmb2xsb3dlZCBieSB0aGUgY2FzZSBzdHVkeSwgcmVzZWFyY2ggZGlzY3Vzc2lvbiwgYW5kIHNvdXJjZXMuIFRoZSB0d28gcG9zc2libGUgb3BlbmluZyBvZmZlcnMgYXJlICQxMDAgbWlsbGlvbiBhbmQgJDI1MCBtaWxsaW9uLiBBIGxhdGVyIG9mZmVyIG9mICQzNTAgbWlsbGlvbiBpbmNyZWFzZXMgdGhlbSBieSAkMjUwIG1pbGxpb24gYW5kICQxMDAgbWlsbGlvbiByZXNwZWN0aXZlbHkuIFVuZGVyIHRoZSBjb25kaXRpb25hbCBvcHRpb24sIGhhbGYgdGhlIHRhcmdldCBqb2JzIHF1YWxpZmllcyBmb3IgaGFsZiB0aGUgb3BlbmluZyBvZmZlciwgb3IgJDUwIG1pbGxpb24gYW5kICQxMjUgbWlsbGlvbiByZXNwZWN0aXZlbHkuPC9wPjxzZWN0aW9uPgo8aDEgaWQ9ImludHJvLXRpdGxlIiB0YWJpbmRleD0iLTEiPldpbm5pbmcgdGhlIGNvbXBhbnkuPGJyLz48ZW0+RG9lcyB0aGUgY2l0eSB3aW4/PC9lbT48L2gxPjxwIGNsYXNzPSJhdXRob3ItYnlsaW5lIj5TaXFpIFRhbiAoU2FsbHkpIMK3IFBlcnNwZWN0aXZlcyBvbiBIdW1hbml0eTwvcD4KCjxwPkEgY29tcGFueSBpcyBjaG9vc2luZyBhIGNpdHkgZm9yIGl0cyBuZXcgaGVhZHF1YXJ0ZXJzLiBJdCBleHBlY3RzIHRvIGNyZWF0ZSA8c3Ryb25nPjIsMDAwIGpvYnMgd2l0aGluIGZpdmUgeWVhcnM8L3N0cm9uZz4uIExvY2FsIGJ1c2luZXNzZXMgaG9wZSBpdCB3aWxsIGJyaW5nIG5ldyBjdXN0b21lcnMuIFJlc2lkZW50cyB3YW50IHRvIGtub3cgd2hvIHdpbGwgZ2V0IHRoZSBqb2JzLiBZb3VyIGZpbmFuY2UgZGlyZWN0b3IgYXNrcyBob3cgbXVjaCB0aGUgY2l0eSBjYW4gYWZmb3JkIHRvIG9mZmVyLjwvcD4KPHA+WW91IGFyZSB0aGUgb2ZmaWNpYWwgaW4gY2hhcmdlIG9mIHRoZSBiaWQuIE90aGVyIGNpdGllcyBhbHNvIHdhbnQgdGhlIGhlYWRxdWFydGVycy4gWW91IGNhbiBvZmZlciBhIHN1YnNpZHksIHJlcXVpcmUgdGhlIGNvbXBhbnkgdG8gbWVldCBjb25kaXRpb25zIGJlZm9yZSBpdCBpcyBwYWlkLCBvciB3aXRoZHJhdy4gWW91ciBqb2IgaXMgdG8gZGVjaWRlIHdoYXQgdGhlIGNpdHkgc2hvdWxkIG9mZmVyIGFuZCB3aGF0IGl0IHNob3VsZCBhc2sgZm9yIGluIHJldHVybi48L3A+CjxwIGNsYXNzPSJzY2VuZS1ub3RlIj48ZW0+VGhlIGNpdHksIG9mZmVycywgam9iIHRhcmdldHMsIGFuZCBvdXRjb21lcyBpbiB0aGlzIHNpbXVsYXRpb24gYXJlIGZpY3Rpb25hbC48L2VtPjwvcD4KPC9zZWN0aW9uPjxzZWN0aW9uPgo8aDIgaWQ9Im9mZmVyLXRpdGxlIiB0YWJpbmRleD0iLTEiPlJvdW5kIE9uZSDCtyBNYWtlIGFuIE9mZmVyPC9oMj4KPHA+VGhlIGNvbXBhbnnigJlzIHJlcHJlc2VudGF0aXZlcyBhc2sgd2hhdCB5b3VyIGNpdHkgY2FuIG9mZmVyLiBZb3VyIGNpdHkgaGFzIGEgcG9zc2libGUgc2l0ZSwgYSB3b3JrZm9yY2UsIGFuZCBhIHRyYW5zaXQgbmV0d29yay4gVGhlc2UgYXJlIHJlYXNvbnMgdGhlIGNvbXBhbnkgbWlnaHQgY2hvb3NlIHlvdXIgY2l0eSBldmVuIHdpdGggYSBzbWFsbGVyIHN1YnNpZHkuIFlvdSBoYXZlIG5vIHdheSBvZiBrbm93aW5nIGhvdyB0aGUgY29tcGFueSByYW5rcyB0aGVtIGFnYWluc3Qgd2hhdCBvdGhlciBwbGFjZXMgY2FuIG9mZmVyLjwvcD4KPHA+QSBsb2NhbCByZXN0YXVyYW50IG93bmVyIGhvcGVzIHRoZSBoZWFkcXVhcnRlcnMgd2lsbCBicmluZyBjdXN0b21lcnMgdGhyb3VnaG91dCB0aGUgd2Vlay4gQSByZXNpZGVudCBhdCB0aGUgcHVibGljIG1lZXRpbmcgYXNrcyB3aGV0aGVyIHRoZSBhZHZlcnRpc2VkIGpvYnMgd2lsbCBiZSBvcGVuIHRvIHBlb3BsZSB3aG8gYWxyZWFkeSBsaXZlIGhlcmUuIFlvdXIgZmluYW5jZSBkaXJlY3RvciBhc2tzIHdoaWNoIG90aGVyIHByb2plY3RzIG1pZ2h0IGhhdmUgdG8gd2FpdCBpZiB0aGUgY2l0eSBjb21taXRzIHRvIGEgbGFyZ2VyIHBhY2thZ2UuPC9wPgo8cD5Zb3UgaGF2ZSB0byBtYWtlIGFuIG9wZW5pbmcgb2ZmZXIgYmVmb3JlIHlvdSBrbm93IHdoYXQgdGhlIG90aGVyIGNpdGllcyB3aWxsIGJpZC48L3A+CjxkaXYgY2xhc3M9ImNob2ljZXMiPgo8cD48c3Ryb25nPk9mZmVyIHVwIHRvICQxMDAgbWlsbGlvbjwvc3Ryb25nPlN0YXJ0IHdpdGggYSBzbWFsbGVyIHBhY2thZ2UgYW5kIGxlYXZlIG1vcmUgcm9vbSBpbiB0aGUgcHVibGljIGJ1ZGdldC48L3A+CjxwPjxzdHJvbmc+T2ZmZXIgdXAgdG8gJDI1MCBtaWxsaW9uPC9zdHJvbmc+R2l2ZSB0aGUgY29tcGFueSBhIGxhcmdlciBmaW5hbmNpYWwgcmVhc29uIHRvIGtlZXAgeW91ciBjaXR5IG9uIGl0cyBzaG9ydGxpc3QuPC9wPgo8L2Rpdj4KPC9zZWN0aW9uPjxzZWN0aW9uPgo8aDIgaWQ9InJpdmFsLXRpdGxlIiB0YWJpbmRleD0iLTEiPlJvdW5kIFR3byDCtyBBIFJpdmFsIFJhaXNlcyBJdHMgQmlkPC9oMj4KPGRsIGNsYXNzPSJmYWN0cyI+CjxkaXY+PGR0PllvdXIgb3BlbmluZyBvZmZlcjwvZHQ+PGRkIGRhdGEtYW1vdW50PSJvcGVuaW5nIj4kMTAwIG1pbGxpb24gb3IgJDI1MCBtaWxsaW9uPC9kZD48L2Rpdj4KPGRpdj48ZHQ+VGhlIHJpdmFs4oCZcyBvZmZlcjwvZHQ+PGRkPiQzMDAgbWlsbGlvbjwvZGQ+PC9kaXY+CjxkaXY+PGR0PlRoZSBjb21wYW554oCZcyBwcm9qZWN0aW9uPC9kdD48ZGQ+MiwwMDAgam9icyBpbiBmaXZlIHllYXJzPC9kZD48L2Rpdj4KPC9kbD4KPGJsb2NrcXVvdGUgY2xhc3M9InBhbmVsIj4KPHA+PHN0cm9uZz5Gcm9tIHRoZSBTaXRlIFNlbGVjdGlvbiBUZWFtPC9zdHJvbmc+PC9wPgo8cD5UaGFuayB5b3UgZm9yIHlvdXIgcHJvcG9zYWwuIEFub3RoZXIgZmluYWxpc3QgaGFzIG9mZmVyZWQgJDMwMCBtaWxsaW9uLiBXZSBhcmUgc3RpbGwgZXZhbHVhdGluZyBib3RoIGxvY2F0aW9ucy4gV291bGQgeW91ciBjaXR5IGNvbnNpZGVyIHJldmlzaW5nIGl0cyBvZmZlcj88L3A+CjwvYmxvY2txdW90ZT4KPHA+VGhlIGNvbXBhbnkgaGFzIHNoYXJlZCB0aGUgc2l6ZSBvZiB0aGUgcml2YWzigJlzIG9mZmVyLiBZb3Ugc3RpbGwgZG8gbm90IGtub3cgd2hpY2ggbG9jYXRpb24gdGhlIGNvbXBhbnkgcHJlZmVycyBvciBob3cgbXVjaCB0aGUgc3Vic2lkeSBtYXR0ZXJzIHRvIGl0cyBkZWNpc2lvbi48L3A+CjxwPkF0IHRoZSBuZXh0IHB1YmxpYyBtZWV0aW5nLCBvbmUgcmVzaWRlbnQgYXNrcyB3aGF0IHlvdSB3aWxsIGRvIGlmIHRoZSBjb21wYW55IGNob29zZXMgdGhlIHJpdmFsLiBBbm90aGVyIGFza3Mgd2hhdCBoYXBwZW5zIGlmIHlvdSB3aW4gYW5kIHRoZSBjb21wYW55IGNyZWF0ZXMgb25seSBoYWxmIHRoZSBqb2JzIGl0IHByb2plY3RlZC4gWW91ciBuZXh0IGRlY2lzaW9uIHdpbGwgYWZmZWN0IGJvdGggd2hhdCB0aGUgY29tcGFueSBjYW4gcmVjZWl2ZSBhbmQgd2hhdCBpdCBoYXMgdG8gZGVsaXZlciB0byByZWNlaXZlIGl0LjwvcD4KPGRpdiBjbGFzcz0iY2hvaWNlcyI+CjxwPjxzdHJvbmc+UmFpc2UgdGhlIG9mZmVyIHRvICQzNTAgbWlsbGlvbjwvc3Ryb25nPkV4Y2VlZCB0aGUgcml2YWzigJlzIG9mZmVyIHdpdGhvdXQgYWRkaW5nIGEgaGlyaW5nIHJlcXVpcmVtZW50LjwvcD4KPHA+PHN0cm9uZz5LZWVwIHlvdXIgb2ZmZXIgYW5kIHRpZSBwYXltZW50cyB0byBoaXJpbmc8L3N0cm9uZz5LZWVwIHlvdXIgb3JpZ2luYWwgY2FwLiBQYXkgaW4gcHJvcG9ydGlvbiB0byB2ZXJpZmllZCBuZXcgam9icywgdXAgdG8gdGhlIDIsMDAwLWpvYiB0YXJnZXQgYWZ0ZXIgZml2ZSB5ZWFycy48L3A+CjxwPjxzdHJvbmc+V2l0aGRyYXcgeW91ciBiaWQ8L3N0cm9uZz5NYWtlIG5vIHN1YnNpZHkgY29tbWl0bWVudCBhbmQga2VlcCB0aGUgb3B0aW9uIHRvIHVzZSB0aG9zZSBwdWJsaWMgcmVzb3VyY2VzIGVsc2V3aGVyZS48L3A+CjwvZGl2PgoKPC9zZWN0aW9uPjxzZWN0aW9uPgo8aDIgaWQ9InJlc3VsdC10aXRsZSIgdGFiaW5kZXg9Ii0xIj5XaG8gR2FpbmVkIFdoYXQ/PC9oMj4KPGFydGljbGUgZGF0YS1vdXRjb21lPSJyYWlzZSI+CjxoMyBjbGFzcz0icmVzdWx0LWxhYmVsIj5Zb3VyIENpdHkgV2FzIFNlbGVjdGVkPC9oMz4KPHAgY2xhc3M9InN0YWtlaG9sZGVyIiBkYXRhLXN0YWtlaG9sZGVyPSJjb21wYW55Ij48c3Ryb25nPlRoZSBjb21wYW55PC9zdHJvbmc+IGNob3NlIHlvdXIgY2l0eSBpbiB0aGlzIHNpbXVsYXRpb24uIEl0IHNlY3VyZWQgYW4gb2ZmZXIgd29ydGggdXAgdG8gPHN0cm9uZz4kMzUwIG1pbGxpb248L3N0cm9uZz4sIGFuIGluY3JlYXNlIG9mIDxzdHJvbmcgZGF0YS1hbW91bnQ9ImluY3JlYXNlIj4kMjUwIG1pbGxpb24gb3IgJDEwMCBtaWxsaW9uLCByZXNwZWN0aXZlbHk8L3N0cm9uZz4gZnJvbSB5b3VyIG9wZW5pbmcgb2ZmZXIuIFRoZSBkZWFsIGhhcyBubyByZXF1aXJlbWVudCB0eWluZyBwYXltZW50cyB0byB0aGUgMiwwMDAtam9iIHByb2plY3Rpb24uPC9wPgo8cCBjbGFzcz0ic3Rha2Vob2xkZXIiIGRhdGEtc3Rha2Vob2xkZXI9ImdvdmVybm1lbnQiPjxzdHJvbmc+VGhlIGxvY2FsIGdvdmVybm1lbnQ8L3N0cm9uZz4gY2FuIGFubm91bmNlIHRoZSBpbnZlc3RtZW50IGFuZCB0YWtlIGNyZWRpdCBmb3Igc2VjdXJpbmcgdGhlIGhlYWRxdWFydGVycy4gSXQgaGFzIGFsc28gdGFrZW4gb24gYSBsYXJnZXIgcG90ZW50aWFsIGZpc2NhbCBjb21taXRtZW50LiBJZiBoaXJpbmcgZmFsbHMgYmVoaW5kLCB0aGUgZ292ZXJubWVudCBoYXMgbm8gaGlyaW5nIGNsYXVzZSBpbiB0aGlzIGRlYWwgdGhhdCBhdXRvbWF0aWNhbGx5IHJlZHVjZXMgcGF5bWVudHMgaW4gcHJvcG9ydGlvbiB0byB0aGUgc2hvcnRmYWxsLjwvcD4KPHAgY2xhc3M9InN0YWtlaG9sZGVyIiBkYXRhLXN0YWtlaG9sZGVyPSJyZXNpZGVudHMiPjxzdHJvbmc+UmVzaWRlbnRzPC9zdHJvbmc+IG1heSBiZW5lZml0IGZyb20gbmV3IGpvYnMgb3IgbmV3IGN1c3RvbWVycyBmb3IgbG9jYWwgYnVzaW5lc3Nlcy4gVG8ganVkZ2UgdGhlIGRlYWwsIHRoZXkgd291bGQgbmVlZCB0byBrbm93IGhvdyBtYW55IGpvYnMgd2VyZSBhY3R1YWxseSBhZGRlZCwgd2hhdCB0aG9zZSBqb2JzIHBheSwgaG93IGFjY2Vzc2libGUgdGhleSBhcmUgdG8gbG9jYWwgd29ya2VycywgYW5kIGhvdyBtdWNoIHB1YmxpYyBzdXBwb3J0IHRoZSBjb21wYW55IHVsdGltYXRlbHkgcmVjZWl2ZXMuIFRoZXkgd291bGQgYWxzbyBuZWVkIHNvbWUgYmFzaXMgZm9yIGp1ZGdpbmcgd2hldGhlciB0aGUgY29tcGFueSBtaWdodCBoYXZlIGNob3NlbiB0aGUgY2l0eSB3aXRoIGEgc21hbGxlciBvZmZlci48L3A+CjxwIGNsYXNzPSJwYW5lbCI+Rml2ZSB5ZWFycyBsYXRlciwgdGhlIGNvbXBhbnkgaGFzIGNyZWF0ZWQgMSwwMDAgb2YgdGhlIDIsMDAwIGpvYnMgaXQgcHJvamVjdGVkLiBXaGF0IGV2aWRlbmNlIHdvdWxkIHlvdSB3YW50IGJlZm9yZSBkZWNpZGluZyB3aGV0aGVyIHRoZSBsYXJnZXIgb2ZmZXIgd2FzIHdvcnRoIGl0PzwvcD4KPC9hcnRpY2xlPgo8YXJ0aWNsZSBkYXRhLW91dGNvbWU9ImNvbmRpdGlvbmFsIj4KPGgzIGNsYXNzPSJyZXN1bHQtbGFiZWwiPllvdXIgT2ZmZXIgSXMgU3RpbGwgb24gdGhlIFRhYmxlPC9oMz4KPHAgY2xhc3M9InN0YWtlaG9sZGVyIiBkYXRhLXN0YWtlaG9sZGVyPSJjb21wYW55Ij48c3Ryb25nPlRoZSBjb21wYW55PC9zdHJvbmc+IGNhbiBhY2NlcHQgYSBwYWNrYWdlIHdvcnRoIHVwIHRvIDxzdHJvbmcgZGF0YS1hbW91bnQ9Im9wZW5pbmciPiQxMDAgbWlsbGlvbiBvciAkMjUwIG1pbGxpb248L3N0cm9uZz4uIFRvIHJlY2VpdmUgdGhlIGZ1bGwgYW1vdW50LCBpdCB3b3VsZCBoYXZlIHRvIGNyZWF0ZSAyLDAwMCB2ZXJpZmllZCBuZXcgam9icyBieSB0aGUgZml2ZS15ZWFyIG1hcmsuIElmIGl0IGFjY2VwdHMgYW5kIGNyZWF0ZXMgMSwwMDAgcXVhbGlmeWluZyBqb2JzLCBpdCByZWNlaXZlcyBoYWxmIHRoZSBvZmZlciwgb3IgPHN0cm9uZyBkYXRhLWFtb3VudD0iaGFsZiI+JDUwIG1pbGxpb24gb3IgJDEyNSBtaWxsaW9uLCByZXNwZWN0aXZlbHk8L3N0cm9uZz4sIHVuZGVyIHRoZSBzaW11bGF0aW9u4oCZcyBydWxlcy48L3A+CjxwIGNsYXNzPSJzdGFrZWhvbGRlciIgZGF0YS1zdGFrZWhvbGRlcj0iZ292ZXJubWVudCI+PHN0cm9uZz5UaGUgbG9jYWwgZ292ZXJubWVudDwvc3Ryb25nPiBoYXMgbWFkZSB0aGUgcG90ZW50aWFsIHBheW91dCBkZXBlbmQgb24gc29tZXRoaW5nIGl0IGNhbiBtZWFzdXJlLiBJdCBzdGlsbCBoYXMgdG8gZGVmaW5lIHdoYXQgY291bnRzIGFzIGEgam9iLCBjaGVjayB0aGUgY29tcGFueeKAmXMgcmVwb3J0aW5nLCBhbmQgZGVjaWRlIGhvdyB0byBoYW5kbGUgcG9zaXRpb25zIHRoYXQgZGlzYXBwZWFyIHNvb24gYWZ0ZXIgdGhlIGRlYWRsaW5lLiBUaGUgY29tcGFueSBjYW4gcmVqZWN0IHRoZSB0ZXJtcyBhbmQgY2hvb3NlIGFub3RoZXIgcGxhY2UuPC9wPgo8cCBjbGFzcz0ic3Rha2Vob2xkZXIiIGRhdGEtc3Rha2Vob2xkZXI9InJlc2lkZW50cyI+PHN0cm9uZz5SZXNpZGVudHM8L3N0cm9uZz4gY2FuIGFzayBmb3IgYSBwdWJsaWMgcmVjb3JkIG9mIHRoZSBqb2JzIHRoYXQgcXVhbGlmaWVkIGFuZCB0aGUgYW1vdW50IHBhaWQuIEEgam9iIGNvdW50IGFuc3dlcnMgb25lIHF1ZXN0aW9uLiBQYXksIGhvdXJzLCBqb2IgZHVyYXRpb24sIGFuZCB3aG8gYWN0dWFsbHkgZ2V0cyBoaXJlZCBhbnN3ZXIgb3RoZXJzLiBSZXNpZGVudHMgbWlnaHQgYWxzbyBhc2sgd2hldGhlciB0aGUgcGF5bWVudCByZXdhcmRzIG5ld2x5IGNyZWF0ZWQgam9icyBvciBwb3NpdGlvbnMgdGhlIGNvbXBhbnkgbW92ZWQgZnJvbSBhbm90aGVyIG9mZmljZS48L3A+CjxwIGNsYXNzPSJwYW5lbCI+SWYgYSBjb21wYW55IG1lZXRzIGl0cyBoaXJpbmcgdGFyZ2V0IHdpdGggbW9zdGx5IHNob3J0LXRlcm0gcG9zaXRpb25zLCBoYXMgaXQgZGVsaXZlcmVkIHdoYXQgeW91IHdhbnRlZCB0aGUgc3Vic2lkeSB0byBidXk/PC9wPgo8L2FydGljbGU+CjxhcnRpY2xlIGRhdGEtb3V0Y29tZT0id2l0aGRyYXciPgo8aDMgY2xhc3M9InJlc3VsdC1sYWJlbCI+WW91ciBDaXR5IFdhbGtlZCBBd2F5PC9oMz4KPHAgY2xhc3M9InN0YWtlaG9sZGVyIiBkYXRhLXN0YWtlaG9sZGVyPSJjb21wYW55Ij48c3Ryb25nPlRoZSBjb21wYW55PC9zdHJvbmc+IGNhbm5vdCBjb2xsZWN0IGEgc3Vic2lkeSBmcm9tIHlvdXIgY2l0eSB0aHJvdWdoIHRoaXMgYmlkLiBJdCBjYW4gc3RpbGwgbmVnb3RpYXRlIHdpdGggdGhlIHJpdmFsLCBjaG9vc2UgYW5vdGhlciBzaXRlLCBvciByZWNvbnNpZGVyIHRoZSBwcm9qZWN0LjwvcD4KPHAgY2xhc3M9InN0YWtlaG9sZGVyIiBkYXRhLXN0YWtlaG9sZGVyPSJnb3Zlcm5tZW50Ij48c3Ryb25nPlRoZSBsb2NhbCBnb3Zlcm5tZW50PC9zdHJvbmc+IGhhcyBwcmVzZXJ2ZWQgdGhlIHJlc291cmNlcyBpdCBjb3VsZCBoYXZlIGNvbW1pdHRlZCB0byB0aGUgc3Vic2lkeS4gSXQgY2FuIG5vdyBjb25zaWRlciBvdGhlciB1c2VzLCBzdWNoIGFzIGltcHJvdmluZyB0cmFuc3BvcnQgb3Igc3VwcG9ydGluZyB3b3JrZm9yY2UgdHJhaW5pbmcuIEl0IG1heSBhbHNvIGhhdmUgdG8gZXhwbGFpbiBpdHMgZGVjaXNpb24gdG8gcmVzaWRlbnRzIHdobyB3YW50ZWQgaXQgdG8gY29tcGV0ZSBmb3IgdGhlIGhlYWRxdWFydGVycy48L3A+CjxwIGNsYXNzPSJzdGFrZWhvbGRlciIgZGF0YS1zdGFrZWhvbGRlcj0icmVzaWRlbnRzIj48c3Ryb25nPlJlc2lkZW50czwvc3Ryb25nPiBjYW4gY29tcGFyZSB3aGF0IHRoZSBnb3Zlcm5tZW50IGRvZXMgd2l0aCB0aG9zZSByZXNvdXJjZXMgYWdhaW5zdCB0aGUgYmVuZWZpdHMgdGhlIGhlYWRxdWFydGVycyB3YXMgZXhwZWN0ZWQgdG8gYnJpbmcuIFRoYXQgY29tcGFyaXNvbiBjb21lcyB3aXRoIHVuY2VydGFpbnR5LiBUaGUgY2l0eSBtYXkgbmV2ZXIga25vdyB3aGV0aGVyIGl0IGNvdWxkIGhhdmUgc2VjdXJlZCB0aGUgaW52ZXN0bWVudCBhdCBhIGxvd2VyIHByaWNlLCBhbmQgdGhlIHByb2plY3RlZCBqb2JzIGNhbm5vdCB0ZWxsIHJlc2lkZW50cyB3aG8gd291bGQgYWN0dWFsbHkgaGF2ZSBiZWVuIGhpcmVkLjwvcD4KPHAgY2xhc3M9InBhbmVsIj5XaGF0IHdvdWxkIG1ha2UgeW91IG1vcmUgY29tZm9ydGFibGUgd2Fsa2luZyBhd2F5OiBhIGNyZWRpYmxlIHBsYW4gZm9yIHRoZSBtb25leSwgc3Ryb25nZXIgZXZpZGVuY2UgYWJvdXQgdGhlIGNvbXBhbnnigJlzIGxpa2VseSBoaXJpbmcsIG9yIGFuIGFncmVlbWVudCB3aXRoIG5laWdoYm9yaW5nIGNpdGllcyBhYm91dCBob3cgdGhleSBjb21wZXRlPzwvcD4KPC9hcnRpY2xlPgoKPC9zZWN0aW9uPjxzZWN0aW9uPgo8aDIgaWQ9ImNvbXBhcmUtdGl0bGUiIHRhYmluZGV4PSItMSI+Q29tcGFyZSBBbGwgT3V0Y29tZXM8L2gyPgo8ZGl2IGFyaWEtbGFiZWw9Ik91dGNvbWUgY29tcGFyaXNvbiB0YWJsZSIgY2xhc3M9ImNvbXBhcmlzb24iIHRhYmluZGV4PSIwIj4KPHRhYmxlPgo8dGhlYWQ+Cjx0cj48dGggc2NvcGU9ImNvbCI+WW91ciBEZWNpc2lvbjwvdGg+PHRoIHNjb3BlPSJjb2wiPkNvbXBhbnk8L3RoPjx0aCBzY29wZT0iY29sIj5Mb2NhbCBHb3Zlcm5tZW50PC90aD48dGggc2NvcGU9ImNvbCI+V2hhdCBSZXNpZGVudHMgQ2FuIENoZWNrPC90aD48L3RyPgo8L3RoZWFkPgo8dGJvZHk+Cjx0cj48dGggc2NvcGU9InJvdyI+UmFpc2UgdGhlIG9mZmVyPC90aD48dGQ+U2VjdXJlcyBhIHBhY2thZ2Ugb2YgdXAgdG8gJDM1MCBtaWxsaW9uPC90ZD48dGQ+Q29tbWl0cyB0byBhIGxhcmdlciBwYWNrYWdlIHdpdGggbm8gaGlyaW5nIHJlcXVpcmVtZW50PC90ZD48dGQ+QWN0dWFsIGpvYnMsIGpvYiBxdWFsaXR5LCBhbmQgcGF5bWVudHM8L3RkPjwvdHI+Cjx0cj48dGggc2NvcGU9InJvdyI+VGllIHBheW1lbnRzIHRvIGhpcmluZzwvdGg+PHRkPkNhbiBhY2NlcHQgYW4gb2ZmZXIgY2FwcGVkIGF0IDxzcGFuIGRhdGEtYW1vdW50PSJvcGVuaW5nIj4kMTAwIG1pbGxpb24gb3IgJDI1MCBtaWxsaW9uPC9zcGFuPjwvdGQ+PHRkPlBheXMgaW4gcHJvcG9ydGlvbiB0byB2ZXJpZmllZCBoaXJpbmcgaWYgdGhlIG9mZmVyIGlzIGFjY2VwdGVkPC90ZD48dGQ+VGhlIGRlZmluaXRpb24gb2YgYSBxdWFsaWZ5aW5nIGpvYiwgdGhlIHZlcmlmaWVkIGNvdW50LCBhbmQgdGhlIGFtb3VudCBwYWlkPC90ZD48L3RyPgo8dHI+PHRoIHNjb3BlPSJyb3ciPldpdGhkcmF3PC90aD48dGQ+UmVjZWl2ZXMgbm8gc3Vic2lkeSBmcm9tIHRoaXMgYmlkPC90ZD48dGQ+TWFrZXMgbm8gc3Vic2lkeSBjb21taXRtZW50IHRocm91Z2ggdGhpcyBiaWQ8L3RkPjx0ZD5Ib3cgdGhlIGNpdHkgdXNlcyB0aGUgcmVzb3VyY2VzIGl0IHJldGFpbmVkPC90ZD48L3RyPgo8L3Rib2R5Pgo8L3RhYmxlPgo8L2Rpdj4KCjwvc2VjdGlvbj48c2VjdGlvbj4KPGgyIGlkPSJib251cy10aXRsZSIgdGFiaW5kZXg9Ii0xIj5JbnNpZGUgdGhlIFNpdGUgU2VsZWN0aW9uIFRlYW08L2gyPgo8cCBjbGFzcz0ic2NlbmUtbm90ZSI+UmVwbGF5IHRoZSBuZWdvdGlhdGlvbiBmcm9tIHRoZSBjb21wYW554oCZcyBzaWRlLCBqdXN0IGJlZm9yZSBpdCBhc2tlZCBmb3IgYSByZXZpc2VkIG9mZmVyLjwvcD4KPHA+QmVmb3JlIHRoZSBjb21wYW55IHNlbnQgaXRzIGVtYWlsLCB5b3VyIHRlYW0gaGFkIGFscmVhZHkgY29tcGFyZWQgdGhlIGZpbmFsaXN0cy4gWW91IG5vdyBoYXZlIGFjY2VzcyB0byB0aGUgaW50ZXJuYWwgYXNzZXNzbWVudC48L3A+CjxkaXYgY2xhc3M9InBhbmVsIj4KPHA+PHN0cm9uZz5Zb3VyIHByZWZlcnJlZCBjaXR5PC9zdHJvbmc+IGhhcyBiZXR0ZXIgYWNjZXNzIHRvIHRoZSB3b3JrZXJzIHlvdSBuZWVkIGFuZCBhIHNob3J0ZXIgY29tbXV0ZSBmb3IgZW1wbG95ZWVzLiBJdHMgb3BlbmluZyBvZmZlciBpcyA8c3Ryb25nIGRhdGEtYW1vdW50PSJvcGVuaW5nIj4kMTAwIG1pbGxpb24gb3IgJDI1MCBtaWxsaW9uPC9zdHJvbmc+LjwvcD4KPHA+PHN0cm9uZz5UaGUgcml2YWwgY2l0eTwvc3Ryb25nPiBvZmZlcnMgPHN0cm9uZz4kMzAwIG1pbGxpb248L3N0cm9uZz4uIFRoZSBzaXRlIGNhbiB3b3JrLCBidXQgeW91ciB0ZWFtIGV4cGVjdHMgaGlyaW5nIHRvIHRha2UgbG9uZ2VyIHRoZXJlLjwvcD4KPC9kaXY+CjxwPkJvdGggc2l0ZXMgYXJlIHZpYWJsZS4gWW91ciBwcmVmZXJyZWQgY2l0eSBoYXMgbm90IHNlZW4geW91ciBhc3Nlc3NtZW50LiBXaGF0IGRvIHlvdSB0ZWxsIGl0cyBvZmZpY2lhbHM/PC9wPgo8ZGl2IGNsYXNzPSJjaG9pY2VzIj4KPHA+PHN0cm9uZz5UZWxsIHRoZSBjaXR5IGl0IGlzIHlvdXIgcHJlZmVycmVkIHNpdGU8L3N0cm9uZz5Nb3ZlIG9uIHRvIG5lZ290aWF0aW5nIHdoYXQgdGhlIGNvbXBhbnkgd2lsbCBoYXZlIHRvIGRlbGl2ZXIgYmVmb3JlIGl0IHJlY2VpdmVzIHRoZSBzdWJzaWR5LjwvcD4KPHA+PHN0cm9uZz5Vc2UgdGhlIHJpdmFsIG9mZmVyIHRvIGFzayBmb3IgbW9yZTwvc3Ryb25nPlRlbGwgdGhlIGNpdHkgYWJvdXQgdGhlICQzMDAgbWlsbGlvbiBvZmZlciBhbmQgYXNrIGl0IHRvIGltcHJvdmUgaXRzIHByb3Bvc2FsLiBLZWVwIHlvdXIgc2l0ZSByYW5raW5nIHByaXZhdGUuPC9wPgo8L2Rpdj4KPGFydGljbGUgY2xhc3M9InBhbmVsIiBkYXRhLWNvbXBhbnktcmVzdWx0PSJkaXNjbG9zZSIgdGFiaW5kZXg9Ii0xIj4KPGgzPllvdSBzaGFyZSB0aGUgc2l0ZSBwcmVmZXJlbmNlPC9oMz4KPHA+VGhlIGNpdHkgbm93IGtub3dzIGl0IGhhcyBzb21ldGhpbmcgdGhlIGNvbXBhbnkgdmFsdWVzOiBhIGJldHRlciBsb2NhdGlvbiBmb3IgaXRzIHdvcmtmb3JjZS4gSXRzIG9mZmljaWFscyBoYXZlIG1vcmUgcmVhc29uIHRvIGhvbGQgdGhlaXIgcHJpY2UgYW5kIG5lZ290aWF0ZSBvdmVyIGhpcmluZyBjb21taXRtZW50cy4gWW91ciB0ZWFtIGNhbiBmb2N1cyBvbiBnZXR0aW5nIHRoZSBwcm9qZWN0IHVuZGVyd2F5LjwvcD4KPC9hcnRpY2xlPgo8YXJ0aWNsZSBjbGFzcz0icGFuZWwiIGRhdGEtY29tcGFueS1yZXN1bHQ9Im5lZ290aWF0ZSIgdGFiaW5kZXg9Ii0xIj4KPGgzPllvdSBhc2sgdGhlIGNpdHkgdG8gcmFpc2UgaXRzIG9mZmVyPC9oMz4KPHA+VGhlIGNpdHkga25vd3Mgd2hhdCB0aGUgcml2YWwgb2ZmZXJlZCwgYnV0IGl0IHN0aWxsIGNhbm5vdCB0ZWxsIGhvdyBsaWtlbHkgeW91IGFyZSB0byBnbyB0aGVyZS4gVGhhdCB1bmNlcnRhaW50eSBnaXZlcyB5b3Ugcm9vbSB0byBhc2sgZm9yIG1vcmUuIFRoZSBjaXR5IGNhbiByYWlzZSBpdHMgb2ZmZXIsIGluc2lzdCBvbiBjb25kaXRpb25zLCBvciB3YWxrIGF3YXkuPC9wPgo8L2FydGljbGU+Cgo8L3NlY3Rpb24+PHNlY3Rpb24+CjxoMiBpZD0iY2FzZS10aXRsZSIgdGFiaW5kZXg9Ii0xIj5XaGF0IEFjdHVhbGx5IEhhcHBlbmVkPzwvaDI+CjxwPkluIEphbnVhcnkgMjAxOCwgQW1hem9uIHNhaWQgaXQgaGFkIHJldmlld2VkIDxzdHJvbmc+MjM4IHByb3Bvc2Fsczwvc3Ryb25nPiBmcm9tIGFjcm9zcyB0aGUgVW5pdGVkIFN0YXRlcywgQ2FuYWRhLCBhbmQgTWV4aWNvIGFuZCBpbnZpdGVkIDIwIG1ldHJvcG9saXRhbiBhcmVhcyB0byB0aGUgbmV4dCBzdGFnZSBvZiBpdHMgaGVhZHF1YXJ0ZXJzIHNlYXJjaC4gSW4gTm92ZW1iZXIsIGl0IGFubm91bmNlZCB0d28gbG9jYXRpb25zOiA8c3Ryb25nPkxvbmcgSXNsYW5kIENpdHkgaW4gUXVlZW5zLCBOZXcgWW9yaywgYW5kIEFybGluZ3RvbiwgVmlyZ2luaWE8L3N0cm9uZz4uIEFtYXpvbiBwcm9qZWN0ZWQgbW9yZSB0aGFuIDUwLDAwMCBqb2JzIGFjcm9zcyB0aGUgdHdvIHNpdGVzLiBBdCB0aGF0IHBvaW50LCB0aGUgYW5ub3VuY2VtZW50IHRvbGQgdGhlIHB1YmxpYyB3aGVyZSBBbWF6b24gcGxhbm5lZCB0byBidWlsZCBhbmQgd2hhdCBpdCBleHBlY3RlZCB0aGUgcHJvamVjdHMgdG8gZGVsaXZlci4gPGEgaHJlZj0iI2NpdGUtc2hvcnRsaXN0Ij5BbWF6b27igJlzIHNob3J0bGlzdDwvYT4gwrcgPGEgaHJlZj0iI2NpdGUtc2VsZWN0aW9uIj5Mb2NhdGlvbiBhbm5vdW5jZW1lbnQ8L2E+PC9wPgo8aDM+TG9uZyBJc2xhbmQgQ2l0eSDCtyBTZWxlY3RlZCwgVGhlbiBDYW5jZWxsZWQ8L2gzPgo8cD5OZXcgWW9ya+KAmXMgbWVtb3JhbmR1bSBvZiB1bmRlcnN0YW5kaW5nIG91dGxpbmVkIGEgaGVhZHF1YXJ0ZXJzIHByb2plY3Qgd2l0aCA8c3Ryb25nPjI1LDAwMCBuZXcgam9icyB3aXRoaW4gdGVuIHllYXJzPC9zdHJvbmc+LiBBbWF6b27igJlzIGFubm91bmNlbWVudCBkZXNjcmliZWQgYSBwcm9wb3NlZCBwYWNrYWdlIG9mIHVwIHRvIDxzdHJvbmc+JDEuMiBiaWxsaW9uIGluIHJlZnVuZGFibGUgc3RhdGUgdGF4IGNyZWRpdHM8L3N0cm9uZz4gYW5kIGEgPHN0cm9uZz4kMzI1IG1pbGxpb24gc3RhdGUgZ3JhbnQ8L3N0cm9uZz4gdGllZCB0byBidWlsZGluZyBvY2N1cGFuY3kuIFRoZSB0YXggY3JlZGl0cyBkZXBlbmRlZCBvbiBwYXlyb2xsIGZyb20gcXVhbGlmeWluZyBuZXcgam9icy4gVGhlc2UgZmlndXJlcyBkZXNjcmliZSBwb3RlbnRpYWwgaW5jZW50aXZlcyB1bmRlciB0aGUgYW5ub3VuY2VkIHBsYW4uIDxhIGhyZWY9IiNjaXRlLW55Ij5OZXcgWW9yayBtZW1vcmFuZHVtPC9hPiDCtyA8YSBocmVmPSIjY2l0ZS1zZWxlY3Rpb24iPkxvY2F0aW9uIGFubm91bmNlbWVudDwvYT48L3A+CjxwPkluIEZlYnJ1YXJ5IDIwMTksIEFtYXpvbiBjYW5jZWxsZWQgdGhlIHBsYW5uZWQgUXVlZW5zIGhlYWRxdWFydGVycy4gVGhlIGNvbXBhbnkgY2l0ZWQgb3Bwb3NpdGlvbiBmcm9tIHNvbWUgc3RhdGUgYW5kIGxvY2FsIHBvbGl0aWNpYW5zIGFuZCBzYWlkIGl0IG5lZWRlZCB3b3JraW5nIHJlbGF0aW9uc2hpcHMgd2l0aCBvZmZpY2lhbHMgd2hvIHdvdWxkIHN1cHBvcnQgdGhlIHByb2plY3Qgb3ZlciB0aW1lLiBUaGF0IHN0YXRlbWVudCBnaXZlcyBBbWF6b27igJlzIGFjY291bnQgb2YgdGhlIGRlY2lzaW9uLiBUaGUgY2FuY2VsbGF0aW9uIHNob3dzIHRoYXQgc2VjdXJpbmcgYW4gYW5ub3VuY2VtZW50IGRpZCBub3Qgc2V0dGxlIHdoZXRoZXIgdGhlIHByb2plY3QgY291bGQgZ28gYWhlYWQuIEl0IGFsc28gbWFrZXMgdGhlIGFubm91bmNlZCBzdWJzaWR5IGZpZ3VyZXMgYSBwb29yIG1lYXN1cmUgb2Ygd2hhdCB0aGUgcHVibGljIGFjdHVhbGx5IHBhaWQgZm9yIHRoZSBwbGFubmVkIGhlYWRxdWFydGVycy4gPGEgaHJlZj0iI2NpdGUtd2l0aGRyYXdhbCI+QW1hem9u4oCZcyB3aXRoZHJhd2FsIHN0YXRlbWVudDwvYT48L3A+CjxoMz5Bcmxpbmd0b24gwrcgU2VsZWN0ZWQsIFdpdGggUGF5bWVudHMgVGllZCB0byBDb25kaXRpb25zPC9oMz4KPHA+QXJsaW5ndG9uIHByb2NlZWRlZCB3aXRoIEhRMi4gSXRzIGNvdW50eSBncmFudCB0aWVkIHBheW1lbnRzIHRvIHR3byBjb25kaXRpb25zOiBBbWF6b24gaGFkIHRvIG1lZXQgb2ZmaWNlIG9jY3VwYW5jeSB0YXJnZXRzLCBhbmQgdGhlIGNvdW50eeKAmXMgPHN0cm9uZz50cmFuc2llbnQgb2NjdXBhbmN5IHRheDwvc3Ryb25nPiByZXZlbnVlLCBsYXJnZWx5IGFzc29jaWF0ZWQgd2l0aCBob3RlbCBzdGF5cywgaGFkIHRvIGV4Y2VlZCBhIHNwZWNpZmllZCBiYXNlbGluZS4gVmlyZ2luaWHigJlzIHN0YXRlIHdvcmtmb3JjZSBncmFudCB3YXMgc2VwYXJhdGUgYW5kIHVzZWQgam9iIGNyZWF0aW9uIGFzIGEgYmFzaXMgZm9yIHBheW1lbnQuIFRoZSB0d28gbGV2ZWxzIG9mIGdvdmVybm1lbnQgdXNlZCBkaWZmZXJlbnQgbWVhc3VyZXMgb2Ygd2hhdCB0aGUgaW52ZXN0bWVudCB3YXMgZXhwZWN0ZWQgdG8gZGVsaXZlci4gPGEgaHJlZj0iI2NpdGUtc2VsZWN0aW9uIj5Mb2NhdGlvbiBhbm5vdW5jZW1lbnQ8L2E+IMK3IDxhIGhyZWY9IiNjaXRlLWFybGluZ3RvbiI+QXJsaW5ndG9uIENvdW50eSBzdGF0ZW1lbnQ8L2E+PC9wPgo8cD5Bcmxpbmd0b24gQ291bnR5IHJlcG9ydGVkIHRoYXQgdGhlIGZpcnN0IHBheW1lbnQgdW5kZXIgaXRzIGhvdGVsIHRheCBncmFudCBjYW1lIGluIGZpc2NhbCB5ZWFyIDIwMjUuIEZvciBmaXNjYWwgeWVhciAyMDI2LCBBbWF6b24gbWV0IGl0cyBvY2N1cGFuY3kgdGFyZ2V0LCBidXQgaG90ZWwgdGF4IHJldmVudWUgZmVsbCBiZWxvdyB0aGUgYmFzZWxpbmUsIHNvIDxzdHJvbmc+bm8gcGF5bWVudCB3YXMgZHVlIHVuZGVyIHRoYXQgZ3JhbnQgZm9yIHRoYXQgcGVyaW9kPC9zdHJvbmc+LiBBIGNvbXBhbnkgY2FuIG9wZW4gaXRzIG9mZmljZXMgYW5kIGZ1bGZpbGwgb25lIGNvbmRpdGlvbiB3aGlsZSBhIHNlcGFyYXRlIGNvbmRpdGlvbiBzdGlsbCBkZXRlcm1pbmVzIHdoZXRoZXIgcHVibGljIG1vbmV5IGNoYW5nZXMgaGFuZHMuIDxhIGhyZWY9IiNjaXRlLWFybGluZ3RvbiI+QXJsaW5ndG9uIENvdW50eSBzdGF0ZW1lbnQ8L2E+PC9wPgo8cCBjbGFzcz0icGFuZWwiPldoZW4geW91IGNvbXBhcmUgdGhlIGxvY2F0aW9ucywga2VlcCB0cmFjayBvZiB0aHJlZSBldmVudHMuIDxzdHJvbmc+U2VsZWN0aW9uPC9zdHJvbmc+IGlzIHdoZXJlIHRoZSBjb21wYW55IHBsYW5zIHRvIGxvY2F0ZS4gPHN0cm9uZz5Db21taXRtZW50PC9zdHJvbmc+IGlzIHdoYXQgdGhlIHB1YmxpYyBwYXJ0aWVzIGFncmVlIHRvIG1ha2UgYXZhaWxhYmxlIHVuZGVyIHNwZWNpZmllZCB0ZXJtcy4gPHN0cm9uZz5QYXltZW50PC9zdHJvbmc+IGlzIHdoYXQgdGhlIGNvbXBhbnkgYWN0dWFsbHkgcmVjZWl2ZXMuIEEgaGVhZGxpbmUgYWJvdXQgd2hvIHdvbiB0ZWxscyB5b3UgYWJvdXQgdGhlIGZpcnN0IGV2ZW50LiBUbyB1bmRlcnN0YW5kIHRoZSBjb3N0cyBhbmQgYmVuZWZpdHMsIHlvdSBuZWVkIGV2aWRlbmNlIGFib3V0IGFsbCB0aHJlZS48L3A+Cgo8L3NlY3Rpb24+PHNlY3Rpb24+CjxoMiBpZD0icmVzZWFyY2gtdGl0bGUiIHRhYmluZGV4PSItMSI+V2hvIEhhZCB0aGUgUG93ZXIgdG8gU2V0IHRoZSBUZXJtcz88L2gyPjxwPkEgY29tcGFueSBjYW4gZ2FpbiBiYXJnYWluaW5nIHBvd2VyIHdoZW4gc2V2ZXJhbCBjaXRpZXMgY29tcGV0ZSBmb3IgdGhlIHNhbWUgaW52ZXN0bWVudC4gT2ZmaWNpYWxzIG1heSBhbHNvIGdhaW4gcG9saXRpY2FsbHkgZnJvbSBtYWtpbmcgYW4gb2ZmZXIuIFB1YmxpYyBiZW5lZml0cyBhcmUgcG9zc2libGUsIGJ1dCBqdWRnaW5nIGEgZGVhbCByZXF1aXJlcyBldmlkZW5jZSBhYm91dCBqb2JzLCBwYXltZW50cywgYW5kIHdoYXQgdGhlIGNvbXBhbnkgd291bGQgaGF2ZSBkb25lIHdpdGhvdXQgdGhlIHN1YnNpZHkuIFRoaXMgaXMgdGhlIGNvbm5lY3Rpb24gYmV0d2VlbiB3ZWFsdGggYW5kIHBvd2VyIGV4YW1pbmVkIGhlcmUuIDxhIGhyZWY9IiNjaXRlLXNsYXR0ZXJ5Ij5TbGF0dGVyeTwvYT4gwrcgPGEgaHJlZj0iI2NpdGUtamVuc2VuIj5KZW5zZW4gZXQgYWwuPC9hPiDCtyA8YSBocmVmPSIjY2l0ZS1ncmVlbnN0b25lIj5HcmVlbnN0b25lIGV0IGFsLjwvYT48L3A+CjxoMz5UaGUgQ29tcGFueSBIYWQgT3RoZXIgUGxhY2VzIHRvIEdvPC9oMz4KPHA+VGhlIHNlY29uZCByb3VuZCBwdXRzIHlvdSBpbiBhIHBvc2l0aW9uIHRoYXQgQ2FpbGluIFNsYXR0ZXJ5IHN0dWRpZXMgaW4gaGVyIG1vZGVsIG9mIHN1YnNpZHkgY29tcGV0aXRpb24uIEdvdmVybm1lbnRzIG9mZmVyIHB1YmxpYyBtb25leSB0byBhdHRyYWN0IGFuIGludmVzdG1lbnQsIGFuZCB0aGUgY29tcGFueSBjYW4gY2hvb3NlIGFtb25nIGxvY2F0aW9ucy4gSWYgc2V2ZXJhbCBwbGFjZXMgYXJlIHZpYWJsZSwgdGhlIGNvbXBhbnkgY2FuIHBvaW50IHRvIG9uZSBvZmZlciB3aGlsZSBuZWdvdGlhdGluZyB3aXRoIGFub3RoZXIuIEVhY2ggZ292ZXJubWVudCBoYXMgdG8gZGVjaWRlIGhvdyBmYXIgaXQgd2lsbCBnbyB3aXRoIGluY29tcGxldGUgaW5mb3JtYXRpb24gYWJvdXQgd2hhdCB0aGUgY29tcGFueSB3b3VsZCBhY2NlcHQuIEluIFNsYXR0ZXJ54oCZcyBtb2RlbCwgY29tcGV0aXRpb24gY2FuIHNoaWZ0IHRoZSBnYWlucyBmcm9tIHRoZSBkZWFsIHRvd2FyZCBmaXJtcyBhcyBnb3Zlcm5tZW50cyBjb21wZXRlIGZvciB0aGUgc2FtZSBpbnZlc3RtZW50LiA8YSBocmVmPSIjY2l0ZS1zbGF0dGVyeSI+U2xhdHRlcnk8L2E+PC9wPgo8cD5UaGluayBiYWNrIHRvIHRoZSAkMzAwIG1pbGxpb24gcml2YWwgb2ZmZXIuIFlvdSBzYXcgYSBudW1iZXIgYmVmb3JlIHlvdSBrbmV3IGhvdyB0aGUgY29tcGFueSB2YWx1ZWQgeW91ciB3b3JrZm9yY2UsIHRyYW5zaXQsIG9yIHNpdGUuIElmIHRoZSBjb21wYW55IGFscmVhZHkgcHJlZmVycmVkIHlvdXIgY2l0eSwgcmFpc2luZyB0aGUgb2ZmZXIgbWlnaHQgbW9zdGx5IHRyYW5zZmVyIG1vcmUgdmFsdWUgdG8gdGhlIGNvbXBhbnkuIElmIHRoZSByaXZhbCB3YXMgZ2VudWluZWx5IG1vcmUgYXR0cmFjdGl2ZSwgcmFpc2luZyBpdCBtaWdodCBjaGFuZ2UgdGhlIGRlY2lzaW9uLiBUaGF0IGlzIHRoZSBxdWVzdGlvbiBvZiA8c3Ryb25nPmFkZGl0aW9uYWxpdHk8L3N0cm9uZz4uIFdoYXQgZGlkIHRoZSBzdWJzaWR5IGNhdXNlIHRoYXQgd291bGQgb3RoZXJ3aXNlIG5ldmVyIGhhdmUgaGFwcGVuZWQ/IFRoZSBzaW11bGF0aW9uIGdpdmVzIHlvdSBhIHdheSB0byBmYWNlIHRoYXQgdW5jZXJ0YWludHksIHdoaWxlIHRoZSBoaXN0b3JpY2FsIHJlY29yZHMgc2hvdyB3aGljaCB0ZXJtcyB3ZXJlIHB1YmxpY2x5IGFubm91bmNlZC48L3A+CjxoMz5PZmZpY2lhbHMgSGFkIFRoZWlyIE93biBSZWFzb25zIHRvIEJpZDwvaDM+CjxwPk5hdGhhbiBKZW5zZW4gYW5kIGhpcyBjb2F1dGhvcnMgdXNlIGEgc3VydmV5IGV4cGVyaW1lbnQgdG8gc3R1ZHkgaG93IHZvdGVycyBhc3NpZ24gPHN0cm9uZz5jcmVkaXQgYW5kIGJsYW1lPC9zdHJvbmc+IHRvIGdvdmVybm9ycyBpbiBhIGNvbXBldGl0aW9uIGZvciBpbnZlc3RtZW50LiBUaGVpciBmaW5kaW5ncyBzdWdnZXN0IHRoYXQgb2ZmZXJpbmcgaW5jZW50aXZlcyBjYW4gaGVscCBhbiBvZmZpY2lhbCB0YWtlIGNyZWRpdCB3aGVuIGFuIGludmVzdG1lbnQgYXJyaXZlcyBhbmQgcmVkdWNlIHRoZSBwb2xpdGljYWwgZmFsbG91dCB3aGVuIGl0IGdvZXMgZWxzZXdoZXJlLiBUaGF0IGNyZWF0ZXMgYSByZWFzb24gdG8gYmlkIGV2ZW4gd2hlbiB0aGUgZmlzY2FsIG1lcml0cyBvZiBhIGRlYWwgYXJlIHVuY2VydGFpbi4gSW4gdGhlIGdhbWUsIHRoZSBvZmZpY2lhbCBjYW4gYW5ub3VuY2UgdGhlIGludmVzdG1lbnQgYmVmb3JlIGtub3dpbmcgd2hldGhlciB0aGUgcHJvbWlzZWQgam9icyB3aWxsIGFycml2ZS4gVGhlIHJlc2lkZW50cyB3aG8gd2FudCB0byBldmFsdWF0ZSBpdCBtYXkgaGF2ZSB0byB3YWl0IHllYXJzIGZvciBoaXJpbmcgZmlndXJlcyBhbmQgcGF5bWVudCByZWNvcmRzLiA8YSBocmVmPSIjY2l0ZS1qZW5zZW4iPkplbnNlbiBldCBhbC48L2E+PC9wPgo8cD5UaGVyZSBhcmUgYWxzbyBlY29ub21pYyByZWFzb25zIHRvIGNvbXBldGUuIE1pY2hhZWwgR3JlZW5zdG9uZSBhbmQgaGlzIGNvYXV0aG9ycyBmb3VuZCB0aGF0IGxhcmdlIG1hbnVmYWN0dXJpbmcgcGxhbnRzIGNvdWxkIHJhaXNlIHByb2R1Y3Rpdml0eSBhdCBleGlzdGluZyBwbGFudHMgbmVhcmJ5LCBlc3BlY2lhbGx5IHdoZXJlIGZpcm1zIHNoYXJlZCBzaW1pbGFyIGxhYm9yIG9yIHRlY2hub2xvZ3kuIFRoZWlyIGV2aWRlbmNlIGNvbmNlcm5zIG1hbnVmYWN0dXJpbmcsIHNvIGFuIEhRMiBhbmFseXNpcyB3b3VsZCBoYXZlIHRvIGxvb2sgc2VwYXJhdGVseSBmb3IgYmVuZWZpdHMgdG8gc3Vycm91bmRpbmcgYnVzaW5lc3Nlcy4gSXQgZG9lcyBoZWxwIGV4cGxhaW4gd2h5IGFuIG9mZmljaWFsIG1pZ2h0IHRoaW5rIGFib3V0IHN1cHBsaWVycywgd29ya2VycywgYW5kIG90aGVyIGVtcGxveWVycyB3aGVuIGRlY2lkaW5nIHdoZXRoZXIgdG8gYmlkLiBTbGF0dGVyeeKAmXMgYW5hbHlzaXMgdGhlbiBhc2tzIGhvdyBtdWNoIG9mIGFueSBleHBlY3RlZCBnYWluIGxvY2FsIGdvdmVybm1lbnRzIGNhbiByZXRhaW4gd2hlbiB0aGV5IGNvbXBldGUgZm9yIGl0LiA8YSBocmVmPSIjY2l0ZS1ncmVlbnN0b25lIj5HcmVlbnN0b25lIGV0IGFsLjwvYT4gwrcgPGEgaHJlZj0iI2NpdGUtc2xhdHRlcnkiPlNsYXR0ZXJ5PC9hPjwvcD4KPGgzPlB1YmxpYyBHYWlucyBIYXZlIHRvIEJlIE1lYXN1cmVkIE92ZXIgVGltZTwvaDM+CjxwPlBhdHJpY2sgS2xpbmUgYW5kIEVucmljbyBNb3JldHRp4oCZcyBzdHVkeSBvZiB0aGUgPHN0cm9uZz5UZW5uZXNzZWUgVmFsbGV5IEF1dGhvcml0eTwvc3Ryb25nPiBvZmZlcnMgYSBoaXN0b3JpY2FsIGNvbXBhcmlzb24uIEluIHRoYXQgcmVnaW9uYWwgZGV2ZWxvcG1lbnQgcHJvZ3JhbSwgbWFudWZhY3R1cmluZyBlbXBsb3ltZW50IGdhaW5zIGNvbnRpbnVlZCBhZnRlciBmZWRlcmFsIHRyYW5zZmVycyBlbmRlZCwgd2hpbGUgdGhlIGluaXRpYWwgZ2FpbnMgaW4gYWdyaWN1bHR1cmFsIGVtcGxveW1lbnQgZXZlbnR1YWxseSByZXZlcnNlZC4gQSBoZWFkcXVhcnRlcnMgZGVhbCBvcGVyYXRlcyBvbiBhIGRpZmZlcmVudCBzY2FsZSwgYnV0IHRoZSBjb21wYXJpc29uIGdpdmVzIHVzIGEgd2F5IHRvIGV2YWx1YXRlIGl0cyBwcm9taXNlcy4gSWYgYSBjaXR5IGV4cGVjdHMgYSBzdWJzaWR5IHRvIGNyZWF0ZSBsYXN0aW5nIGdhaW5zLCBpdCBzaG91bGQgaWRlbnRpZnkgd2hhdCBjb3VsZCBwZXJzaXN0IHdoZW4gdGhlIHBheW1lbnRzIGVuZCwgc3VjaCBhcyBzdGFibGUgZW1wbG95bWVudCBvciBiZW5lZml0cyB0byBvdGhlciBsb2NhbCBmaXJtcy4gPGEgaHJlZj0iI2NpdGUta2xpbmUiPktsaW5lIGFuZCBNb3JldHRpPC9hPjwvcD4KPHA+SW4gMTk0MywgTWljaGHFgiBLYWxlY2tpIGFyZ3VlZCB0aGF0IHdoZW4gZW1wbG95bWVudCBkZXBlbmRzIGhlYXZpbHkgb24gcHJpdmF0ZSBpbnZlc3RtZW50LCBidXNpbmVzcyBkZWNpc2lvbnMgY2FuIGluZGlyZWN0bHkgaW5mbHVlbmNlIHB1YmxpYyBwb2xpY3kuIEhRMiBwdXRzIHRoYXQgaWRlYSBhdCB0aGUgc2NhbGUgb2YgYSBwbGFjZSBjb21wZXRpbmcgZm9yIGEgaGVhZHF1YXJ0ZXJzLiBBIGZpcm0gY29udHJvbHMgd2hlcmUgaXQgaW52ZXN0cy4gUHVibGljIG9mZmljaWFscyBjb250cm9sIHdoYXQgdGhleSBvZmZlciBhbmQgd2hpY2ggdGVybXMgdGhleSBhdHRhY2guIFJlc2lkZW50cyBjYW4gYXNrIG9mZmljaWFscyB0byBkZWZlbmQgdGhvc2UgdGVybXMgYW5kIHNob3cgd2hhdCB0aGUgY29tcGFueSBkZWxpdmVyZWQuIFRoZSBhZ3JlZW1lbnQgbWF0dGVycyBiZWNhdXNlIGl0IGRldGVybWluZXMgd2hvc2UgcHJvbWlzZXMgYXJlIG1lYXN1cmFibGUgYW5kIHdobyBiZWFycyB0aGUgY29zdCBpZiBleHBlY3RhdGlvbnMgcHJvdmUgd3JvbmcuIDxhIGhyZWY9IiNjaXRlLWthbGVja2kiPkthbGVja2k8L2E+PC9wPgo8aDM+QWJvdXQgdGhlIHNpbXVsYXRpb248L2gzPjxwPlRoZSBiaWRzLCBqb2IgbnVtYmVycywgY29tcGFueSBwcmVmZXJlbmNlcywgYW5kIG91dGNvbWVzIGluIHRoZSBnYW1lIGFyZSBpbnZlbnRlZC4gVGhlIG9wdGlvbnMgaWxsdXN0cmF0ZSBjb21wZXRpdGlvbiBiZXR3ZWVuIGdvdmVybm1lbnRzLCBwb2xpdGljYWwgcmVhc29ucyB0byBiaWQsIGFuZCBjb25kaXRpb25zIG9uIHB1YmxpYyBwYXltZW50cy4gU2xhdHRlcnkgYW5kIEplbnNlbiBoZWxwIGV4cGxhaW4gdGhlIGZpcnN0IHR3by4gQXJsaW5ndG9u4oCZcyBhZ3JlZW1lbnQgcHJvdmlkZXMgYSByZWFsIGV4YW1wbGUgb2YgY29uZGl0aW9uYWwgcGF5bWVudHMuIFRoZSBnYW1l4oCZcyBoaXJpbmcgZm9ybXVsYSBpcyBhIHNpbXBsaWZpZWQgcnVsZSBtYWRlIGZvciB0aGlzIHByb2plY3QuIEl0IGRvZXMgbm90IHByZWRpY3QgdGhlIGNvbXBhbnnigJlzIHJlc3BvbnNlIG9yIGNhbGN1bGF0ZSB3aGV0aGVyIGEgc3Vic2lkeSBwYXlzIGZvciBpdHNlbGYuIDxhIGhyZWY9IiNjaXRlLXNsYXR0ZXJ5Ij5TbGF0dGVyeTwvYT4gwrcgPGEgaHJlZj0iI2NpdGUtamVuc2VuIj5KZW5zZW4gZXQgYWwuPC9hPiDCtyA8YSBocmVmPSIjY2l0ZS1hcmxpbmd0b24iPkFybGluZ3RvbiBDb3VudHk8L2E+PC9wPgo8L3NlY3Rpb24+PHNlY3Rpb24+CjxoMiBpZD0icmVmbGVjdGlvbi10aXRsZSIgdGFiaW5kZXg9Ii0xIj5XaGF0IFdvdWxkIFlvdSBDaGVjaz88L2gyPgo8cD5JbWFnaW5lIHlvdSBhcmUgYXQgYSBwdWJsaWMgaGVhcmluZyBmaXZlIHllYXJzIGFmdGVyIHRoZSBiaWQuIE9uIHRoZSB0YWJsZSBhcmUgdGhlIGNvbXBhbnnigJlzIG9yaWdpbmFsIHByb2plY3Rpb24sIHRoZSBzdWJzaWR5IGFncmVlbWVudCwgYSByZWNvcmQgb2YgcHVibGljIHBheW1lbnRzLCBhbmQgYSByZXBvcnQgb24gdGhlIGpvYnMgYWN0dWFsbHkgY3JlYXRlZC48L3A+CgoKCjxwPlJlc2lkZW50IHF1ZXN0aW9ucyBjb3ZlciB0aGUgbnVtYmVyIGFuZCBhY2Nlc3NpYmlsaXR5IG9mIG5ldyBqb2JzLCB0aGUgYWN0dWFsIHB1YmxpYyBwYXltZW50cywgdGhlIGNvbXBhbnnigJlzIGxpa2VseSBkZWNpc2lvbiB3aXRob3V0IGEgc3Vic2lkeSwgYW5kIGJlbmVmaXRzIHRoYXQgbGFzdCBhZnRlciBwYXltZW50cyBlbmQuPC9wPjwvc2VjdGlvbj48c2VjdGlvbj4KPGgyIGlkPSJzb3VyY2VzLXRpdGxlIiB0YWJpbmRleD0iLTEiPldvcmtzIENpdGVkPC9oMj4KPHVsIGNsYXNzPSJ3b3Jrcy1jaXRlZCI+CjxsaSBpZD0iY2l0ZS1zaG9ydGxpc3QiIHRhYmluZGV4PSItMSI+QW1hem9uLiDigJxBbWF6b24gQW5ub3VuY2VzIENhbmRpZGF0ZXMgZm9yIEhRMi7igJ0gPGVtPkFtYXpvbiBQcmVzcyBDZW50ZXI8L2VtPiwgMTggSmFuLiAyMDE4LiA8YSBocmVmPSJodHRwczovL3ByZXNzLmFib3V0YW1hem9uLmNvbS9uZXdzLXJlbGVhc2VzL25ld3MtcmVsZWFzZS1kZXRhaWxzL2FtYXpvbi1hbm5vdW5jZXMtY2FuZGlkYXRlcy1ocTIvIj5Bbm5vdW5jZW1lbnQ8L2E+LjwvbGk+CjxsaSBpZD0iY2l0ZS1zZWxlY3Rpb24iIHRhYmluZGV4PSItMSI+QW1hem9uLiDigJxBbWF6b24gU2VsZWN0cyBOZXcgWW9yayBDaXR5IGFuZCBOb3J0aGVybiBWaXJnaW5pYSBmb3IgTmV3IEhlYWRxdWFydGVycy7igJ0gPGVtPkFib3V0IEFtYXpvbjwvZW0+LCAxMyBOb3YuIDIwMTguIDxhIGhyZWY9Imh0dHBzOi8vd3d3LmFib3V0YW1hem9uLmNvbS9uZXdzL2NvbXBhbnktbmV3cy9hbWF6b24tc2VsZWN0cy1uZXcteW9yay1jaXR5LWFuZC1ub3J0aGVybi12aXJnaW5pYS1mb3ItbmV3LWhlYWRxdWFydGVycyI+QW5ub3VuY2VtZW50PC9hPi48L2xpPgo8bGkgaWQ9ImNpdGUtd2l0aGRyYXdhbCIgdGFiaW5kZXg9Ii0xIj5BbWF6b24uIOKAnFVwZGF0ZSBvbiBQbGFucyBmb3IgTmV3IFlvcmsgQ2l0eSBIZWFkcXVhcnRlcnMu4oCdIDxlbT5BYm91dCBBbWF6b248L2VtPiwgMTQgRmViLiAyMDE5LiA8YSBocmVmPSJodHRwczovL3d3dy5hYm91dGFtYXpvbi5jb20vbmV3cy9jb21wYW55LW5ld3MvdXBkYXRlLW9uLXBsYW5zLWZvci1uZXcteW9yay1jaXR5LWhlYWRxdWFydGVycyI+U3RhdGVtZW50PC9hPi48L2xpPgo8bGkgaWQ9ImNpdGUtYXJsaW5ndG9uIiB0YWJpbmRleD0iLTEiPkFybGluZ3RvbiBDb3VudHkuIOKAnEFybGluZ3RvbiBDb3VudHkgU3RhdGVtZW50IG9uIEFtYXpvbiBJbmNlbnRpdmVzIGZvciBGWSAyMDI2LuKAnSAxIFNlcHQuIDIwMjYuIDxhIGhyZWY9Imh0dHBzOi8vd3d3LmFybGluZ3RvbnZhLnVzL0Fib3V0LUFybGluZ3Rvbi9OZXdzcm9vbS9NZWRpYS1SZXNvdXJjZXMvTWVkaWEtUmVzcG9uc2UvQXJsaW5ndG9uLUNvdW50eS1TdGF0ZW1lbnQtb24tQW1hem9uLUluY2VudGl2ZXMtZm9yLUZZLTIwMjYiPkNvdW50eSBzdGF0ZW1lbnQ8L2E+LjwvbGk+CjxsaSBpZD0iY2l0ZS1ueSIgdGFiaW5kZXg9Ii0xIj5FbXBpcmUgU3RhdGUgRGV2ZWxvcG1lbnQsIGV0IGFsLiA8ZW0+TG9uZyBJc2xhbmQgQ2l0eSBEZXZlbG9wbWVudCBQcm9qZWN0PC9lbT4uIDEyIE5vdi4gMjAxOC4gPGEgaHJlZj0iaHR0cHM6Ly9lc2QubnkuZ292L3NpdGVzL2RlZmF1bHQvZmlsZXMvRmluYWwtQW1hem9uLU5ZQy1NT1UucGRmIj5NZW1vcmFuZHVtIG9mIHVuZGVyc3RhbmRpbmc8L2E+LjwvbGk+CjxsaSBpZD0iY2l0ZS1ncmVlbnN0b25lIiB0YWJpbmRleD0iLTEiPkdyZWVuc3RvbmUsIE1pY2hhZWwsIGV0IGFsLiDigJxJZGVudGlmeWluZyBBZ2dsb21lcmF0aW9uIFNwaWxsb3ZlcnM6IEV2aWRlbmNlIGZyb20gV2lubmVycyBhbmQgTG9zZXJzIG9mIExhcmdlIFBsYW50IE9wZW5pbmdzLuKAnSA8ZW0+Sm91cm5hbCBvZiBQb2xpdGljYWwgRWNvbm9teTwvZW0+LCB2b2wuIDExOCwgbm8uIDMsIDIwMTAsIHBwLiA1MzbigJM5OC4gPGEgaHJlZj0iaHR0cHM6Ly9kb2kub3JnLzEwLjEwODYvNjUzNzE0Ij5odHRwczovL2RvaS5vcmcvMTAuMTA4Ni82NTM3MTQ8L2E+LjwvbGk+CjxsaSBpZD0iY2l0ZS1qZW5zZW4iIHRhYmluZGV4PSItMSI+SmVuc2VuLCBOYXRoYW4gTS4sIGV0IGFsLiDigJxQYXNzIHRoZSBCdWNrczogQ3JlZGl0LCBCbGFtZSwgYW5kIHRoZSBHbG9iYWwgQ29tcGV0aXRpb24gZm9yIEludmVzdG1lbnQu4oCdIDxlbT5JbnRlcm5hdGlvbmFsIFN0dWRpZXMgUXVhcnRlcmx5PC9lbT4sIHZvbC4gNTgsIG5vLiAzLCAyMDE0LCBwcC4gNDMz4oCTNDcuIDxhIGhyZWY9Imh0dHBzOi8vZG9pLm9yZy8xMC4xMTExL2lzcXUuMTIxMDYiPmh0dHBzOi8vZG9pLm9yZy8xMC4xMTExL2lzcXUuMTIxMDY8L2E+LjwvbGk+CjxsaSBpZD0iY2l0ZS1rYWxlY2tpIiB0YWJpbmRleD0iLTEiPkthbGVja2ksIE1pY2hhxYIuIOKAnFBvbGl0aWNhbCBBc3BlY3RzIG9mIEZ1bGwgRW1wbG95bWVudC7igJ0gPGVtPlRoZSBQb2xpdGljYWwgUXVhcnRlcmx5PC9lbT4sIHZvbC4gMTQsIG5vLiA0LCAxOTQzLCBwcC4gMzIy4oCTMzAuIDxhIGhyZWY9Imh0dHBzOi8vZG9pLm9yZy8xMC4xMTExL2ouMTQ2Ny05MjNYLjE5NDMudGIwMTAxNi54Ij5odHRwczovL2RvaS5vcmcvMTAuMTExMS9qLjE0NjctOTIzWC4xOTQzLnRiMDEwMTYueDwvYT4uPC9saT4KPGxpIGlkPSJjaXRlLWtsaW5lIiB0YWJpbmRleD0iLTEiPktsaW5lLCBQYXRyaWNrLCBhbmQgRW5yaWNvIE1vcmV0dGkuIOKAnExvY2FsIEVjb25vbWljIERldmVsb3BtZW50LCBBZ2dsb21lcmF0aW9uIEVjb25vbWllcywgYW5kIHRoZSBCaWcgUHVzaDogMTAwIFllYXJzIG9mIEV2aWRlbmNlIGZyb20gdGhlIFRlbm5lc3NlZSBWYWxsZXkgQXV0aG9yaXR5LuKAnSA8ZW0+VGhlIFF1YXJ0ZXJseSBKb3VybmFsIG9mIEVjb25vbWljczwvZW0+LCB2b2wuIDEyOSwgbm8uIDEsIDIwMTQsIHBwLiAyNzXigJMzMzEuIDxhIGhyZWY9Imh0dHBzOi8vZG9pLm9yZy8xMC4xMDkzL3FqZS9xanQwMzQiPmh0dHBzOi8vZG9pLm9yZy8xMC4xMDkzL3FqZS9xanQwMzQ8L2E+LjwvbGk+CjxsaSBpZD0iY2l0ZS1zbGF0dGVyeSIgdGFiaW5kZXg9Ii0xIj5TbGF0dGVyeSwgQ2FpbGluLiDigJxCaWRkaW5nIGZvciBGaXJtczogU3Vic2lkeSBDb21wZXRpdGlvbiBpbiB0aGUgVW5pdGVkIFN0YXRlcy7igJ0gPGVtPkpvdXJuYWwgb2YgUG9saXRpY2FsIEVjb25vbXk8L2VtPiwgdm9sLiAxMzMsIG5vLiA4LCAyMDI1LCBwcC4gMjU2M+KAkzYxNC4gPGEgaHJlZj0iaHR0cHM6Ly9kb2kub3JnLzEwLjEwODYvNzM1NTA5Ij5odHRwczovL2RvaS5vcmcvMTAuMTA4Ni83MzU1MDk8L2E+LjwvbGk+CjwvdWw+Cgo8L3NlY3Rpb24+PC9ib2R5PjwvaHRtbD4="
+          data-transcript="PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9ImVuIj48aGVhZD48bWV0YSBjaGFyc2V0PSJ1dGYtOCIvPjx0aXRsZT5UaGUgSFEyIEJpZCDigJQgV3JpdHRlbiBDb21wb25lbnQ8L3RpdGxlPjxzdHlsZT5ib2R5e2ZvbnQ6MTJwdCBBcmlhbCxzYW5zLXNlcmlmO2xpbmUtaGVpZ2h0OjI7bWF4LXdpZHRoOjUycmVtO21hcmdpbjoycmVtIGF1dG87cGFkZGluZzoxcmVtO2NvbG9yOiMyMDNiNTl9aDEsaDIsaDN7bGluZS1oZWlnaHQ6MS4zfXNlY3Rpb257bWFyZ2luOjJyZW0gMH10YWJsZXtib3JkZXItY29sbGFwc2U6Y29sbGFwc2U7d2lkdGg6MTAwJTtmb250LXNpemU6MTBwdH10ZCx0aHtib3JkZXI6MXB4IHNvbGlkICNhYWE7cGFkZGluZzouNHJlbTt0ZXh0LWFsaWduOmxlZnR9YXtvdmVyZmxvdy13cmFwOmFueXdoZXJlfUBtZWRpYSBwcmludHtib2R5e21hcmdpbjowO21heC13aWR0aDpub25lfWgyLGgze2JyZWFrLWFmdGVyOmF2b2lkfX08L3N0eWxlPjwvaGVhZD48Ym9keT48aDE+VGhlIEhRMiBCaWQg4oCUIFdyaXR0ZW4gQ29tcG9uZW50PC9oMT48cD5TaXFpIFRhbiAoU2FsbHkpIMK3IFBlcnNwZWN0aXZlcyBvbiBIdW1hbml0eTwvcD48cD5UaGlzIHdyaXR0ZW4gY29tcG9uZW50IGluY2x1ZGVzIGFsbCBjaG9pY2VzIGFuZCB0aGUgc2l4dGVlbiBwb3NzaWJsZSBjb21iaW5hdGlvbnMgb2YgY29tcGFueSBhc3Nlc3NtZW50LCBvcGVuaW5nIG9mZmVyIGFuZCBmaW5hbCBkZWNpc2lvbi4gRXZlcnkgZ2FtZSBudW1iZXIgaXMgYW4gaWxsdXN0cmF0aXZlIGFzc3VtcHRpb24uIFRoZSByZWFsIEhRMiBjYXNlIGFuZCByZXNlYXJjaCBkaXNjdXNzaW9uIGZvbGxvdy48L3A+PHNlY3Rpb24+CjxoMSBpZD0iaW50cm8tdGl0bGUiIHRhYmluZGV4PSItMSI+V2lubmluZyB0aGUgY29tcGFueS48YnIvPjxlbT5Eb2VzIHRoZSBjaXR5IHdpbj88L2VtPjwvaDE+PHAgY2xhc3M9ImF1dGhvci1ieWxpbmUiPlNpcWkgVGFuIChTYWxseSkgwrcgUGVyc3BlY3RpdmVzIG9uIEh1bWFuaXR5PC9wPgoKPHA+QSBjb21wYW55IGlzIGNob29zaW5nIGEgY2l0eSBmb3IgaXRzIGhlYWRxdWFydGVycy4gSXQgcHJvamVjdHMgPHN0cm9uZz51cCB0byAyLDAwMCBqb2JzIHdpdGhpbiBmaXZlIHllYXJzPC9zdHJvbmc+LiBZb3VyIGNpdHkgb2ZmZXJzIGEgc3Ryb25nIHdvcmtmb3JjZSBhbmQgZ29vZCB0cmFuc3BvcnQgbGlua3MuIEEgcml2YWwgaGFzIGxvd2VyIG9mZmljZSBhbmQgbGFuZCBjb3N0cy4gQm90aCBsb2NhdGlvbnMgY2FuIHN1cHBvcnQgdGhlIHByb2plY3QuPC9wPgo8cD5Zb3UgbGVhZCB5b3VyIGNpdHnigJlzIGJpZC4gRGVjaWRlIGhvdyBtdWNoIHRvIG9mZmVyLCB3aGV0aGVyIHRvIHJlcXVpcmUgdmVyaWZpZWQgaGlyaW5nIGJlZm9yZSBwYXltZW50LCBvciB3aGV0aGVyIHRvIHdpdGhkcmF3LiBUaGUgY29tcGFueSBoYXMgYW4gaW50ZXJuYWwgYXNzZXNzbWVudCBvZiBib3RoIGNpdGllcy4gWW91IHNlZSB0aGUgcHVibGljIGluZm9ybWF0aW9uIGFuZCBpdHMgcmVwbGllcywgYnV0IHlvdSBkbyBub3Qga25vdyBob3cgbXVjaCBpdCB2YWx1ZXMgeW91ciBsb2NhdGlvbi48L3A+CjxwIGNsYXNzPSJzY2VuZS1ub3RlIj5UaGlzIGlzIGEgZmljdGlvbmFsIHNpbXVsYXRpb24uIEVhY2ggbmV3IGNhc2UgZHJhd3Mgb25lIG9mIHR3byBjb21wYW55IGFzc2Vzc21lbnRzLiBQcmVmZXJlbmNlcyBhbmQgaGlyaW5nIHN0YXkgZml4ZWQgd2hlbiB5b3UgcmVwbGF5IHRoZSBzYW1lIGNhc2UuIFRoZSBudW1lcmljYWwgcnVsZXMgYXJlIHRlYWNoaW5nIGFzc3VtcHRpb25zLjwvcD4KPC9zZWN0aW9uPjxzZWN0aW9uPjxoMiBpZD0ib2ZmZXItdGl0bGUiIHRhYmluZGV4PSItMSI+Um91bmQgT25lIMK3IFlvdXIgT3BlbmluZyBPZmZlcjwvaDI+CjxwPllvdXIgY2l0eSBoYXMgYSBsYXJnZXIgcG9vbCBvZiByZWxldmFudCB3b3JrZXJzIGFuZCBzdHJvbmdlciB0cmFuc3BvcnQgbGlua3MuIFRoZSByaXZhbCBvZmZlcnMgY2hlYXBlciBwcmVtaXNlcy4gVGhlIGNvbXBhbnkga25vd3MgaG93IG11Y2ggdGhlc2UgZGlmZmVyZW5jZXMgbWF0dGVyIGZvciBpdHMgYnVzaW5lc3MuIFlvdSBkbyBub3Qgc2VlIGl0cyBpbnRlcm5hbCBjYWxjdWxhdGlvbnMuPC9wPgo8cD5UaGUgY29tcGFueSBwcm9qZWN0cyB1cCB0byAyLDAwMCBqb2JzIHdpdGhpbiBmaXZlIHllYXJzLiBUaGVzZSBqb2JzIGFyZSBhIHByb2plY3Rpb24sIG5vdCBhIGhpcmluZyByZXF1aXJlbWVudC4gWW91ciBmaW5hbmNlIGRpcmVjdG9yIGFza3MgaG93IG11Y2ggeW91IGNhbiBvZmZlciBmb3IgYSBwcm9qZWN0IHdob3NlIGZpbmFsIGhpcmluZyBpcyB1bmNlcnRhaW4uPC9wPgo8cD5VbmRlciB0aGUgb3BlbmluZyB0ZXJtcywgdGhlIGZ1bGwgZ3JhbnQgaXMgcGFpZCB3aGVuIHRoZSBoZWFkcXVhcnRlcnMgb3BlbnMuIFRoZXJlIGlzIG5vIGhpcmluZy1iYXNlZCByZWZ1bmQuIFlvdSBjYW4gcmV2aXNlIHRoZXNlIHRlcm1zIGluIHRoZSBuZXh0IHJvdW5kLjwvcD4KPGRpdiBjbGFzcz0iY2hvaWNlcyI+PHA+PHN0cm9uZz5PZmZlciAkMTAwIG1pbGxpb248L3N0cm9uZz5NYWtlIGEgc21hbGxlciBwdWJsaWMgY29tbWl0bWVudC4gWW91ciBjaXR54oCZcyBhZHZhbnRhZ2VzIG1heSBiZSBlbm91Z2ggdG8ga2VlcCB0aGUgb2ZmZXIgY29tcGV0aXRpdmUuPC9wPjxwPjxzdHJvbmc+T2ZmZXIgJDI1MCBtaWxsaW9uPC9zdHJvbmc+R2l2ZSB0aGUgY29tcGFueSBhIGxhcmdlciBmaW5hbmNpYWwgcmVhc29uIHRvIGNob29zZSB5b3VyIGNpdHkuIFRoZSBhZGRlZCBtb25leSBtYXkgY2hhbmdlIGl0cyBkZWNpc2lvbiwgb3IgcGF5IG1vcmUgZm9yIHRoZSBzYW1lIHByb2plY3QuPC9wPjwvZGl2Pgo8cCBjbGFzcz0ic2NlbmUtbm90ZSI+VGhlIHJpdmFs4oCZcyBsb3dlciBwcmVtaXNlcyBjb3N0cyBhcmUgcHVibGljIGluZm9ybWF0aW9uLiBJdHMgc3Vic2lkeSBvZmZlciBhcnJpdmVzIGluIHRoZSBuZXh0IHJvdW5kLjwvcD48L3NlY3Rpb24+PHNlY3Rpb24+PGgyIGlkPSJyaXZhbC10aXRsZSIgdGFiaW5kZXg9Ii0xIj5Sb3VuZCBUd28gwrcgVGhlIFJpdmFsIE9mZmVycyAkMzAwIE1pbGxpb248L2gyPgo8ZGwgY2xhc3M9ImZhY3RzIj48ZGl2PjxkdD5Zb3VyIG9wZW5pbmcgb2ZmZXI8L2R0PjxkZCBkYXRhLWFtb3VudD0ib3BlbmluZyI+JDEwMCBtaWxsaW9uIG9yICQyNTAgbWlsbGlvbjwvZGQ+PC9kaXY+PGRpdj48ZHQ+Uml2YWwgZ3JhbnQ8L2R0PjxkZD4kMzAwIG1pbGxpb248L2RkPjwvZGl2PjxkaXY+PGR0PlB1YmxpYyBqb2IgcHJvamVjdGlvbjwvZHQ+PGRkPlVwIHRvIDIsMDAwPC9kZD48L2Rpdj48L2RsPgo8YmxvY2txdW90ZSBjbGFzcz0icGFuZWwiPjxwPjxzdHJvbmc+RnJvbSB0aGUgY29tcGFueTwvc3Ryb25nPjwvcD48cD5Bbm90aGVyIGZpbmFsaXN0IGhhcyBvZmZlcmVkICQzMDAgbWlsbGlvbiwgcGF5YWJsZSB3aGVuIGl0cyBoZWFkcXVhcnRlcnMgb3BlbnMuIFdlIGFyZSBzdGlsbCBldmFsdWF0aW5nIGJvdGggbG9jYXRpb25zLiBXb3VsZCB5b3VyIGNpdHkgY29uc2lkZXIgcmV2aXNpbmcgaXRzIG9mZmVyPzwvcD48L2Jsb2NrcXVvdGU+CjxwPlRoZSBjb21wYW55IHNlbmRzIHRoaXMgcmVxdWVzdCBpbiBib3RoIGNhc2VzLCBpbmNsdWRpbmcgd2hlbiB5b3VyIG9wZW5pbmcgb2ZmZXIgaXMgYWxyZWFkeSBjb21wZXRpdGl2ZS4gSXRzIHJlcGx5IGRvZXMgbm90IHJldmVhbCBpdHMgcmFua2luZy4gVGhlIHJpdmFs4oCZcyBncmFudCBpcyBoaWdoZXIsIGJ1dCB5b3VyIHdvcmtmb3JjZSBhbmQgdHJhbnNwb3J0IGxpbmtzIG1heSBtYWtlIHlvdXIgY2l0eSBtb3JlIHZhbHVhYmxlIHRvIHRoZSBjb21wYW55LjwvcD4KPHA+SWYgeW91IGF0dGFjaCBhIGhpcmluZyBjb25kaXRpb24sIHRoZSBjb21wYW55IHdpbGwgcmVjZWl2ZSB0aGUgZnVsbCBjYXAgb25seSBhZnRlciAyLDAwMCB2ZXJpZmllZCBuZXcgam9icy4gQXQgdGhlIGZpdmUteWVhciBjaGVjaywgaXQgcmVjZWl2ZXMgYSBwcm9wb3J0aW9uYXRlIGFtb3VudCBmb3IgZmV3ZXIgcXVhbGlmeWluZyBqb2JzLiBJdCBtYXkgcmVqZWN0IHRob3NlIHRlcm1zLjwvcD4KCjxkaXYgY2xhc3M9ImNob2ljZXMiPgo8cD48c3Ryb25nPktlZXAgeW91ciBvcGVuaW5nIG9mZmVyPC9zdHJvbmc+UmV0YWluIHRoZSBvcmlnaW5hbCBhbW91bnQgYW5kIHBheW1lbnQgb24gb3BlbmluZy4gUmVseSBvbiB5b3VyIGNpdHnigJlzIG90aGVyIGFkdmFudGFnZXMuPC9wPgo8cD48c3Ryb25nPlJhaXNlIHRoZSBvZmZlciB0byAkMzUwIG1pbGxpb248L3N0cm9uZz5FeGNlZWQgdGhlIHJpdmFs4oCZcyBncmFudC4gUGF5IHdoZW4gdGhlIGhlYWRxdWFydGVycyBvcGVucywgd2l0aCBubyBoaXJpbmcgcmVxdWlyZW1lbnQuPC9wPgo8cD48c3Ryb25nPktlZXAgdGhlIGNhcCBhbmQgcmVxdWlyZSB2ZXJpZmllZCBoaXJpbmc8L3N0cm9uZz5SZXRhaW4geW91ciBvcGVuaW5nIGNhcC4gUGF5IGluIHByb3BvcnRpb24gdG8gcXVhbGlmeWluZyBqb2JzIGF0IHRoZSBmaXZlLXllYXIgY2hlY2suPC9wPgo8cD48c3Ryb25nPldpdGhkcmF3IHlvdXIgYmlkPC9zdHJvbmc+RW5kIHRoaXMgc3Vic2lkeSBuZWdvdGlhdGlvbiBhbmQgbWFrZSBubyBncmFudCBjb21taXRtZW50LjwvcD4KPC9kaXY+PC9zZWN0aW9uPjxzZWN0aW9uPjxoMiBpZD0icmVzdWx0LXRpdGxlIiB0YWJpbmRleD0iLTEiPkZpdmUgWWVhcnMgTGF0ZXI8L2gyPgoKCgoKCjxwPkluIGV2ZXJ5IGFjY2VwdGVkIGxvY2FsIGRlYWwgdGhlIGNvbXBhbnkgY3JlYXRlcyAxLDAwMCBqb2JzLiBVbmNvbmRpdGlvbmFsIGdyYW50cyBwYXkgdGhlIGZ1bGwgYW1vdW50IG9uIG9wZW5pbmcsIHdoaWxlIGFjY2VwdGVkIGNvbmRpdGlvbmFsIGdyYW50cyBwYXkgaGFsZiB0aGUgY2FwIGF0IHRoZSBmaXZlLXllYXIgY2hlY2suIElmIHRoZSBjb21wYW55IGNob29zZXMgdGhlIHJpdmFsLCB0aGlzIHByb2plY3QgY3JlYXRlcyB6ZXJvIGpvYnMgaW4geW91ciBjaXR5IGFuZCB5b3VyIGNpdHkgcGF5cyBubyBncmFudC4gVGhlIHNpbXVsYXRpb24gZXhjbHVkZXMgb3RoZXIgcHVibGljIGNvc3RzLCB0YXggcmV2ZW51ZSwgam9iIHF1YWxpdHkgYW5kIGxhdGVyIGhpcmluZy4gSXQgdGhlcmVmb3JlIGRvZXMgbm90IGNhbGN1bGF0ZSB3aGV0aGVyIGFueSBkZWFsIGhhcyBhIHBvc2l0aXZlIG5ldCBwdWJsaWMgYmVuZWZpdC48L3A+PC9zZWN0aW9uPjxzZWN0aW9uPjxoMiBpZD0iY29tcGFyZS10aXRsZSIgdGFiaW5kZXg9Ii0xIj5Db21wYXJlIENob2ljZXMgaW4gdGhlIFNhbWUgQ2FzZTwvaDI+CjxwIGlkPSJjb21wYXJpc29uLWNhc2UiPjwvcD48cD5Pbmx5IHlvdXIgb3BlbmluZyBhbW91bnQgYW5kIGZpbmFsIGRlY2lzaW9uIGNoYW5nZSBpbiB0aGlzIHRhYmxlLiBUaGUgY29tcGFueeKAmXMgYXNzZXNzbWVudCBhbmQgaGlyaW5nIHBsYW4gc3RheSBmaXhlZC4gVGhpcyBjb21wYXJpc29uIHJldmVhbHMgdGhlIGNhc2UsIHNvIHJlcGxheWluZyBpdCBpcyBhIGNoYW5jZSB0byB0ZXN0IHdoYXQgeW91IGhhdmUgbGVhcm5lZC48L3A+Cgo8cCBjbGFzcz0ic2NlbmUtbm90ZSI+VGhlICQzNTAgbWlsbGlvbiBhbmQgd2l0aGRyYXdhbCBvcHRpb25zIHByb2R1Y2UgdGhlIHNhbWUgZmluYWwgdGVybXMgdW5kZXIgZWl0aGVyIG9wZW5pbmcgb2ZmZXIuIEtlZXBpbmcgdGhlIG9mZmVyIG9yIGFkZGluZyBhIGhpcmluZyBjb25kaXRpb24gY2FuIHByb2R1Y2UgZGlmZmVyZW50IG91dGNvbWVzLjwvcD4KPHRhYmxlPjx0aGVhZD48dHI+PHRoPkNhc2U8L3RoPjx0aD5PcGVuaW5nIGdyYW50ICgkbSk8L3RoPjx0aD5GaW5hbCBkZWNpc2lvbjwvdGg+PHRoPkxvY2F0aW9uPC90aD48dGg+TG9jYWwgam9iczwvdGg+PHRoPkxvY2FsIHBheW1lbnQgKCRtKTwvdGg+PC90cj48L3RoZWFkPjx0Ym9keT48dHI+PHRkPkE8L3RkPjx0ZD4xMDA8L3RkPjx0ZD5rZWVwPC90ZD48dGQ+WW91ciBjaXR5PC90ZD48dGQ+MTAwMDwvdGQ+PHRkPjEwMDwvdGQ+PC90cj48dHI+PHRkPkE8L3RkPjx0ZD4xMDA8L3RkPjx0ZD5yYWlzZTwvdGQ+PHRkPllvdXIgY2l0eTwvdGQ+PHRkPjEwMDA8L3RkPjx0ZD4zNTA8L3RkPjwvdHI+PHRyPjx0ZD5BPC90ZD48dGQ+MTAwPC90ZD48dGQ+Y29uZGl0aW9uYWw8L3RkPjx0ZD5SaXZhbCBjaXR5PC90ZD48dGQ+MDwvdGQ+PHRkPjA8L3RkPjwvdHI+PHRyPjx0ZD5BPC90ZD48dGQ+MTAwPC90ZD48dGQ+d2l0aGRyYXc8L3RkPjx0ZD5SaXZhbCBjaXR5PC90ZD48dGQ+MDwvdGQ+PHRkPjA8L3RkPjwvdHI+PHRyPjx0ZD5BPC90ZD48dGQ+MjUwPC90ZD48dGQ+a2VlcDwvdGQ+PHRkPllvdXIgY2l0eTwvdGQ+PHRkPjEwMDA8L3RkPjx0ZD4yNTA8L3RkPjwvdHI+PHRyPjx0ZD5BPC90ZD48dGQ+MjUwPC90ZD48dGQ+cmFpc2U8L3RkPjx0ZD5Zb3VyIGNpdHk8L3RkPjx0ZD4xMDAwPC90ZD48dGQ+MzUwPC90ZD48L3RyPjx0cj48dGQ+QTwvdGQ+PHRkPjI1MDwvdGQ+PHRkPmNvbmRpdGlvbmFsPC90ZD48dGQ+WW91ciBjaXR5PC90ZD48dGQ+MTAwMDwvdGQ+PHRkPjEyNTwvdGQ+PC90cj48dHI+PHRkPkE8L3RkPjx0ZD4yNTA8L3RkPjx0ZD53aXRoZHJhdzwvdGQ+PHRkPlJpdmFsIGNpdHk8L3RkPjx0ZD4wPC90ZD48dGQ+MDwvdGQ+PC90cj48dHI+PHRkPkI8L3RkPjx0ZD4xMDA8L3RkPjx0ZD5rZWVwPC90ZD48dGQ+Uml2YWwgY2l0eTwvdGQ+PHRkPjA8L3RkPjx0ZD4wPC90ZD48L3RyPjx0cj48dGQ+QjwvdGQ+PHRkPjEwMDwvdGQ+PHRkPnJhaXNlPC90ZD48dGQ+WW91ciBjaXR5PC90ZD48dGQ+MTAwMDwvdGQ+PHRkPjM1MDwvdGQ+PC90cj48dHI+PHRkPkI8L3RkPjx0ZD4xMDA8L3RkPjx0ZD5jb25kaXRpb25hbDwvdGQ+PHRkPlJpdmFsIGNpdHk8L3RkPjx0ZD4wPC90ZD48dGQ+MDwvdGQ+PC90cj48dHI+PHRkPkI8L3RkPjx0ZD4xMDA8L3RkPjx0ZD53aXRoZHJhdzwvdGQ+PHRkPlJpdmFsIGNpdHk8L3RkPjx0ZD4wPC90ZD48dGQ+MDwvdGQ+PC90cj48dHI+PHRkPkI8L3RkPjx0ZD4yNTA8L3RkPjx0ZD5rZWVwPC90ZD48dGQ+WW91ciBjaXR5PC90ZD48dGQ+MTAwMDwvdGQ+PHRkPjI1MDwvdGQ+PC90cj48dHI+PHRkPkI8L3RkPjx0ZD4yNTA8L3RkPjx0ZD5yYWlzZTwvdGQ+PHRkPllvdXIgY2l0eTwvdGQ+PHRkPjEwMDA8L3RkPjx0ZD4zNTA8L3RkPjwvdHI+PHRyPjx0ZD5CPC90ZD48dGQ+MjUwPC90ZD48dGQ+Y29uZGl0aW9uYWw8L3RkPjx0ZD5SaXZhbCBjaXR5PC90ZD48dGQ+MDwvdGQ+PHRkPjA8L3RkPjwvdHI+PHRyPjx0ZD5CPC90ZD48dGQ+MjUwPC90ZD48dGQ+d2l0aGRyYXc8L3RkPjx0ZD5SaXZhbCBjaXR5PC90ZD48dGQ+MDwvdGQ+PHRkPjA8L3RkPjwvdHI+PC90Ym9keT48L3RhYmxlPjwvc2VjdGlvbj48c2VjdGlvbj48aDIgaWQ9ImJvbnVzLXRpdGxlIiB0YWJpbmRleD0iLTEiPkluc2lkZSB0aGUgQ29tcGFueTwvaDI+CjxwPlJldHVybiB0byB0aGUgbW9tZW50IGJlZm9yZSB0aGUgY29tcGFueSBhc2tlZCBmb3IgYSByZXZpc2VkIG9mZmVyLiBZb3UgYXJlIG5vdyBvbiBpdHMgc2l0ZSBzZWxlY3Rpb24gdGVhbSwgd2l0aCBhY2Nlc3MgdG8gdGhlIGludGVybmFsIGZpbGUuPC9wPgo8cCBjbGFzcz0icGFuZWwiIGlkPSJjb21wYW55LWFzc2Vzc21lbnQiPkNhc2UgQSBnaXZlcyB0aGUgbG9jYWwgc2l0ZSBhICQyMDAgbWlsbGlvbiBmaXZlLXllYXIgb3BlcmF0aW5nIGFkdmFudGFnZS4gQ2FzZSBCIGdpdmVzIGl0IGEgJDc1IG1pbGxpb24gYWR2YW50YWdlLiBUaGUgY29tcGFueeKAmXMgaW50ZXJuYWwgd29ya2luZyBwbGFuIGlzIDEsMDAwIGpvYnMuIFRoZSByaXZhbCBvZmZlcnMgYSAkMzAwIG1pbGxpb24gZ3JhbnQgcGF5YWJsZSBvbiBvcGVuaW5nLiBUaGUgY29tcGFueSBhZGRzIHRoZSBleHBlY3RlZCBsb2NhbCBwYXltZW50IHRvIHRoZSBsb2NhbCBvcGVyYXRpbmcgYWR2YW50YWdlIGFuZCBjaG9vc2VzIHlvdXIgY2l0eSBpZiB0aGF0IHRvdGFsIGlzIGF0IGxlYXN0ICQzMDAgbWlsbGlvbi4gU2hhcmluZyB0aGUgaW50ZXJuYWwgYXNzZXNzbWVudCBhbGxvd3MgdGhlIGdvdmVybm1lbnQgdG8gbWFrZSB0aGlzIGNvbXBhcmlzb24uIEtlZXBpbmcgdGhlIGZpZ3VyZXMgcHJpdmF0ZSBwcmVzZXJ2ZXMgdGhlIGluZm9ybWF0aW9uIGdhcCB3aGlsZSB0aGUgY29tcGFueSByZXF1ZXN0cyBhIGxhcmdlciBncmFudC4gVGhlIGNvbXBhcmlzb24gdGFibGUgYWJvdmUgcmVjb3JkcyB0aGUgcmVzdWx0aW5nIHNpdGUgY2hvaWNlcy48L3A+CjxwPlRoZSByaXZhbCBvZmZlcnMgJDMwMCBtaWxsaW9uIHdpdGggcGF5bWVudCBvbiBvcGVuaW5nLiBZb3VyIHRlYW0gY29tcGFyZXMgdGhhdCBncmFudCB3aXRoIHRoZSBvcGVyYXRpbmcgYWR2YW50YWdlIGFuZCBleHBlY3RlZCBncmFudCBpbiB5b3VyIGNpdHkuIElmIHRoZSB0b3RhbHMgYXJlIGVxdWFsLCBpdCBjaG9vc2VzIHlvdXIgY2l0eS4gVGhlc2UgYXJlIHRoZSBnYW1l4oCZcyBkZWNpc2lvbiBydWxlcy48L3A+CjxwPldoYXQgZG8geW91IHRlbGwgeW91ciBjaXR54oCZcyBvZmZpY2lhbHM/PC9wPjxkaXYgY2xhc3M9ImNob2ljZXMiPjxwPjxzdHJvbmc+U2hhcmUgdGhlIGludGVybmFsIGFzc2Vzc21lbnQ8L3N0cm9uZz5EaXNjbG9zZSB0aGUgb3BlcmF0aW5nIGFkdmFudGFnZSBhbmQgdGhlIDEsMDAwLWpvYiB3b3JraW5nIHBsYW4sIHNvIG9mZmljaWFscyBjYW4ganVkZ2Ugd2hhdCB0aGVpciBvZmZlciBidXlzLjwvcD48cD48c3Ryb25nPkFzayBmb3IgbW9yZSB1c2luZyB0aGUgcml2YWzigJlzIG9mZmVyPC9zdHJvbmc+S2VlcCB0aGUgaW50ZXJuYWwgZmlndXJlcyBwcml2YXRlLiBUZWxsIG9mZmljaWFscyBhYm91dCB0aGUgJDMwMCBtaWxsaW9uIGdyYW50IGFuZCByZXF1ZXN0IGFuIGluY3JlYXNlLjwvcD48L2Rpdj4KPGRpdiBjbGFzcz0icGFuZWwiIGlkPSJjb21wYW55LWZlZWRiYWNrIiB0YWJpbmRleD0iLTEiPjwvZGl2PgoKPC9zZWN0aW9uPjxzZWN0aW9uPgo8aDIgaWQ9ImNhc2UtdGl0bGUiIHRhYmluZGV4PSItMSI+V2hhdCBBY3R1YWxseSBIYXBwZW5lZD88L2gyPgo8cD5JbiBKYW51YXJ5IDIwMTgsIEFtYXpvbiBzYWlkIGl0IGhhZCByZXZpZXdlZCA8c3Ryb25nPjIzOCBwcm9wb3NhbHM8L3N0cm9uZz4gZnJvbSBhY3Jvc3MgdGhlIFVuaXRlZCBTdGF0ZXMsIENhbmFkYSwgYW5kIE1leGljbyBhbmQgaW52aXRlZCAyMCBtZXRyb3BvbGl0YW4gYXJlYXMgdG8gdGhlIG5leHQgc3RhZ2Ugb2YgaXRzIGhlYWRxdWFydGVycyBzZWFyY2guIEluIE5vdmVtYmVyLCBpdCBhbm5vdW5jZWQgdHdvIGxvY2F0aW9uczogPHN0cm9uZz5Mb25nIElzbGFuZCBDaXR5IGluIFF1ZWVucywgTmV3IFlvcmssIGFuZCBBcmxpbmd0b24sIFZpcmdpbmlhPC9zdHJvbmc+LiBBbWF6b24gcHJvamVjdGVkIG1vcmUgdGhhbiA1MCwwMDAgam9icyBhY3Jvc3MgdGhlIHR3byBzaXRlcy4gQXQgdGhhdCBwb2ludCwgdGhlIGFubm91bmNlbWVudCB0b2xkIHRoZSBwdWJsaWMgd2hlcmUgQW1hem9uIHBsYW5uZWQgdG8gYnVpbGQgYW5kIHdoYXQgaXQgZXhwZWN0ZWQgdGhlIHByb2plY3RzIHRvIGRlbGl2ZXIuIDxhIGhyZWY9IiNjaXRlLXNob3J0bGlzdCI+QW1hem9u4oCZcyBzaG9ydGxpc3Q8L2E+IMK3IDxhIGhyZWY9IiNjaXRlLXNlbGVjdGlvbiI+TG9jYXRpb24gYW5ub3VuY2VtZW50PC9hPjwvcD4KPGgzPkxvbmcgSXNsYW5kIENpdHkgwrcgU2VsZWN0ZWQsIFRoZW4gQ2FuY2VsbGVkPC9oMz4KPHA+TmV3IFlvcmvigJlzIG1lbW9yYW5kdW0gb2YgdW5kZXJzdGFuZGluZyBvdXRsaW5lZCBhIGhlYWRxdWFydGVycyBwcm9qZWN0IHdpdGggPHN0cm9uZz4yNSwwMDAgbmV3IGpvYnMgd2l0aGluIHRlbiB5ZWFyczwvc3Ryb25nPi4gQW1hem9u4oCZcyBhbm5vdW5jZW1lbnQgZGVzY3JpYmVkIGEgcHJvcG9zZWQgcGFja2FnZSBvZiB1cCB0byA8c3Ryb25nPiQxLjIgYmlsbGlvbiBpbiByZWZ1bmRhYmxlIHN0YXRlIHRheCBjcmVkaXRzPC9zdHJvbmc+IGFuZCBhIDxzdHJvbmc+JDMyNSBtaWxsaW9uIHN0YXRlIGdyYW50PC9zdHJvbmc+IHRpZWQgdG8gYnVpbGRpbmcgb2NjdXBhbmN5LiBUaGUgdGF4IGNyZWRpdHMgZGVwZW5kZWQgb24gcGF5cm9sbCBmcm9tIHF1YWxpZnlpbmcgbmV3IGpvYnMuIFRoZXNlIGZpZ3VyZXMgZGVzY3JpYmUgcG90ZW50aWFsIGluY2VudGl2ZXMgdW5kZXIgdGhlIGFubm91bmNlZCBwbGFuLiA8YSBocmVmPSIjY2l0ZS1ueSI+TmV3IFlvcmsgbWVtb3JhbmR1bTwvYT4gwrcgPGEgaHJlZj0iI2NpdGUtc2VsZWN0aW9uIj5Mb2NhdGlvbiBhbm5vdW5jZW1lbnQ8L2E+PC9wPgo8cD5JbiBGZWJydWFyeSAyMDE5LCBBbWF6b24gY2FuY2VsbGVkIHRoZSBwbGFubmVkIFF1ZWVucyBoZWFkcXVhcnRlcnMuIFRoZSBjb21wYW55IGNpdGVkIG9wcG9zaXRpb24gZnJvbSBzb21lIHN0YXRlIGFuZCBsb2NhbCBwb2xpdGljaWFucyBhbmQgc2FpZCBpdCBuZWVkZWQgd29ya2luZyByZWxhdGlvbnNoaXBzIHdpdGggb2ZmaWNpYWxzIHdobyB3b3VsZCBzdXBwb3J0IHRoZSBwcm9qZWN0IG92ZXIgdGltZS4gVGhhdCBzdGF0ZW1lbnQgZ2l2ZXMgQW1hem9u4oCZcyBhY2NvdW50IG9mIHRoZSBkZWNpc2lvbi4gVGhlIGNhbmNlbGxhdGlvbiBzaG93cyB0aGF0IHNlY3VyaW5nIGFuIGFubm91bmNlbWVudCBkaWQgbm90IHNldHRsZSB3aGV0aGVyIHRoZSBwcm9qZWN0IGNvdWxkIGdvIGFoZWFkLiBJdCBhbHNvIG1ha2VzIHRoZSBhbm5vdW5jZWQgc3Vic2lkeSBmaWd1cmVzIGEgcG9vciBtZWFzdXJlIG9mIHdoYXQgdGhlIHB1YmxpYyBhY3R1YWxseSBwYWlkIGZvciB0aGUgcGxhbm5lZCBoZWFkcXVhcnRlcnMuIDxhIGhyZWY9IiNjaXRlLXdpdGhkcmF3YWwiPkFtYXpvbuKAmXMgd2l0aGRyYXdhbCBzdGF0ZW1lbnQ8L2E+PC9wPgo8aDM+QXJsaW5ndG9uIMK3IFNlbGVjdGVkLCBXaXRoIFBheW1lbnRzIFRpZWQgdG8gQ29uZGl0aW9uczwvaDM+CjxwPkFybGluZ3RvbiBwcm9jZWVkZWQgd2l0aCBIUTIuIEl0cyBjb3VudHkgZ3JhbnQgdGllZCBwYXltZW50cyB0byB0d28gY29uZGl0aW9uczogQW1hem9uIGhhZCB0byBtZWV0IG9mZmljZSBvY2N1cGFuY3kgdGFyZ2V0cywgYW5kIHRoZSBjb3VudHnigJlzIDxzdHJvbmc+dHJhbnNpZW50IG9jY3VwYW5jeSB0YXg8L3N0cm9uZz4gcmV2ZW51ZSwgbGFyZ2VseSBhc3NvY2lhdGVkIHdpdGggaG90ZWwgc3RheXMsIGhhZCB0byBleGNlZWQgYSBzcGVjaWZpZWQgYmFzZWxpbmUuIFZpcmdpbmlh4oCZcyBzdGF0ZSB3b3JrZm9yY2UgZ3JhbnQgd2FzIHNlcGFyYXRlIGFuZCB1c2VkIGpvYiBjcmVhdGlvbiBhcyBhIGJhc2lzIGZvciBwYXltZW50LiBUaGUgdHdvIGxldmVscyBvZiBnb3Zlcm5tZW50IHVzZWQgZGlmZmVyZW50IG1lYXN1cmVzIG9mIHdoYXQgdGhlIGludmVzdG1lbnQgd2FzIGV4cGVjdGVkIHRvIGRlbGl2ZXIuIDxhIGhyZWY9IiNjaXRlLXNlbGVjdGlvbiI+TG9jYXRpb24gYW5ub3VuY2VtZW50PC9hPiDCtyA8YSBocmVmPSIjY2l0ZS1hcmxpbmd0b24iPkFybGluZ3RvbiBDb3VudHkgc3RhdGVtZW50PC9hPjwvcD4KPHA+QXJsaW5ndG9uIENvdW50eSByZXBvcnRlZCB0aGF0IHRoZSBmaXJzdCBwYXltZW50IHVuZGVyIGl0cyBob3RlbCB0YXggZ3JhbnQgY2FtZSBpbiBmaXNjYWwgeWVhciAyMDI1LiBGb3IgZmlzY2FsIHllYXIgMjAyNiwgQW1hem9uIG1ldCBpdHMgb2NjdXBhbmN5IHRhcmdldCwgYnV0IGhvdGVsIHRheCByZXZlbnVlIGZlbGwgYmVsb3cgdGhlIGJhc2VsaW5lLCBzbyA8c3Ryb25nPm5vIHBheW1lbnQgd2FzIGR1ZSB1bmRlciB0aGF0IGdyYW50IGZvciB0aGF0IHBlcmlvZDwvc3Ryb25nPi4gQSBjb21wYW55IGNhbiBvcGVuIGl0cyBvZmZpY2VzIGFuZCBmdWxmaWxsIG9uZSBjb25kaXRpb24gd2hpbGUgYSBzZXBhcmF0ZSBjb25kaXRpb24gc3RpbGwgZGV0ZXJtaW5lcyB3aGV0aGVyIHB1YmxpYyBtb25leSBjaGFuZ2VzIGhhbmRzLiA8YSBocmVmPSIjY2l0ZS1hcmxpbmd0b24iPkFybGluZ3RvbiBDb3VudHkgc3RhdGVtZW50PC9hPjwvcD4KPHAgY2xhc3M9InBhbmVsIj5XaGVuIHlvdSBjb21wYXJlIHRoZSBsb2NhdGlvbnMsIGtlZXAgdHJhY2sgb2YgdGhyZWUgZXZlbnRzLiA8c3Ryb25nPlNlbGVjdGlvbjwvc3Ryb25nPiBpcyB3aGVyZSB0aGUgY29tcGFueSBwbGFucyB0byBsb2NhdGUuIDxzdHJvbmc+Q29tbWl0bWVudDwvc3Ryb25nPiBpcyB3aGF0IHRoZSBwdWJsaWMgcGFydGllcyBhZ3JlZSB0byBtYWtlIGF2YWlsYWJsZSB1bmRlciBzcGVjaWZpZWQgdGVybXMuIDxzdHJvbmc+UGF5bWVudDwvc3Ryb25nPiBpcyB3aGF0IHRoZSBjb21wYW55IGFjdHVhbGx5IHJlY2VpdmVzLiBBIGhlYWRsaW5lIGFib3V0IHdobyB3b24gdGVsbHMgeW91IGFib3V0IHRoZSBmaXJzdCBldmVudC4gVG8gdW5kZXJzdGFuZCB0aGUgY29zdHMgYW5kIGJlbmVmaXRzLCB5b3UgbmVlZCBldmlkZW5jZSBhYm91dCBhbGwgdGhyZWUuPC9wPgoKPC9zZWN0aW9uPjxzZWN0aW9uPgo8aDIgaWQ9InJlc2VhcmNoLXRpdGxlIiB0YWJpbmRleD0iLTEiPldobyBIYWQgdGhlIFBvd2VyIHRvIFNldCB0aGUgVGVybXM/PC9oMj48cD5BIGNvbXBhbnkgY2FuIGdhaW4gYmFyZ2FpbmluZyBwb3dlciB3aGVuIHNldmVyYWwgY2l0aWVzIGNvbXBldGUgZm9yIHRoZSBzYW1lIGludmVzdG1lbnQuIE9mZmljaWFscyBtYXkgYWxzbyBnYWluIHBvbGl0aWNhbGx5IGZyb20gbWFraW5nIGFuIG9mZmVyLiBQdWJsaWMgYmVuZWZpdHMgYXJlIHBvc3NpYmxlLCBidXQganVkZ2luZyBhIGRlYWwgcmVxdWlyZXMgZXZpZGVuY2UgYWJvdXQgam9icywgcGF5bWVudHMsIGFuZCB3aGF0IHRoZSBjb21wYW55IHdvdWxkIGhhdmUgZG9uZSB3aXRob3V0IHRoZSBzdWJzaWR5LiBUaGlzIGlzIHRoZSBjb25uZWN0aW9uIGJldHdlZW4gd2VhbHRoIGFuZCBwb3dlciBleGFtaW5lZCBoZXJlLiA8YSBocmVmPSIjY2l0ZS1zbGF0dGVyeSI+U2xhdHRlcnk8L2E+IMK3IDxhIGhyZWY9IiNjaXRlLWplbnNlbiI+SmVuc2VuIGV0IGFsLjwvYT4gwrcgPGEgaHJlZj0iI2NpdGUtZ3JlZW5zdG9uZSI+R3JlZW5zdG9uZSBldCBhbC48L2E+PC9wPgo8aDM+VGhlIENvbXBhbnkgSGFkIE90aGVyIFBsYWNlcyB0byBHbzwvaDM+CjxwPlRoZSBzZWNvbmQgcm91bmQgcHV0cyB5b3UgaW4gYSBwb3NpdGlvbiB0aGF0IENhaWxpbiBTbGF0dGVyeSBzdHVkaWVzIGluIGhlciBtb2RlbCBvZiBzdWJzaWR5IGNvbXBldGl0aW9uLiBHb3Zlcm5tZW50cyBvZmZlciBwdWJsaWMgbW9uZXkgdG8gYXR0cmFjdCBhbiBpbnZlc3RtZW50LCBhbmQgdGhlIGNvbXBhbnkgY2FuIGNob29zZSBhbW9uZyBsb2NhdGlvbnMuIElmIHNldmVyYWwgcGxhY2VzIGFyZSB2aWFibGUsIHRoZSBjb21wYW55IGNhbiBwb2ludCB0byBvbmUgb2ZmZXIgd2hpbGUgbmVnb3RpYXRpbmcgd2l0aCBhbm90aGVyLiBFYWNoIGdvdmVybm1lbnQgaGFzIHRvIGRlY2lkZSBob3cgZmFyIGl0IHdpbGwgZ28gd2l0aCBpbmNvbXBsZXRlIGluZm9ybWF0aW9uIGFib3V0IHdoYXQgdGhlIGNvbXBhbnkgd291bGQgYWNjZXB0LiBJbiBTbGF0dGVyeeKAmXMgbW9kZWwsIGNvbXBldGl0aW9uIGNhbiBzaGlmdCB0aGUgZ2FpbnMgZnJvbSB0aGUgZGVhbCB0b3dhcmQgZmlybXMgYXMgZ292ZXJubWVudHMgY29tcGV0ZSBmb3IgdGhlIHNhbWUgaW52ZXN0bWVudC4gPGEgaHJlZj0iI2NpdGUtc2xhdHRlcnkiPlNsYXR0ZXJ5PC9hPjwvcD4KPHA+VGhlIHJpdmFs4oCZcyAkMzAwIG1pbGxpb24gb2ZmZXIgdGVsbHMgeW91IHdoYXQgdGhlIG90aGVyIGNpdHkgaXMgd2lsbGluZyB0byBwYXkuIEl0IGRvZXMgbm90IHRlbGwgeW91IHdoZXRoZXIgdGhlIGNvbXBhbnkgd291bGQgY2hvb3NlIHlvdXIgY2l0eSBmb3IgJDEwMCBtaWxsaW9uLiBJbiB0aGUgc3Ryb25nLWFkdmFudGFnZSBjYXNlLCB0aGF0IHNtYWxsZXIgdW5jb25kaXRpb25hbCBvZmZlciBzZWN1cmVzIHRoZSBoZWFkcXVhcnRlcnMuIEluIHRoZSBjbG9zZS1hbHRlcm5hdGl2ZXMgY2FzZSwgaXQgbG9zZXMuIFRoZXNlIGludmVudGVkIGNhc2VzIGlsbHVzdHJhdGUgYWRkaXRpb25hbGl0eS4gRGlkIHRoZSBleHRyYSBwdWJsaWMgbW9uZXkgY2hhbmdlIHRoZSBpbnZlc3RtZW50IGRlY2lzaW9uPyA8YSBocmVmPSIjY2l0ZS1zbGF0dGVyeSI+U2xhdHRlcnk8L2E+PC9wPgo8aDM+T2ZmaWNpYWxzIEhhZCBUaGVpciBPd24gUmVhc29ucyB0byBCaWQ8L2gzPgo8cD5OYXRoYW4gSmVuc2VuIGFuZCBoaXMgY29hdXRob3JzIHVzZSBhIHN1cnZleSBleHBlcmltZW50IHRvIHN0dWR5IGhvdyB2b3RlcnMgYXNzaWduIDxzdHJvbmc+Y3JlZGl0IGFuZCBibGFtZTwvc3Ryb25nPiB0byBnb3Zlcm5vcnMgaW4gYSBjb21wZXRpdGlvbiBmb3IgaW52ZXN0bWVudC4gVGhlaXIgZmluZGluZ3Mgc3VnZ2VzdCB0aGF0IG9mZmVyaW5nIGluY2VudGl2ZXMgY2FuIGhlbHAgYW4gb2ZmaWNpYWwgdGFrZSBjcmVkaXQgd2hlbiBhbiBpbnZlc3RtZW50IGFycml2ZXMgYW5kIHJlZHVjZSB0aGUgcG9saXRpY2FsIGZhbGxvdXQgd2hlbiBpdCBnb2VzIGVsc2V3aGVyZS4gVGhhdCBjcmVhdGVzIGEgcmVhc29uIHRvIGJpZCBldmVuIHdoZW4gdGhlIGZpc2NhbCBtZXJpdHMgb2YgYSBkZWFsIGFyZSB1bmNlcnRhaW4uIEluIHRoZSBnYW1lLCB0aGUgb2ZmaWNpYWwgY2FuIGFubm91bmNlIHRoZSBpbnZlc3RtZW50IGJlZm9yZSBrbm93aW5nIHdoZXRoZXIgdGhlIHByb21pc2VkIGpvYnMgd2lsbCBhcnJpdmUuIFRoZSByZXNpZGVudHMgd2hvIHdhbnQgdG8gZXZhbHVhdGUgaXQgbWF5IGhhdmUgdG8gd2FpdCB5ZWFycyBmb3IgaGlyaW5nIGZpZ3VyZXMgYW5kIHBheW1lbnQgcmVjb3Jkcy4gPGEgaHJlZj0iI2NpdGUtamVuc2VuIj5KZW5zZW4gZXQgYWwuPC9hPjwvcD4KPHA+VGhlcmUgYXJlIGFsc28gZWNvbm9taWMgcmVhc29ucyB0byBjb21wZXRlLiBNaWNoYWVsIEdyZWVuc3RvbmUgYW5kIGhpcyBjb2F1dGhvcnMgZm91bmQgdGhhdCBsYXJnZSBtYW51ZmFjdHVyaW5nIHBsYW50cyBjb3VsZCByYWlzZSBwcm9kdWN0aXZpdHkgYXQgZXhpc3RpbmcgcGxhbnRzIG5lYXJieSwgZXNwZWNpYWxseSB3aGVyZSBmaXJtcyBzaGFyZWQgc2ltaWxhciBsYWJvciBvciB0ZWNobm9sb2d5LiBUaGVpciBldmlkZW5jZSBjb25jZXJucyBtYW51ZmFjdHVyaW5nLCBzbyBhbiBIUTIgYW5hbHlzaXMgd291bGQgaGF2ZSB0byBsb29rIHNlcGFyYXRlbHkgZm9yIGJlbmVmaXRzIHRvIHN1cnJvdW5kaW5nIGJ1c2luZXNzZXMuIEl0IGRvZXMgaGVscCBleHBsYWluIHdoeSBhbiBvZmZpY2lhbCBtaWdodCB0aGluayBhYm91dCBzdXBwbGllcnMsIHdvcmtlcnMsIGFuZCBvdGhlciBlbXBsb3llcnMgd2hlbiBkZWNpZGluZyB3aGV0aGVyIHRvIGJpZC4gU2xhdHRlcnnigJlzIGFuYWx5c2lzIHRoZW4gYXNrcyBob3cgbXVjaCBvZiBhbnkgZXhwZWN0ZWQgZ2FpbiBsb2NhbCBnb3Zlcm5tZW50cyBjYW4gcmV0YWluIHdoZW4gdGhleSBjb21wZXRlIGZvciBpdC4gPGEgaHJlZj0iI2NpdGUtZ3JlZW5zdG9uZSI+R3JlZW5zdG9uZSBldCBhbC48L2E+IMK3IDxhIGhyZWY9IiNjaXRlLXNsYXR0ZXJ5Ij5TbGF0dGVyeTwvYT48L3A+CjxoMz5QdWJsaWMgR2FpbnMgSGF2ZSB0byBCZSBNZWFzdXJlZCBPdmVyIFRpbWU8L2gzPgo8cD5QYXRyaWNrIEtsaW5lIGFuZCBFbnJpY28gTW9yZXR0aeKAmXMgc3R1ZHkgb2YgdGhlIDxzdHJvbmc+VGVubmVzc2VlIFZhbGxleSBBdXRob3JpdHk8L3N0cm9uZz4gb2ZmZXJzIGEgaGlzdG9yaWNhbCBjb21wYXJpc29uLiBJbiB0aGF0IHJlZ2lvbmFsIGRldmVsb3BtZW50IHByb2dyYW0sIG1hbnVmYWN0dXJpbmcgZW1wbG95bWVudCBnYWlucyBjb250aW51ZWQgYWZ0ZXIgZmVkZXJhbCB0cmFuc2ZlcnMgZW5kZWQsIHdoaWxlIHRoZSBpbml0aWFsIGdhaW5zIGluIGFncmljdWx0dXJhbCBlbXBsb3ltZW50IGV2ZW50dWFsbHkgcmV2ZXJzZWQuIEEgaGVhZHF1YXJ0ZXJzIGRlYWwgb3BlcmF0ZXMgb24gYSBkaWZmZXJlbnQgc2NhbGUsIGJ1dCB0aGUgY29tcGFyaXNvbiBnaXZlcyB1cyBhIHdheSB0byBldmFsdWF0ZSBpdHMgcHJvbWlzZXMuIElmIGEgY2l0eSBleHBlY3RzIGEgc3Vic2lkeSB0byBjcmVhdGUgbGFzdGluZyBnYWlucywgaXQgc2hvdWxkIGlkZW50aWZ5IHdoYXQgY291bGQgcGVyc2lzdCB3aGVuIHRoZSBwYXltZW50cyBlbmQsIHN1Y2ggYXMgc3RhYmxlIGVtcGxveW1lbnQgb3IgYmVuZWZpdHMgdG8gb3RoZXIgbG9jYWwgZmlybXMuIDxhIGhyZWY9IiNjaXRlLWtsaW5lIj5LbGluZSBhbmQgTW9yZXR0aTwvYT48L3A+CjxwPkluIDE5NDMsIE1pY2hhxYIgS2FsZWNraSBhcmd1ZWQgdGhhdCB3aGVuIGVtcGxveW1lbnQgZGVwZW5kcyBoZWF2aWx5IG9uIHByaXZhdGUgaW52ZXN0bWVudCwgYnVzaW5lc3MgZGVjaXNpb25zIGNhbiBpbmRpcmVjdGx5IGluZmx1ZW5jZSBwdWJsaWMgcG9saWN5LiBIUTIgcHV0cyB0aGF0IGlkZWEgYXQgdGhlIHNjYWxlIG9mIGEgcGxhY2UgY29tcGV0aW5nIGZvciBhIGhlYWRxdWFydGVycy4gQSBmaXJtIGNvbnRyb2xzIHdoZXJlIGl0IGludmVzdHMuIFB1YmxpYyBvZmZpY2lhbHMgY29udHJvbCB3aGF0IHRoZXkgb2ZmZXIgYW5kIHdoaWNoIHRlcm1zIHRoZXkgYXR0YWNoLiBSZXNpZGVudHMgY2FuIGFzayBvZmZpY2lhbHMgdG8gZGVmZW5kIHRob3NlIHRlcm1zIGFuZCBzaG93IHdoYXQgdGhlIGNvbXBhbnkgZGVsaXZlcmVkLiBUaGUgYWdyZWVtZW50IG1hdHRlcnMgYmVjYXVzZSBpdCBkZXRlcm1pbmVzIHdob3NlIHByb21pc2VzIGFyZSBtZWFzdXJhYmxlIGFuZCB3aG8gYmVhcnMgdGhlIGNvc3QgaWYgZXhwZWN0YXRpb25zIHByb3ZlIHdyb25nLiA8YSBocmVmPSIjY2l0ZS1rYWxlY2tpIj5LYWxlY2tpPC9hPjwvcD4KPGgzPkFib3V0IHRoZSBzaW11bGF0aW9uPC9oMz48cD5BbGwgZ2FtZSBhbW91bnRzLCBvcGVyYXRpbmcgYWR2YW50YWdlcywgaGlyaW5nIHBsYW5zLCBhbmQgb3V0Y29tZXMgYXJlIGZpY3Rpb25hbC4gQSBuZXcgY2FzZSByYW5kb21seSBzZWxlY3RzIGFuIG9wZXJhdGluZyBhZHZhbnRhZ2Ugb2YgJDIwMCBtaWxsaW9uIG9yICQ3NSBtaWxsaW9uIG92ZXIgZml2ZSB5ZWFycy4gVGhlIGNvbXBhbnkgZXhwZWN0cyAxLDAwMCBqb2JzIGFnYWluc3QgYSBwdWJsaWMgcHJvamVjdGlvbiBvZiB1cCB0byAyLDAwMC4gSXQgdmFsdWVzIGEgY29uZGl0aW9uYWwgZ3JhbnQgYXQgaGFsZiBpdHMgY2FwLiBJdCBjaG9vc2VzIHRoZSBsb2NhbCBzaXRlIHdoZW4gdGhpcyBleHBlY3RlZCBwYXltZW50IHBsdXMgaXRzIG9wZXJhdGluZyBhZHZhbnRhZ2UgcmVhY2hlcyB0aGUgcml2YWzigJlzICQzMDAgbWlsbGlvbiBncmFudCwgd2l0aCB0aWVzIGdvaW5nIHRvIHRoZSBsb2NhbCBzaXRlLiBUaGUgYWR2YW50YWdlIGlzIG5ldCBvZiB0aGUgcml2YWzigJlzIGxvd2VyIHByZW1pc2VzIGNvc3RzLiBSZXBsYXkga2VlcHMgdGhlIGNhc2UgZml4ZWQuIEEgbmV3IGNhc2UgZHJhd3MgYWdhaW4gYW5kIG1heSBkcmF3IHRoZSBzYW1lIGNhc2UuIFRoZXNlIG51bWVyaWNhbCBhc3N1bXB0aW9ucyBoYXZlIG5vdCBiZWVuIGVzdGltYXRlZCBmcm9tIEhRMiBldmlkZW5jZS4gU2xhdHRlcnkgYW5kIEplbnNlbiBpbmZvcm0gdGhlIGJhcmdhaW5pbmcgYW5kIHBvbGl0aWNhbCBxdWVzdGlvbnMsIHdoaWxlIEFybGluZ3RvbiBzdXBwbGllcyBhIHJlYWwgZXhhbXBsZSBvZiBjb25kaXRpb25hbCBwYXltZW50LiA8YSBocmVmPSIjY2l0ZS1zbGF0dGVyeSI+U2xhdHRlcnk8L2E+IMK3IDxhIGhyZWY9IiNjaXRlLWplbnNlbiI+SmVuc2VuIGV0IGFsLjwvYT4gwrcgPGEgaHJlZj0iI2NpdGUtYXJsaW5ndG9uIj5Bcmxpbmd0b24gQ291bnR5PC9hPjwvcD4KPC9zZWN0aW9uPjxzZWN0aW9uPgo8aDIgaWQ9InJlZmxlY3Rpb24tdGl0bGUiIHRhYmluZGV4PSItMSI+V2hhdCBXb3VsZCBZb3UgQ2hlY2s/PC9oMj4KPHA+SW1hZ2luZSB5b3UgYXJlIGF0IGEgcHVibGljIGhlYXJpbmcgZml2ZSB5ZWFycyBhZnRlciB0aGUgYmlkLiBPbiB0aGUgdGFibGUgYXJlIHRoZSBjb21wYW554oCZcyBvcmlnaW5hbCBwcm9qZWN0aW9uLCB0aGUgc3Vic2lkeSBhZ3JlZW1lbnQsIGEgcmVjb3JkIG9mIHB1YmxpYyBwYXltZW50cywgYW5kIGEgcmVwb3J0IG9uIHRoZSBqb2JzIGFjdHVhbGx5IGNyZWF0ZWQuPC9wPgoKCgo8cD5UaGUgcmVzaWRlbnQgcXVlc3Rpb25zIGNvbmNlcm4gYWN0dWFsIGpvYnMgYW5kIHdobyBnZXRzIHRoZW0sIGFjdHVhbCBncmFudCBwYXltZW50cywgd2hldGhlciB0aGUgaW52ZXN0bWVudCB3b3VsZCBoYXZlIGhhcHBlbmVkIHVuZGVyIGEgc21hbGxlciBzdWJzaWR5LCBhbmQgd2hldGhlciBiZW5lZml0cyBwZXJzaXN0IGFmdGVyIHBheW1lbnRzIGVuZC48L3A+PC9zZWN0aW9uPjxzZWN0aW9uPgo8aDIgaWQ9InNvdXJjZXMtdGl0bGUiIHRhYmluZGV4PSItMSI+V29ya3MgQ2l0ZWQ8L2gyPgo8dWwgY2xhc3M9IndvcmtzLWNpdGVkIj4KPGxpIGlkPSJjaXRlLXNob3J0bGlzdCIgdGFiaW5kZXg9Ii0xIj5BbWF6b24uIOKAnEFtYXpvbiBBbm5vdW5jZXMgQ2FuZGlkYXRlcyBmb3IgSFEyLuKAnSA8ZW0+QW1hem9uIFByZXNzIENlbnRlcjwvZW0+LCAxOCBKYW4uIDIwMTguIDxhIGhyZWY9Imh0dHBzOi8vcHJlc3MuYWJvdXRhbWF6b24uY29tL25ld3MtcmVsZWFzZXMvbmV3cy1yZWxlYXNlLWRldGFpbHMvYW1hem9uLWFubm91bmNlcy1jYW5kaWRhdGVzLWhxMi8iPkFubm91bmNlbWVudDwvYT4uPC9saT4KPGxpIGlkPSJjaXRlLXNlbGVjdGlvbiIgdGFiaW5kZXg9Ii0xIj5BbWF6b24uIOKAnEFtYXpvbiBTZWxlY3RzIE5ldyBZb3JrIENpdHkgYW5kIE5vcnRoZXJuIFZpcmdpbmlhIGZvciBOZXcgSGVhZHF1YXJ0ZXJzLuKAnSA8ZW0+QWJvdXQgQW1hem9uPC9lbT4sIDEzIE5vdi4gMjAxOC4gPGEgaHJlZj0iaHR0cHM6Ly93d3cuYWJvdXRhbWF6b24uY29tL25ld3MvY29tcGFueS1uZXdzL2FtYXpvbi1zZWxlY3RzLW5ldy15b3JrLWNpdHktYW5kLW5vcnRoZXJuLXZpcmdpbmlhLWZvci1uZXctaGVhZHF1YXJ0ZXJzIj5Bbm5vdW5jZW1lbnQ8L2E+LjwvbGk+CjxsaSBpZD0iY2l0ZS13aXRoZHJhd2FsIiB0YWJpbmRleD0iLTEiPkFtYXpvbi4g4oCcVXBkYXRlIG9uIFBsYW5zIGZvciBOZXcgWW9yayBDaXR5IEhlYWRxdWFydGVycy7igJ0gPGVtPkFib3V0IEFtYXpvbjwvZW0+LCAxNCBGZWIuIDIwMTkuIDxhIGhyZWY9Imh0dHBzOi8vd3d3LmFib3V0YW1hem9uLmNvbS9uZXdzL2NvbXBhbnktbmV3cy91cGRhdGUtb24tcGxhbnMtZm9yLW5ldy15b3JrLWNpdHktaGVhZHF1YXJ0ZXJzIj5TdGF0ZW1lbnQ8L2E+LjwvbGk+CjxsaSBpZD0iY2l0ZS1hcmxpbmd0b24iIHRhYmluZGV4PSItMSI+QXJsaW5ndG9uIENvdW50eS4g4oCcQXJsaW5ndG9uIENvdW50eSBTdGF0ZW1lbnQgb24gQW1hem9uIEluY2VudGl2ZXMgZm9yIEZZIDIwMjYu4oCdIDEgU2VwdC4gMjAyNi4gPGEgaHJlZj0iaHR0cHM6Ly93d3cuYXJsaW5ndG9udmEudXMvQWJvdXQtQXJsaW5ndG9uL05ld3Nyb29tL01lZGlhLVJlc291cmNlcy9NZWRpYS1SZXNwb25zZS9Bcmxpbmd0b24tQ291bnR5LVN0YXRlbWVudC1vbi1BbWF6b24tSW5jZW50aXZlcy1mb3ItRlktMjAyNiI+Q291bnR5IHN0YXRlbWVudDwvYT4uPC9saT4KPGxpIGlkPSJjaXRlLW55IiB0YWJpbmRleD0iLTEiPkVtcGlyZSBTdGF0ZSBEZXZlbG9wbWVudCwgZXQgYWwuIDxlbT5Mb25nIElzbGFuZCBDaXR5IERldmVsb3BtZW50IFByb2plY3Q8L2VtPi4gMTIgTm92LiAyMDE4LiA8YSBocmVmPSJodHRwczovL2VzZC5ueS5nb3Yvc2l0ZXMvZGVmYXVsdC9maWxlcy9GaW5hbC1BbWF6b24tTllDLU1PVS5wZGYiPk1lbW9yYW5kdW0gb2YgdW5kZXJzdGFuZGluZzwvYT4uPC9saT4KPGxpIGlkPSJjaXRlLWdyZWVuc3RvbmUiIHRhYmluZGV4PSItMSI+R3JlZW5zdG9uZSwgTWljaGFlbCwgZXQgYWwuIOKAnElkZW50aWZ5aW5nIEFnZ2xvbWVyYXRpb24gU3BpbGxvdmVyczogRXZpZGVuY2UgZnJvbSBXaW5uZXJzIGFuZCBMb3NlcnMgb2YgTGFyZ2UgUGxhbnQgT3BlbmluZ3Mu4oCdIDxlbT5Kb3VybmFsIG9mIFBvbGl0aWNhbCBFY29ub215PC9lbT4sIHZvbC4gMTE4LCBuby4gMywgMjAxMCwgcHAuIDUzNuKAkzk4LiA8YSBocmVmPSJodHRwczovL2RvaS5vcmcvMTAuMTA4Ni82NTM3MTQiPmh0dHBzOi8vZG9pLm9yZy8xMC4xMDg2LzY1MzcxNDwvYT4uPC9saT4KPGxpIGlkPSJjaXRlLWplbnNlbiIgdGFiaW5kZXg9Ii0xIj5KZW5zZW4sIE5hdGhhbiBNLiwgZXQgYWwuIOKAnFBhc3MgdGhlIEJ1Y2tzOiBDcmVkaXQsIEJsYW1lLCBhbmQgdGhlIEdsb2JhbCBDb21wZXRpdGlvbiBmb3IgSW52ZXN0bWVudC7igJ0gPGVtPkludGVybmF0aW9uYWwgU3R1ZGllcyBRdWFydGVybHk8L2VtPiwgdm9sLiA1OCwgbm8uIDMsIDIwMTQsIHBwLiA0MzPigJM0Ny4gPGEgaHJlZj0iaHR0cHM6Ly9kb2kub3JnLzEwLjExMTEvaXNxdS4xMjEwNiI+aHR0cHM6Ly9kb2kub3JnLzEwLjExMTEvaXNxdS4xMjEwNjwvYT4uPC9saT4KPGxpIGlkPSJjaXRlLWthbGVja2kiIHRhYmluZGV4PSItMSI+S2FsZWNraSwgTWljaGHFgi4g4oCcUG9saXRpY2FsIEFzcGVjdHMgb2YgRnVsbCBFbXBsb3ltZW50LuKAnSA8ZW0+VGhlIFBvbGl0aWNhbCBRdWFydGVybHk8L2VtPiwgdm9sLiAxNCwgbm8uIDQsIDE5NDMsIHBwLiAzMjLigJMzMC4gPGEgaHJlZj0iaHR0cHM6Ly9kb2kub3JnLzEwLjExMTEvai4xNDY3LTkyM1guMTk0My50YjAxMDE2LngiPmh0dHBzOi8vZG9pLm9yZy8xMC4xMTExL2ouMTQ2Ny05MjNYLjE5NDMudGIwMTAxNi54PC9hPi48L2xpPgo8bGkgaWQ9ImNpdGUta2xpbmUiIHRhYmluZGV4PSItMSI+S2xpbmUsIFBhdHJpY2ssIGFuZCBFbnJpY28gTW9yZXR0aS4g4oCcTG9jYWwgRWNvbm9taWMgRGV2ZWxvcG1lbnQsIEFnZ2xvbWVyYXRpb24gRWNvbm9taWVzLCBhbmQgdGhlIEJpZyBQdXNoOiAxMDAgWWVhcnMgb2YgRXZpZGVuY2UgZnJvbSB0aGUgVGVubmVzc2VlIFZhbGxleSBBdXRob3JpdHku4oCdIDxlbT5UaGUgUXVhcnRlcmx5IEpvdXJuYWwgb2YgRWNvbm9taWNzPC9lbT4sIHZvbC4gMTI5LCBuby4gMSwgMjAxNCwgcHAuIDI3NeKAkzMzMS4gPGEgaHJlZj0iaHR0cHM6Ly9kb2kub3JnLzEwLjEwOTMvcWplL3FqdDAzNCI+aHR0cHM6Ly9kb2kub3JnLzEwLjEwOTMvcWplL3FqdDAzNDwvYT4uPC9saT4KPGxpIGlkPSJjaXRlLXNsYXR0ZXJ5IiB0YWJpbmRleD0iLTEiPlNsYXR0ZXJ5LCBDYWlsaW4uIOKAnEJpZGRpbmcgZm9yIEZpcm1zOiBTdWJzaWR5IENvbXBldGl0aW9uIGluIHRoZSBVbml0ZWQgU3RhdGVzLuKAnSA8ZW0+Sm91cm5hbCBvZiBQb2xpdGljYWwgRWNvbm9teTwvZW0+LCB2b2wuIDEzMywgbm8uIDgsIDIwMjUsIHBwLiAyNTYz4oCTNjE0LiA8YSBocmVmPSJodHRwczovL2RvaS5vcmcvMTAuMTA4Ni83MzU1MDkiPmh0dHBzOi8vZG9pLm9yZy8xMC4xMDg2LzczNTUwOTwvYT4uPC9saT4KPC91bD4KCjwvc2VjdGlvbj48L2JvZHk+PC9odG1sPg=="
           download="HQ2-written-component.html" href="#written-component">Download the written component</a>
         <div class="actions">
           <button id="back-from-sources" type="button">Back to the Research</button>
-          <button data-start="" type="button">Play Again</button>
+          <button data-start="" type="button">New Case</button>
         </div>
       </div>
     </section>
   </main>
   <footer><strong>THE HQ2 BID</strong><span class="author-credit">Siqi Tan (Sally)</span><button data-go="sources"
       type="button">Sources</button></footer>
-  <script>
-    // The story and text live in the HTML above. This script handles choices and navigation.
-    const scenes = document.querySelectorAll("[data-scene]");
-    const navButtons = document.querySelectorAll("[data-nav]");
-    const outcomePanels = document.querySelectorAll("[data-outcome]");
-    const companyButtons = document.querySelectorAll("[data-company]");
-    const companyPanels = document.querySelectorAll("[data-company-result]");
-    const returnButtons = document.querySelectorAll("[data-return-result]");
-    const priorityForm = document.querySelector("#priorities");
-    const priorityInputs = [...priorityForm.querySelectorAll("input")];
-    const priorityCount = document.querySelector("#priority-count");
-    const reviewButton = document.querySelector("#review-priorities");
-    const priorityFeedback = document.querySelector("#priority-feedback");
-    const priorityAnswers = document.querySelector("#priority-answers");
-    const sourceBack = document.querySelector("#back-from-sources");
-
+  <script>// All values describe an invented five-year teaching scenario, in millions of dollars.
+    const scenarios = [
+      {
+        id: 'A', name: 'Strong local advantage', advantage: 200,
+        explanation: 'The company expects your city’s workforce and transport links to save it the equivalent of $200 million over five years, compared with the rival. The rival still has lower premises costs, but these savings outweigh them.'
+      },
+      {
+        id: 'B', name: 'Close alternatives', advantage: 75,
+        explanation: 'Your city’s workforce and transport links give it a smaller advantage. After allowing for the rival’s lower premises costs, the company values your city’s net operating advantage at the equivalent of $75 million over five years.'
+      }
+    ];
+    const rivalOffer = 300;
     const raisedOffer = 350;
+    const jobTarget = 2000;
+    const plannedJobs = 1000;
+    function evaluateOffer(scenario, opening, decision) {
+      const cap = decision === 'withdraw' ? 0 : decision === 'raise' ? raisedOffer : opening;
+      const expectedPayment = decision === 'conditional' ? cap * plannedJobs / jobTarget : cap;
+      const localValue = scenario.advantage + expectedPayment;
+      const selected = decision !== 'withdraw' && localValue >= rivalOffer;
+      return {
+        decision, opening, cap, expectedPayment, localValue, selected,
+        paid: selected ? expectedPayment : 0,
+        jobs: selected ? plannedJobs : 0,
+        location: selected ? 'Your city' : 'Rival city',
+        conditional: decision === 'conditional'
+      };
+    }
+
+    const scenes = document.querySelectorAll('[data-scene]');
+    let currentScene = 'intro';
+    let gameScene = 'intro';
+    let currentScenario = null;
     let openingOffer = 0;
-    let currentScene = "intro";
-    let gameScene = "intro";
+    let decision = null;
     let citationOrigin = null;
-
+    const money = value => `$${value} million`;
+    const labels = { keep: 'Keep the opening offer', raise: 'Raise to $350 million', conditional: 'Tie payments to hiring', withdraw: 'Withdraw' };
+    const priorityForm = document.querySelector('#priorities');
+    const priorityInputs = [...priorityForm.querySelectorAll('input')];
     const priorityNotes = {
-      jobs: "Compare verified new jobs with the projection, then ask who could access those jobs and whether they lasted.",
-      payments: "Compare actual disbursements with the announced cap and check which agreement conditions triggered payments.",
-      additionality: "Look for evidence about the company’s other viable sites and the benefits your location offered without a subsidy.",
-      durability: "Check whether jobs and benefits to other businesses persist after public payments end."
+      jobs: 'Compare the 2,000-job projection with the 1,000 jobs created at the chosen headquarters. The game does not establish who got those jobs or their quality.',
+      payments: 'Compare the offer cap with actual payments. An accepted hiring condition pays half the cap when half the target is met. An unconditional grant pays its full amount when the office opens.',
+      additionality: 'Compare another choice in the same case. If a smaller offer attracts the same headquarters, the larger subsidy adds public cost without changing this simulated investment.',
+      durability: 'Five-year hiring and payment figures cannot show whether jobs survive afterward. A real evaluation would need evidence over a longer period.'
     };
-
     function showScene(id, focusHeading = true) {
       const section = document.getElementById(id);
       for (const scene of scenes) scene.hidden = scene !== section;
       currentScene = id;
       document.body.dataset.view = id;
-      const stage = ['case', 'research', 'reflection', 'sources'].includes(id) ? (id === 'reflection' ? 'research' : id) : 'game';
-      const stageOrder = ['game', 'case', 'research', 'sources'];
-      for (const step of document.querySelectorAll('[data-step]')) {
-        step.classList.toggle('active', step.dataset.step === stage);
-        step.classList.toggle('complete', stageOrder.indexOf(step.dataset.step) < stageOrder.indexOf(stage));
+      const stages = { case: 'case', research: 'research', reflection: 'research', sources: 'sources' };
+      const stage = stages[id] || 'game';
+      if (stage === 'game') gameScene = id;
+      for (const button of document.querySelectorAll('[data-nav]')) {
+        if (button.dataset.nav === stage) button.setAttribute('aria-current', 'page');
+        else button.removeAttribute('aria-current');
       }
-
-      const readingSections = { case: "case", research: "research", reflection: "research", sources: "sources" };
-      const navItem = readingSections[id] || "game";
-      if (navItem === "game") gameScene = id;
-      for (const button of navButtons) {
-        if (button.dataset.nav === navItem) button.setAttribute("aria-current", "page");
-        else button.removeAttribute("aria-current");
-      }
-
+      for (const step of document.querySelectorAll('[data-step]')) step.classList.toggle('active', step.dataset.step === stage);
       window.scrollTo(0, 0);
-      if (focusHeading) section.querySelector(".scene-content h1, .scene-content h2").focus({ preventScroll: true });
+      if (focusHeading) section.querySelector('.scene-content h1, .scene-content h2').focus({ preventScroll: true });
     }
-
-    function updateAmounts() {
-      for (const field of document.querySelectorAll('[data-hud-offer]')) field.textContent = openingOffer ? `$${openingOffer} million` : 'Not yet set';
-      const values = { opening: openingOffer, increase: raisedOffer - openingOffer, half: openingOffer / 2 };
-      for (const field of document.querySelectorAll("[data-amount]")) {
-        field.textContent = `$${values[field.dataset.amount]} million`;
-      }
-    }
-
-    function showCompanyResult(choice) {
-      for (const button of companyButtons) button.setAttribute("aria-pressed", String(button.dataset.company === choice));
-      for (const panel of companyPanels) {
-        panel.hidden = panel.dataset.companyResult !== choice;
-        if (!panel.hidden) panel.focus();
-      }
-    }
-
-    function updatePriorities() {
-      const selected = priorityInputs.filter(input => input.checked);
-      for (const input of priorityInputs) input.disabled = selected.length === 2 && !input.checked;
-      priorityCount.textContent = `${selected.length} of 2 selected`;
-      reviewButton.disabled = selected.length !== 2;
-      priorityFeedback.hidden = true;
-      return selected;
-    }
-
-    function startGame() {
-      openingOffer = 0;
-      updateAmounts();
-      citationOrigin = null;
-      for (const panel of outcomePanels) panel.hidden = true;
-      for (const button of returnButtons) button.hidden = true;
-      showCompanyResult(null);
+    function resetPriorities() {
       priorityForm.reset();
       updatePriorities();
-      showScene("offer");
     }
-
-    for (const button of document.querySelectorAll("[data-go]")) {
-      button.addEventListener("click", () => {
-        if (button.dataset.go === "sources") {
-          citationOrigin = { scene: currentScene, link: button };
-          sourceBack.textContent = currentScene === "reflection" ? "Back to Your Final Decision" : "Back";
+    function beginCase(reuse = false) {
+      if (!reuse || !currentScenario) currentScenario = scenarios[Math.floor(Math.random() * scenarios.length)];
+      openingOffer = 0;
+      decision = null;
+      citationOrigin = null;
+      document.getElementById('company-feedback').hidden = true;
+      document.getElementById('company-comparison').hidden = true;
+      for (const button of document.querySelectorAll('[data-company]')) button.setAttribute('aria-pressed', 'false');
+      for (const button of document.querySelectorAll('[data-return-result]')) button.hidden = true;
+      updateAmounts();
+      resetPriorities();
+      showScene('offer');
+    }
+    function updateAmounts() {
+      for (const field of document.querySelectorAll('[data-hud-offer]')) field.textContent = openingOffer ? money(openingOffer) : 'Not yet set';
+      for (const field of document.querySelectorAll('[data-amount="opening"]')) field.textContent = money(openingOffer);
+    }
+    function renderResult() {
+      const result = evaluateOffer(currentScenario, openingOffer, decision);
+      document.getElementById('result-summary').textContent = result.selected
+        ? 'Five years later, the headquarters is operating in your city.'
+        : 'Five years later, the headquarters is operating in the rival city.';
+      document.getElementById('result-location').textContent = result.location;
+      document.getElementById('result-jobs').textContent = result.jobs.toLocaleString();
+      document.getElementById('result-payment').textContent = money(result.paid);
+      document.getElementById('result-offer').textContent = labels[decision] + (decision === 'keep' || decision === 'conditional' ? ` · ${money(openingOffer)} cap` : '');
+      document.getElementById('result-company').textContent = decision === 'withdraw'
+        ? 'Your city withdrew. The company accepted the rival’s $300 million grant and created 1,000 jobs there. It receives no grant from your city.'
+        : result.selected
+          ? `The company accepted your terms. It created 1,000 of the projected 2,000 jobs. ${result.conditional ? `Verified hiring triggered a payment of ${money(result.paid)}, half your offer cap.` : `The office opened and the company received the full ${money(result.paid)} grant. This grant has no hiring condition.`}`
+          : `The company rejected your final terms and accepted the rival’s $300 million grant. ${result.conditional ? 'It expected to create only 1,000 jobs, so it valued your conditional grant at half its cap.' : 'Your subsidy and your city’s operating advantages together were worth less to it than the rival’s offer.'}`;
+      document.getElementById('result-government').textContent = result.selected
+        ? result.conditional
+          ? `The city paid ${money(result.paid)} after verifying hiring. It still had to monitor the agreement. The hiring condition limited payment when the company fell short of the projection.`
+          : `The city paid ${money(result.paid)} when the office opened. The five-year job count was below the projection, but this agreement gives the city no hiring-based refund.`
+        : `The city paid $0 through this bid and received no headquarters jobs from this project. ${decision === 'withdraw' ? 'It chose to end the negotiation.' : 'It made an offer that the company declined.'} No alternative spending outcome is assumed.`;
+      document.getElementById('result-residents').textContent = result.selected
+        ? `Residents can compare ${result.jobs.toLocaleString()} headquarters jobs with ${money(result.paid)} in grant payments. They still need evidence about wages, access to those jobs, housing costs, and other public costs. This job count alone cannot establish the deal’s value.`
+        : 'The headquarters jobs went to the other city. Residents can ask what local opportunities were lost and how the government uses the fiscal capacity it retained. Keeping public money available does not establish that it was used well.';
+      document.getElementById('result-reason').textContent = result.selected
+        ? `In case ${currentScenario.id}, the company’s local operating advantage plus your expected payment reached ${money(result.localValue)}, compared with the rival’s $300 million. This is why your city could win even when its subsidy alone was lower.`
+        : decision === 'withdraw'
+          ? `In case ${currentScenario.id}, the company’s local operating advantage without a grant was below the rival’s $300 million offer. It chose the rival after your withdrawal.`
+          : `In case ${currentScenario.id}, the company valued your local operating advantage and expected grant at ${money(result.localValue)}, below the rival’s $300 million offer.`;
+      document.getElementById('result-question').textContent = result.selected
+        ? 'Would a smaller offer have secured the same investment? Compare the choices in this case to find out.'
+        : 'Could another offer have secured the project, and how much would that have cost? Compare the choices in this case.';
+      for (const button of document.querySelectorAll('[data-return-result]')) button.hidden = false;
+    }
+    function renderComparison() {
+      const body = document.getElementById('comparison-rows');
+      body.replaceChildren();
+      for (const opening of [100, 250]) {
+        for (const choice of ['keep', 'raise', 'conditional', 'withdraw']) {
+          const outcome = evaluateOffer(currentScenario, opening, choice);
+          const row = document.createElement('tr');
+          if (opening === openingOffer && choice === decision) row.classList.add('chosen-row');
+          const values = [money(opening), labels[choice], outcome.location, String(outcome.jobs), money(outcome.paid)];
+          for (const value of values) { const cell = document.createElement('td'); cell.textContent = value; row.append(cell); }
+          body.append(row);
         }
-        showScene(button.dataset.go);
-      });
-    }
-
-    document.querySelector('[data-nav="game"]').addEventListener("click", () => showScene(gameScene));
-    for (const button of document.querySelectorAll("[data-start]")) button.addEventListener("click", startGame);
-    for (const button of returnButtons) button.addEventListener("click", () => showScene("result"));
-
-    for (const button of document.querySelectorAll("[data-offer]")) {
-      button.addEventListener("click", () => {
-        openingOffer = Number(button.dataset.offer);
-        updateAmounts();
-        showScene("rival");
-      });
-    }
-
-    for (const button of document.querySelectorAll("[data-decision]")) {
-      button.addEventListener("click", () => {
-        for (const panel of outcomePanels) panel.hidden = panel.dataset.outcome !== button.dataset.decision;
-        for (const returnButton of returnButtons) returnButton.hidden = false;
-        showCompanyResult(null);
-        showScene("result");
-      });
-    }
-
-    for (const button of companyButtons) button.addEventListener("click", () => showCompanyResult(button.dataset.company));
-
-    priorityForm.addEventListener("change", updatePriorities);
-    priorityForm.addEventListener("submit", event => {
-      event.preventDefault();
-      const selected = updatePriorities();
-      if (selected.length !== 2) return;
-      priorityAnswers.replaceChildren();
-      for (const input of selected) {
-        const item = document.createElement("li");
-        item.textContent = priorityNotes[input.value];
-        priorityAnswers.append(item);
       }
-      priorityFeedback.hidden = false;
-      priorityFeedback.focus();
-    });
-
-    for (const link of document.querySelectorAll("[data-citation]")) {
-      link.addEventListener("click", event => {
-        event.preventDefault();
-        citationOrigin = { scene: currentScene, link };
-        sourceBack.textContent = currentScene === "case" ? "Back to the Real Case" : "Back to the Research";
-        showScene("sources", false);
-        document.getElementById(link.hash.slice(1)).focus();
-      });
+      document.getElementById('comparison-case').textContent = `Case ${currentScenario.id} · ${currentScenario.name}. All rows use the same company preferences, rival offer and hiring plan. Your decision is highlighted.`;
     }
-
-    sourceBack.addEventListener("click", () => {
-      if (citationOrigin && citationOrigin.scene !== "sources") {
-        showScene(citationOrigin.scene);
-        citationOrigin.link.focus();
-      } else {
-        showScene("research");
+    function renderCompany() {
+      document.getElementById('company-assessment').textContent = `Case ${currentScenario.id} · ${currentScenario.explanation} The company internally plans for 1,000 jobs, although the public projection is up to 2,000. It therefore expects half the cap under a hiring condition. These are invented assumptions for the game.`;
+      const body = document.getElementById('company-value-rows');
+      body.replaceChildren();
+      for (const choice of ['keep', 'raise', 'conditional']) {
+        const outcome = evaluateOffer(currentScenario, openingOffer, choice);
+        const row = document.createElement('tr');
+        for (const value of [labels[choice], money(outcome.expectedPayment), money(outcome.localValue), outcome.selected ? 'Your city' : 'Rival city']) {
+          const cell = document.createElement('td'); cell.textContent = value; row.append(cell);
+        }
+        body.append(row);
       }
+    }
+    function showCompanyChoice(choice) {
+      for (const button of document.querySelectorAll('[data-company]')) button.setAttribute('aria-pressed', String(button.dataset.company === choice));
+      const panel = document.getElementById('company-feedback');
+      panel.textContent = choice === 'disclose'
+        ? `You disclose the operating advantage and internal hiring plan. Officials now have the information needed to compare their offer with the rival’s. In this case, keeping the original ${money(openingOffer)} offer ${evaluateOffer(currentScenario, openingOffer, 'keep').selected ? 'would secure the headquarters' : 'would lose the headquarters'}. They can judge whether paying more changes the decision.`
+        : 'You cite the rival’s $300 million offer and ask for more, keeping the internal assessment private. The city still decides whether to raise its offer, retain it, attach hiring conditions, or withdraw. Requesting more does not guarantee that the city will agree.';
+      document.getElementById('company-comparison').hidden = false;
+      panel.hidden = false;
+      panel.focus();
+    }
+    function updatePriorities() {
+      const chosen = priorityInputs.filter(input => input.checked);
+      for (const input of priorityInputs) input.disabled = chosen.length === 2 && !input.checked;
+      document.getElementById('priority-count').textContent = `${chosen.length} of 2 selected`;
+      document.getElementById('review-priorities').disabled = chosen.length !== 2;
+      document.getElementById('priority-feedback').hidden = true;
+      return chosen;
+    }
+    for (const button of document.querySelectorAll('[data-go]')) button.addEventListener('click', () => {
+      const id = button.dataset.go;
+      if (id === 'sources') { citationOrigin = { scene: currentScene, link: button }; document.getElementById('back-from-sources').textContent = 'Back'; }
+      if (id === 'compare') renderComparison();
+      if (id === 'bonus') renderCompany();
+      showScene(id);
     });
-
-    document.querySelector('[data-step="game"]').classList.add("active");
-
+    for (const button of document.querySelectorAll('[data-start]')) button.addEventListener('click', () => beginCase());
+    for (const button of document.querySelectorAll('[data-replay]')) button.addEventListener('click', () => beginCase(true));
+    for (const button of document.querySelectorAll('[data-return-result]')) button.addEventListener('click', () => showScene('result'));
+    document.querySelector('[data-nav="game"]').addEventListener('click', () => showScene(gameScene));
+    for (const button of document.querySelectorAll('[data-offer]')) button.addEventListener('click', () => {
+      openingOffer = Number(button.dataset.offer); decision = null; updateAmounts();
+      for (const back of document.querySelectorAll('[data-return-result]')) back.hidden = true;
+      showScene('rival');
+    });
+    for (const button of document.querySelectorAll('[data-decision]')) button.addEventListener('click', () => {
+      decision = button.dataset.decision; renderResult();
+      document.getElementById('company-feedback').hidden = true;
+      document.getElementById('company-comparison').hidden = true;
+      for (const companyButton of document.querySelectorAll('[data-company]')) companyButton.setAttribute('aria-pressed', 'false');
+      showScene('result');
+    });
+    for (const button of document.querySelectorAll('[data-company]')) button.addEventListener('click', () => showCompanyChoice(button.dataset.company));
+    priorityForm.addEventListener('change', updatePriorities);
+    priorityForm.addEventListener('submit', event => {
+      event.preventDefault(); const chosen = updatePriorities(); if (chosen.length !== 2) return;
+      const list = document.getElementById('priority-answers'); list.replaceChildren();
+      for (const input of chosen) { const li = document.createElement('li'); li.textContent = priorityNotes[input.value]; list.append(li); }
+      const feedback = document.getElementById('priority-feedback'); feedback.hidden = false; feedback.focus();
+    });
+    for (const link of document.querySelectorAll('[data-citation]')) link.addEventListener('click', event => {
+      event.preventDefault(); citationOrigin = { scene: currentScene, link }; document.getElementById('back-from-sources').textContent = 'Back to the Previous Page'; showScene('sources', false); document.getElementById(link.hash.slice(1)).focus();
+    });
+    document.getElementById('back-from-sources').addEventListener('click', () => {
+      if (citationOrigin && citationOrigin.scene !== 'sources') { showScene(citationOrigin.scene); citationOrigin.link.focus(); }
+      else showScene('research');
+    });
     document.querySelector('.download-transcript').addEventListener('click', event => {
-      event.preventDefault();
-      const encoded = event.currentTarget.dataset.transcript;
-      const bytes = Uint8Array.from(atob(encoded), character => character.charCodeAt(0));
+      event.preventDefault(); const bytes = Uint8Array.from(atob(event.currentTarget.dataset.transcript), c => c.charCodeAt(0));
       const url = URL.createObjectURL(new Blob([bytes], { type: 'text/html;charset=utf-8' }));
-      const download = document.createElement('a');
-      download.href = url;
-      download.download = 'HQ2-written-component.html';
-      document.body.append(download);
-      download.click();
-      download.remove();
-      setTimeout(() => URL.revokeObjectURL(url), 60000);
+      const anchor = document.createElement('a'); anchor.href = url; anchor.download = 'HQ2-written-component.html'; document.body.append(anchor); anchor.click(); anchor.remove(); setTimeout(() => URL.revokeObjectURL(url), 60000);
     });
+    document.querySelector('[data-step="game"]').classList.add('active');
   </script>
 </body>
 
